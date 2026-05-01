@@ -9,12 +9,36 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^5.2.2",
+    "@mui/icons-material": "^9.0.0",
+    "@mui/lab": "^9.0.0-beta.2",
+    "@mui/material": "^9.0.0",
+    "@mui/material-nextjs": "^9.0.0",
+    "@mui/x-date-pickers": "^9.0.2",
+    "@portabletext/react": "^6.0.3",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.22.0",
+    "@supabase/ssr": "^0.10.2",
+    "@supabase/supabase-js": "^2.104.1",
+    "dayjs": "^1.11.20",
+    "framer-motion": "^12.38.0",
+    "mui-tel-input": "^11.0.0",
     "next": "16.2.4",
+    "next-sanity": "^12.3.1",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.74.0",
+    "resend": "^6.12.2",
+    "sanity": "^5.22.0",
+    "styled-components": "^6.4.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@locator/runtime": "^0.5.1",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4"
+    "eslint-config-next": "16.2.4",
+    "launch-editor-middleware": "^2.13.2"
   }
 }

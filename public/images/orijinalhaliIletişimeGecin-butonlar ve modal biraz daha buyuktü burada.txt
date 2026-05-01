@@ -1,0 +1,370 @@
+//orijinal 
+
+'use client';
+
+import { useState } from 'react';
+import {
+  Box, Container, Grid, Typography, TextField,
+  Button, MenuItem, Select, FormControl, InputLabel, Alert
+} from '@mui/material';
+import { motion } from 'framer-motion';
+import SendIcon from '@mui/icons-material/Send';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import SectionBaslik from '@/components/ui/SectionBaslik';
+
+const MotionBox = motion.create(Box);
+
+const scrollAnimation = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay, ease: 'easeOut' },
+  }),
+};
+
+// İletişim bilgileri → değiştirmek istediğinde buradan düzenle
+const iletisimBilgileri = [
+  {
+    id: 1,
+    ikon: LocationOnOutlinedIcon,
+    baslik: 'Konum',
+    deger: 'Online Seans (Türkiye geneli)',
+  },
+  {
+    id: 2,
+    ikon: EmailOutlinedIcon,
+    baslik: 'E-posta',
+    deger: 'pdseymainan@gmail.com',
+  },
+  {
+    id: 3,
+    ikon: AccessTimeOutlinedIcon,
+    baslik: 'Çalışma Saatleri',
+    deger: 'Pazartesi - Cumartesi: 09:00 - 20:00',
+  },
+];
+
+export default function IletisimSection() {
+  const [form, setForm] = useState({
+    adSoyad: '',
+    email: '',
+    telefon: '',
+    iletisimTercihi: '',
+    konu: '',
+    mesaj: '',
+  });
+  const [gonderildi, setGonderildi] = useState(false);
+  const [yukleniyor, setYukleniyor] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    // Form validasyonu
+    if (!form.adSoyad || !form.email || !form.mesaj) return;
+
+    setYukleniyor(true);
+    // MongoDB entegrasyonunda buraya API çağrısı gelecek
+    setTimeout(() => {
+      setGonderildi(true);
+      setYukleniyor(false);
+    }, 1500);
+  };
+
+  // Ortak input stili → tek yerden yönetilir
+  const inputSx = {
+    '& .MuiOutlinedInput-root': {
+      borderRadius: 2,
+      bgcolor: 'background.default',
+      '&:hover fieldset': { borderColor: 'primary.main' },
+      '&.Mui-focused fieldset': { borderColor: 'primary.main' },
+    },
+    '& .MuiInputLabel-root.Mui-focused': { color: 'primary.main' },
+  };
+
+  return (
+    <Box
+      sx={{
+        py: { xs: 10, md: 14 },
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Arka plan fotoğrafı */}
+ <Box
+  sx={{
+    position: 'absolute',
+    inset: 0,
+    backgroundImage: `url('/images/kitaplik2.jpg')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    zIndex: 0,
+    /* '&::after' kısmını bu şekilde yorum satırına alabilirsin:
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      background: 'rgba(250, 248, 245, 0.95)',
+    }, 
+    */
+  }}  
+/>
+    
+
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+
+        <MotionBox
+          variants={scrollAnimation}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <SectionBaslik
+            altBaslik="İletişim"
+            baslik="İletişime Geçin"
+          />
+        </MotionBox>
+
+        <Grid container spacing={6}>
+
+          {/* Sol taraf → İletişim bilgileri */}
+          <Grid size={{ xs: 12, md: 4 }}>
+            <MotionBox
+              variants={scrollAnimation}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0.1}
+            >
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ lineHeight: 1.9, mb: 4 }}
+              >
+                Sorularınız veya randevu talepleriniz için benimle iletişime geçebilirsiniz.
+                En kısa sürede dönüş yapacağım.
+              </Typography>
+
+              {iletisimBilgileri.map((item, index) => {
+                const Ikon = item.ikon;
+                return (
+                  <MotionBox
+                    key={item.id}
+                    variants={scrollAnimation}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={index * 0.15}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 2,
+                      mb: 3,
+                      p: 3,
+                      borderRadius: 3,
+                      bgcolor: 'background.paper',
+                      border: '1px solid',
+                      borderColor: 'custom.taupe',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        borderColor: 'primary.light',
+                        boxShadow: 1,
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 2,
+                        bgcolor: 'custom.beige',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Ikon sx={{ color: 'primary.main', fontSize: 22 }} />
+                    </Box>
+                    <Box>
+                      <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                        {item.baslik}
+                      </Typography>
+                      <Typography variant="body2" color="text.primary" sx={{ fontWeight: 500 }}>
+                        {item.deger}
+                      </Typography>
+                    </Box>
+                  </MotionBox>
+                );
+              })}
+            </MotionBox>
+          </Grid>
+
+          {/* Sağ taraf → Form */}
+          <Grid size={{ xs: 12, md: 8 }}>
+            <MotionBox
+              variants={scrollAnimation}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0.2}
+              sx={{
+                p: { xs: 3, md: 5 },
+                borderRadius: 4,
+                bgcolor: 'background.paper',
+                boxShadow: 2,
+                border: '1px solid',
+                borderColor: 'custom.taupe',
+              }}
+            >
+              {gonderildi ? (
+                // Başarı mesajı
+                <Box sx={{ textAlign: 'center', py: 4 }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontFamily: 'var(--font-playfair)',
+                      fontWeight: 700,
+                      color: 'primary.main',
+                      mb: 2,
+                    }}
+                  >
+                    🌿 Mesajınız İletildi!
+                  </Typography>
+                  <Typography variant="body1" color="text.secondary">
+                    En kısa sürede size dönüş yapacağım. İyi günler dilerim.
+                  </Typography>
+                </Box>
+              ) : (
+                <Grid container spacing={3}>
+
+                  {/* Ad Soyad */}
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                      fullWidth
+                      label="Ad Soyad"
+                      name="adSoyad"
+                      value={form.adSoyad}
+                      onChange={handleChange}
+                      required
+                      sx={inputSx}
+                    />
+                  </Grid>
+
+                  {/* E-posta */}
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                      fullWidth
+                      label="E-posta"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      sx={inputSx}
+                    />
+                  </Grid>
+
+                  {/* Telefon */}
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                      fullWidth
+                      label="Telefon Numarası"
+                      name="telefon"
+                      value={form.telefon}
+                      onChange={handleChange}
+                      sx={inputSx}
+                    />
+                  </Grid>
+
+                  {/* İletişim Tercihi */}
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <FormControl fullWidth sx={inputSx}>
+                      <InputLabel>İletişim Tercihi</InputLabel>
+                      <Select
+                        name="iletisimTercihi"
+                        value={form.iletisimTercihi}
+                        onChange={handleChange}
+                        label="İletişim Tercihi"
+                      >
+                        <MenuItem value="telefon">Telefon</MenuItem>
+                        <MenuItem value="email">E-posta</MenuItem>
+                        <MenuItem value="whatsapp">WhatsApp</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+
+                  {/* Konu */}
+                  <Grid size={{ xs: 12 }}>
+                    <FormControl fullWidth sx={inputSx}>
+                      <InputLabel>Konu</InputLabel>
+                      <Select
+                        name="konu"
+                        value={form.konu}
+                        onChange={handleChange}
+                        label="Konu"
+                      >
+                        <MenuItem value="on-gorusme">Ücretsiz Ön Görüşme</MenuItem>
+                        <MenuItem value="seans">Seans Bilgisi</MenuItem>
+                        <MenuItem value="ucret">Ücretlendirme</MenuItem>
+                        <MenuItem value="diger">Diğer</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+
+                  {/* Mesaj */}
+                  <Grid size={{ xs: 12 }}>
+                    <TextField
+                      fullWidth
+                      label="Sorunuzu Açıklayın"
+                      name="mesaj"
+                      value={form.mesaj}
+                      onChange={handleChange}
+                      multiline
+                      rows={5}
+                      required
+                      sx={inputSx}
+                    />
+                  </Grid>
+
+                  {/* Gönder butonu */}
+                  <Grid size={{ xs: 12 }}>
+                    <Button
+                      onClick={handleSubmit}
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      disabled={yukleniyor}
+                      endIcon={<SendIcon />}
+                      sx={{
+                        borderRadius: '50px',
+                        px: 5,
+                        py: 1.8,
+                        fontWeight: 600,
+                        fontSize: '1rem',
+                        boxShadow: 2,
+                        '&:hover': {
+                          boxShadow: 3,
+                          transform: 'translateY(-2px)',
+                        },
+                        transition: 'all 0.3s ease',
+                      }}
+                    >
+                      {yukleniyor ? 'Gönderiliyor...' : 'Gönder'}
+                    </Button>
+                  </Grid>
+
+                </Grid>
+              )}
+            </MotionBox>
+          </Grid>
+
+        </Grid>
+      </Container>
+    </Box>
+  );
+}

@@ -95,7 +95,7 @@ export default function NedenBirlikte() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.75) 100%)",
+              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
           },
         }}
       />

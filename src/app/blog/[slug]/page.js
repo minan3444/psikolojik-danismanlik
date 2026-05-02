@@ -153,7 +153,7 @@ export default async function BlogDetayPage({ params }) {
             isterseniz buradayım.
           </Typography>
           <Link href="/randevu" style={{ textDecoration: "none" }}>
-            <CustomButton href="/randevu"> ÜCRETSİZ ÖN GÖRÜŞME AL</CustomButton>
+            <CustomButton href="/randevu">ÜCRETSİZ ÖN GÖRÜŞME AL</CustomButton>
           </Link>
         </Box>
       </Container>

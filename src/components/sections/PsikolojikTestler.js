@@ -29,7 +29,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
   return (
     <Box
       sx={{
-        py: { xs: 10, md: 14 },
+        p: 3,
         position: "relative",
         overflow: "hidden",
         // Arka plan rengini moda göre hafifçe değiştirebiliriz
@@ -49,7 +49,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
               inset: 0,
               //background: 'rgba(245, 240, 234, 0.93)',
               background:
-                "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.75) 100%)",
+                "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
             },
           }}
         />
@@ -183,26 +183,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
             viewport={{ once: true }}
             sx={{ textAlign: "center" }}
           >
-            <Button
-              component={Link}
-              href="/testler"
-              variant="contained"
-              color="primary"
-              size="large"
-              sx={{
-                borderRadius: "50px",
-                px: 5,
-                py: 1.8,
-                fontWeight: 600,
-                boxShadow: "0px 8px 25px rgba(124,158,135,0.35)",
-                "&:hover": {
-                  boxShadow: "0px 12px 35px rgba(124,158,135,0.45)",
-                  transform: "translateY(-2px)",
-                },
-              }}
-            >
-              Tüm Testleri Gör →
-            </Button>
+            <CustomButton href="/testler"> Tüm Testleri Gör →</CustomButton>
           </MotionBox>
         )}
       </Container>

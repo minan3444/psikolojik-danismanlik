@@ -41,7 +41,6 @@ const scrollAnimation = {
 
 // 'legalDocs' prop'u eklendi
 export default function IletisimSection({ legalDocs = [] }) {
-  
   // Sanity slug'larını eşleştiren yardımcı fonksiyon
   const getLegalUrl = (keyword) => {
     // Sanity'den gelen veriler içinde anahtar kelimeyi ara
@@ -154,7 +153,7 @@ export default function IletisimSection({ legalDocs = [] }) {
           inset: 0,
           zIndex: 0,
           background:
-            "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.75) 100%)",
+            "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
           pointerEvents: "none",
         },
       }}
@@ -179,10 +178,10 @@ export default function IletisimSection({ legalDocs = [] }) {
               viewport={{ once: true }}
               sx={{
                 position: "relative",
-                height: { xs: "250px", md: "480px" },// Esnek yükseklik.yani ekran küçüldüğünde de görselin tamamı gözükür
-                maxHeight: "90vh",// Yüksekliği sınırlamak için maxHeight ekledik
-                borderRadius: 6,// Görselin köşelerini yuvarlamak için borderRadius ekledik
-                overflow: "hidden",// Görselin taşmasını önlemek için overflow: hidden ekledik
+                height: { xs: "250px", md: "480px" }, // Esnek yükseklik.yani ekran küçüldüğünde de görselin tamamı gözükür
+                maxHeight: "90vh", // Yüksekliği sınırlamak için maxHeight ekledik
+                borderRadius: 6, // Görselin köşelerini yuvarlamak için borderRadius ekledik
+                overflow: "hidden", // Görselin taşmasını önlemek için overflow: hidden ekledik
                 boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
               }}
             >
@@ -190,8 +189,8 @@ export default function IletisimSection({ legalDocs = [] }) {
                 src="/images/iletisim.jpg"
                 alt="İletişim"
                 fill
-                priority 
-                sizes="(max-width: 768px) 100vw, 500px" 
+                priority
+                sizes="(max-width: 768px) 100vw, 500px"
                 style={{ objectFit: "cover" }}
               />
             </MotionBox>
@@ -341,7 +340,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                             sx={{ fontSize: "0.7rem", color: "text.secondary" }}
                           >
                             <Link
-                              href={getLegalUrl('aydinlatma')}
+                              href={getLegalUrl("aydinlatma")}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={handleLinkClick}
@@ -350,9 +349,9 @@ export default function IletisimSection({ legalDocs = [] }) {
                             >
                               Aydınlatma Metni
                             </Link>
-                            'ni ve{" "}
+                            {"'ni ve "}
                             <Link
-                              href={getLegalUrl('cerez')}
+                              href={getLegalUrl("cerez")}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={handleLinkClick}
@@ -361,7 +360,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                             >
                               Çerez Politikası
                             </Link>
-                            'nı okudum. *
+                            {"'nı okudum. *"}
                           </Typography>
                         }
                       />
@@ -380,7 +379,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                             sx={{ fontSize: "0.7rem", color: "text.secondary" }}
                           >
                             <Link
-                              href={getLegalUrl('kullanim')}
+                              href={getLegalUrl("kullanim")}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={handleLinkClick}
@@ -391,7 +390,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                             </Link>{" "}
                             ve{" "}
                             <Link
-                              href={getLegalUrl('onam')}
+                              href={getLegalUrl("onam")}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={handleLinkClick}
@@ -400,7 +399,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                             >
                               Onam Formu
                             </Link>
-                            'nu kabul ediyorum. *
+                            {"'nu kabul ediyorum. *"}
                           </Typography>
                         }
                       />
@@ -420,7 +419,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                           >
                             Verilerimin işlenmesine dair{" "}
                             <Link
-                              href={getLegalUrl('acik-riza')}
+                              href={getLegalUrl("acik-riza")}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={handleLinkClick}
@@ -429,7 +428,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                             >
                               Açık Rıza Metni
                             </Link>
-                            'ni onaylıyorum. *
+                            {"'ni onaylıyorum. *"}
                           </Typography>
                         }
                       />
@@ -449,7 +448,7 @@ export default function IletisimSection({ legalDocs = [] }) {
                           >
                             Bilgilendirme içerikleri için{" "}
                             <Link
-                              href={getLegalUrl('ticari')}
+                              href={getLegalUrl("ticari")}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={handleLinkClick}

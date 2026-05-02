@@ -1,11 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { motion } from 'framer-motion';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SectionBaslik from '@/components/ui/SectionBaslik';
-import sss from '@/data/sss';
+import { useState } from "react";
+import {
+  Box,
+  Container,
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
+import { motion } from "framer-motion";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import SectionBaslik from "@/components/ui/SectionBaslik";
+import sss from "@/data/sss";
 import theme from "@/theme/theme";
 const { sectionPadding } = theme; // Tema'dan sectionPadding'i çekiyoruz
 
@@ -16,7 +23,7 @@ const scrollAnimation = {
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: 'easeOut' },
+    transition: { duration: 0.6, delay, ease: "easeOut" },
   }),
 };
 
@@ -44,7 +51,8 @@ export default function SSSSection() {
           right: 0,
           width: "40%",
           height: "100%",
-                     background: "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.75) 100%)",
+          background:
+            "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
 
           zIndex: 0,
         }}

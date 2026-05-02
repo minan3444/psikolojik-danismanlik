@@ -225,13 +225,18 @@ export default function AdminPage() {
 
   // ── Veri yükleme ────────────────────────────────────────────────────────────
 
-  const refreshData = async () => {
-    setLoading(true);
-    const data = await getAllAppointments();
-    setAppointments(data || []);
-    setLoading(false);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await getAllAppointments();
+      setAppointments(data || []);
+      setLoading(false);
+    };
 
+    fetchData();
+  }, []);
+
+  useEffect(() => {}, []);
   /**
    * Gün değiştiğinde veya dialog açıldığında o günün slotlarını çek.
    * Kullanıcı o günü zaten değiştirdiyse (userModifiedDates'te varsa)
@@ -453,7 +458,7 @@ export default function AdminPage() {
             >
               Müsaitlik Yönet
             </Button>
-            <Button
+            {/* <Button
               variant="outlined"
               startIcon={<RefreshIcon />}
               onClick={refreshData}
@@ -461,7 +466,7 @@ export default function AdminPage() {
               sx={{ borderRadius: "50px" }}
             >
               Yenile
-            </Button>
+            </Button> */}
           </Stack>
         </Stack>
 

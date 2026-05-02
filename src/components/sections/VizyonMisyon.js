@@ -15,7 +15,7 @@ const { sectionPadding } = theme; // Tema'dan sectionPadding'i çekiyoruz
 const MotionBox = motion.create(Box);
 //aşağıdaki tüm satırları tek tek açıklayarak yazıyorum
 const scrollAnimation = {
-  hidden: { opacity: 0, y: 50 },//Başlangıçta elemanlar hafif aşağıda ve görünmez olacak şekilde tanımlanır.hangi elemanlar
+  hidden: { opacity: 0, y: 50 }, //Başlangıçta elemanlar hafif aşağıda ve görünmez olacak şekilde tanımlanır.hangi elemanlar
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
@@ -81,7 +81,7 @@ export default function VizyonMisyon() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.75) 100%)",
+              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
           },
         }}
       />
@@ -115,7 +115,7 @@ export default function VizyonMisyon() {
               }}
             >
               <Image
-                src="/images/leaf.webp" 
+                src="/images/leaf.webp"
                 alt="" // Dekoratif olduğu için SEO açısından boş bırakıldı
                 width={leaf.size}
                 height={leaf.size}

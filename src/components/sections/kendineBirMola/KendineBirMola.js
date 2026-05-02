@@ -1,4 +1,4 @@
- //ana component (temizlenmiş)
+//ana component (temizlenmiş)
 
 "use client";
 
@@ -8,17 +8,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import { egzersizler } from "@/data/kendine-bir-mola";
 import { scrollAnimation } from "./animations";
-import NefesEgzersizi       from "./components/NefesEgzersizi";
+import NefesEgzersizi from "./components/NefesEgzersizi";
 import FarkindalikEgzersizi from "./components/FarkindalikEgzersizi";
-import DusunceBirakma       from "./components/DusunceBirakma";
+import DusunceBirakma from "./components/DusunceBirakma";
 
 const MotionBox = motion.create(Box);
 
 // Egzersiz id → bileşen eşlemesi
 const EGZERSIZ_BILESENLERI = {
-  nefes:       NefesEgzersizi,
+  nefes: NefesEgzersizi,
   farkindalik: FarkindalikEgzersizi,
-  dusunce:     DusunceBirakma,
+  dusunce: DusunceBirakma,
 };
 
 // ─── Egzersiz seçim kartı ────────────────────────────────────────────────────
@@ -92,7 +92,9 @@ function EgzersizKarti({ egzersiz, index, onSec }) {
 export default function KendineBirMola() {
   const [seciliEgzersiz, setSeciliEgzersiz] = useState(null);
 
-  const AktifBileseni = seciliEgzersiz ? EGZERSIZ_BILESENLERI[seciliEgzersiz] : null;
+  const AktifBileseni = seciliEgzersiz
+    ? EGZERSIZ_BILESENLERI[seciliEgzersiz]
+    : null;
 
   return (
     <Box
@@ -116,7 +118,7 @@ export default function KendineBirMola() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.75) 100%)",
+              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
           },
         }}
       />
@@ -179,7 +181,9 @@ export default function KendineBirMola() {
                 ← Geri Dön
               </Button>
 
-              {AktifBileseni && <AktifBileseni onBitir={() => setSeciliEgzersiz(null)} />}
+              {AktifBileseni && (
+                <AktifBileseni onBitir={() => setSeciliEgzersiz(null)} />
+              )}
             </MotionBox>
           )}
         </AnimatePresence>

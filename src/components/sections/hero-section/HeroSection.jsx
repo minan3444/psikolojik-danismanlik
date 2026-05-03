@@ -9,8 +9,7 @@ export default function HeroSection({ maddeler }) {
     <Box
       sx={{
         minHeight: "100vh",
-        pt: { xs: 12, md: 16 }, // Navbar yüksekliğini tolere etmesi için padding top eklendi
-        pb: { xs: 8, md: 4 }, // İçeriğin alt kısmında nefes alması için
+        p: 8,
         position: "relative",
         display: "flex",
         alignItems: "center",
@@ -19,7 +18,7 @@ export default function HeroSection({ maddeler }) {
     >
       <HeroBackground />
       <Container maxWidth="lg" sx={{ position: "relative" }}>
-        <Grid container spacing={6} sx={{ alignItems: "center" }}>
+        <Grid container spacing={3} sx={{ alignItems: "center" }}>
           <HeroProfile />
           <HeroContent maddeler={maddeler} />
         </Grid>

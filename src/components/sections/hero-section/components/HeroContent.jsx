@@ -36,7 +36,7 @@ export default function HeroContent({ maddeler }) {
     <Grid size={{ xs: 12, md: 7 }}>
       <AnimatedFrame from="left">
         {/* Üst etiket */}
-        <Typography variant="body1" color="primary">
+        <Typography variant="body1" fontWeight="bold" color="primary">
           ✦ PSİKOLOJİK DANIŞMAN
         </Typography>
         <Typography

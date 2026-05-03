@@ -8,7 +8,9 @@ export default function HeroSection({ maddeler }) {
   return (
     <Box
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
+        pt: { xs: 12, md: 16 }, // Navbar yüksekliğini tolere etmesi için padding top eklendi
+        pb: { xs: 8, md: 4 }, // İçeriğin alt kısmında nefes alması için
         position: "relative",
         display: "flex",
         alignItems: "center",

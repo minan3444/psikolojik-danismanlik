@@ -13,28 +13,30 @@ export default function HeroProfile() {
     <Grid size={{ xs: 12, md: 5 }}>
       <AnimatedFrame>
         {/* Profil fotoğrafı */}
-        <Box sx={{ position: "relative", display: "inline-block" }}>
+        <Box sx={{ position: "relative", width: "100%" }}>
           <Box
             sx={{
               position: "absolute",
-              top: 20,
-              left: 20,
-              width: { xs: 200, md: 300 },
-              height: { xs: 260, md: 390 },
+              top: "5%",
+              left: "5%",
+              width: "100%",
+              height: "100%",
               borderRadius: "40% 60% 40% 60%",
               border: "2px solid",
               borderColor: "primary.light",
+              zIndex: 0,
             }}
           />
           <Box
             sx={{
-              width: { xs: 200, md: 300 },
-              height: { xs: 260, md: 390 },
+              width: "100%",
+              aspectRatio: "3/4",
               borderRadius: "60% 40% 60% 40%",
               overflow: "hidden",
               position: "relative",
               boxShadow: "0px 20px 60px rgba(124, 158, 135, 0.25)",
               backgroundColor: "custom.beige",
+              zIndex: 1,
             }}
           >
             <Image

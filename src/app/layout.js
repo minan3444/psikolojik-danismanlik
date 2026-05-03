@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
           {/* Navbar → tüm sayfalarda görünür */}
           <Navbar />
           {/* Sayfa içeriği */}
-          <Box component="main" sx={{ minHeight: "100vh" }}>
+          <Box component="main" sx={{ p: 2 }}>
             {children}
           </Box>
           {/* Footer → tüm sayfalarda görünür */}

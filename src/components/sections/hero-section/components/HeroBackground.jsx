@@ -27,14 +27,19 @@ export default function HeroBackground() {
           width: { xs: "350px", md: "600px" },
           height: { xs: "350px", md: "600px" },
           borderRadius: "50%",
-          background: "radial-gradient(circle, #7C9E87 0%, transparent 70%)"
+          background: "radial-gradient(circle, #7C9E87 0%, transparent 70%)",
         }}
       />
 
       {/* Sol alt mavi daire */}
       <MotionBox
         animate={{ scale: [1, 1.15, 1], opacity: [0.08, 0.14, 0.08] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
         sx={{
           position: "absolute",
           bottom: "-20%",

@@ -7,7 +7,11 @@ import { Box, Chip } from "@mui/material";
  * BlogFilter — Kategori filtre çipleri.
  * "use client" sadece burada: interaktif kısım yalnızca bu bileşen.
  */
-export default function BlogFilter({ kategoriler, activeKategori, onKategoriChange }) {
+export default function BlogFilter({
+  kategoriler,
+  activeKategori,
+  onKategoriChange,
+}) {
   return (
     <Box
       component="nav"

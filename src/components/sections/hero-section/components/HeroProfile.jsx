@@ -10,10 +10,10 @@ const MotionBox = motion.create(Box);
 
 export default function HeroProfile() {
   return (
-    <Grid size={{ xs: 12, md: 5 }}>
+    <Grid size={{ xs: 20, md: 5 }}>
       <AnimatedFrame>
         {/* Profil fotoğrafı */}
-        <Box sx={{ position: "relative", width: "100%" }}>
+        <Box sx={{ position: "relative", width: "75%" }}>
           <Box
             sx={{
               position: "absolute",

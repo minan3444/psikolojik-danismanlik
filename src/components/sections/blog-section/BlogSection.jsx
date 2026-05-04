@@ -2,7 +2,7 @@ import { Box, Container } from "@mui/material";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import BlogGrid from "./components/BlogGrid";
 import BlogFilteredContent from "./components/BlogFilteredContent";
-import BlogTumunuGorButonu from "./components/BlogTumunuGorButonu";
+import CustomButton from "@/app/shared/customButton";
 
 export default function BlogSection({ isFullPage = false, initialData = [] }) {
   const previewPosts = initialData.slice(0, 3);
@@ -10,17 +10,15 @@ export default function BlogSection({ isFullPage = false, initialData = [] }) {
   return (
     <Box
       component="section"
-      aria-label={isFullPage ? "Blog yazıları" : "Güncel blog yazıları"} //Kullanırsan: Web siten daha kapsayıcı olur ve engelli kullanıcılar siteni rahatça kullanabilir. Modern web standartlarında (WCAG) bu tür alanlara isim verilmesi şiddetle önerilir.
+      aria-label={isFullPage ? "Blog yazıları" : "Güncel blog yazıları"}
       sx={{
         position: "relative",
-        p: 3,
-        background:
-          "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
+        py: 3,
       }}
     >
       <Container maxWidth="lg">
         <SectionBaslik
-          altBaslik="Blog"
+          altBaslik="BLOG"
           baslik={isFullPage ? "Psikolojik Danışma Rehberi" : "Güncel Yazılar"}
         />
         {isFullPage ? (
@@ -28,7 +26,11 @@ export default function BlogSection({ isFullPage = false, initialData = [] }) {
         ) : (
           <BlogGrid posts={previewPosts} />
         )}
-        {!isFullPage && initialData.length > 3 && <BlogTumunuGorButonu />}
+        {!isFullPage && initialData.length > 3 && (
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+            <CustomButton href="/blog">Tüm Yazıları Gör →</CustomButton>
+          </Box>
+        )}
       </Container>
     </Box>
   );

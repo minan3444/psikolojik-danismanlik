@@ -7,10 +7,6 @@ import BlogKarti from "@/components/ui/BlogKarti";
 
 const MotionBox = motion.create(Box);
 
-/**
- * BlogGrid — Animasyonlu blog kartı listesi.
- * Semantik: <ul>/<li> yapısı → ekran okuyucu & SEO dostu.
- */
 export default function BlogGrid({ posts }) {
   return (
     <Grid

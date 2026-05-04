@@ -10,8 +10,6 @@ import {
 import Link from "next/link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
-// SANITY İTHALATLARI
 import { client } from "@/sanity/lib/client";
 import { BLOG_POST_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
@@ -100,7 +98,7 @@ export default async function BlogDetayPage({ params }) {
 
         <Box
           sx={{
-            borderRadius: 6,
+            borderRadius: 4,
             overflow: "hidden",
             mb: 6,
             height: { xs: 250, md: 450 },

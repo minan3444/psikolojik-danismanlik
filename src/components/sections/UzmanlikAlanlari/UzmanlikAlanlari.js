@@ -13,49 +13,15 @@ export default function UzmanlikAlanlari() {
   return (
     <Box
       sx={{
-        py: { xs: sectionPadding.xs, md: sectionPadding.md },
+        py: 3,
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Arka plan fotoğrafı */}
-      <Box
-        sx={{
-          position: "absolute",
-          inset: 0,
-          //backgroundImage: `url('/images/kitaplik1.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-          zIndex: 0,
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
-          },
-        }}
-      />
-
-      {/* Dekoratif arka plan elementi */}
-      <Box
-        sx={{
-          position: "absolute",
-          transform: "translate(-50%, -50%)",
-          width: "80%",
-          height: "80%",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(124,158,135,0.06) 0%, transparent 70%)",
-        }}
-      />
-
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        {/* BAŞLIK KISMI - AnimatedFrame ile aşağıdan gelsin */}
+      <Container maxWidth="lg">
         <AnimatedFrame>
           <SectionBaslik
-            altBaslik="Uzmanlık Alanlarım"
+            altBaslik="UZMANLIK ALANLARIM"
             baslik="Sana Nasıl Yardımcı Olabilirim?"
           />
         </AnimatedFrame>

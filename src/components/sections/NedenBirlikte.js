@@ -131,12 +131,10 @@ export default function NedenBirlikte() {
                     height: "100%",
                     backgroundColor: "rgba(255,255,255,0.85)",
                     backdropFilter: "blur(10px)",
-                    boxShadow: "0px 4px 20px rgba(0,0,0,0.06)",
                     border: "1px solid",
                     borderColor: "custom.taupe",
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      boxShadow: "0px 20px 50px rgba(124,158,135,0.2)",
                       borderColor: "primary.light",
                     },
                   }}
@@ -154,7 +152,7 @@ export default function NedenBirlikte() {
                       mb: 2,
                     }}
                   >
-                    <Ikon sx={{ color: "primary.main", fontSize: 28 }} />
+                    <Ikon sx={{ color: "primary.main", fontSize: 30 }} />
                   </Box>
 
                   {/* Başlık */}
@@ -197,7 +195,6 @@ export default function NedenBirlikte() {
             borderRadius: 4,
             backgroundColor: "rgba(255,255,255,0.9)",
             backdropFilter: "blur(10px)",
-            boxShadow: "0px 4px 24px rgba(0,0,0,0.06)",
             border: "1px solid",
             borderColor: "custom.taupe",
           }}

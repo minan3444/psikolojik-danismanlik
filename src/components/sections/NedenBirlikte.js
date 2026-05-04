@@ -23,8 +23,7 @@ export default function NedenBirlikte() {
         />
 
         <Grid container spacing={3} sx={{ mb: 3 }}>
-          {maddeler.map((madde, index) => {
-            const Ikon = madde.ikon;
+          {maddeler.map((madde) => {
             return (
               <Grid key={madde.id} size={{ xs: 12, md: 4 }}>
                 <AnimatedFrame>
@@ -63,7 +62,6 @@ export default function NedenBirlikte() {
             ayıracağın bu zamanın hayatında neler dönüştürebileceğini görmek
             için ilk adımı birlikte atabiliriz.
           </Typography>
-
           <CustomButton href="/randevu">İlk Adımı At →</CustomButton>
         </Box>
       </Container>

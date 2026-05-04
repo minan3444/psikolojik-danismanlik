@@ -16,6 +16,10 @@ const theme = createTheme({
       default: "#FAF8F5", // Sayfa arka planı → Warm White (göz yormayan krem beyaz)
       paper: "#F5F0EA", // Kart arka planı → biraz daha koyu krem
     },
+    background1: {
+      default: "#9e7c93", // Sayfa arka planı → Warm White (göz yormayan krem beyaz)
+      paper: "#F5F0EA", // Kart arka planı → biraz daha koyu krem
+    },
     text: {
       primary: "#3D3530", // Ana yazı rengi → Koyu kahve (siyah yerine daha sıcak)
       secondary: "#7A6E68", // İkincil yazı → açıklamalar, alt başlıklar

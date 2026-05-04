@@ -36,7 +36,7 @@ export default function HeroContent({ maddeler }) {
     <Grid size={{ xs: 12, md: 7 }}>
       <AnimatedFrame from="left">
         {/* Üst etiket */}
-        <Typography variant="body1" fontWeight="bold" color="primary">
+        <Typography variant="h6" fontWeight="700" sx={{ color: "#9e7c93" }}>
           ✦ PSİKOLOJİK DANIŞMAN
         </Typography>
         <Typography
@@ -68,7 +68,7 @@ export default function HeroContent({ maddeler }) {
           direction={{ xs: "column", md: "row" }}
         >
           <CustomButton href="/randevu"> Online Randevu Al</CustomButton>
-          <CustomButton href="/hakkimda" variant="outlined">
+          <CustomButton href="/hakkimda" backgroundColor="#9e7c93">
             Daha Fazla Tanı
           </CustomButton>
         </Stack>

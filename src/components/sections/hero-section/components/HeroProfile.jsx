@@ -3,7 +3,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { fadeInLeft, fadeInUp } from "../animations";
+import { fadeInUp } from "../animations";
 import AnimatedFrame from "@/app/shared/AnimatedFrame";
 
 const MotionBox = motion.create(Box);

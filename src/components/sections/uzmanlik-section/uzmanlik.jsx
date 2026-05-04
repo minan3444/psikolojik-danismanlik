@@ -1,7 +1,6 @@
 "use client";
 
-import { Box, Card, Container, Grid, Typography } from "@mui/material";
-import * as Icons from "@mui/icons-material";
+import { Box, Container, Grid } from "@mui/material";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import uzmanlikAlanlari from "@/data/uzmanlik-alanlari";
 import AnimatedFrame from "@/app/shared/AnimatedFrame";
@@ -26,8 +25,6 @@ export default function UzmanlikAlanlari() {
 
         <Grid container spacing={2}>
           {uzmanlikAlanlari.map((alan) => {
-            const Ikon = Icons[alan.ikon];
-
             return (
               <Grid key={alan.id} size={{ xs: 12, md: 3 }}>
                 <AnimatedFrame>

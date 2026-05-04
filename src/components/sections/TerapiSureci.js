@@ -1,101 +1,32 @@
 "use client";
 
 import { Box, Container, Typography } from "@mui/material";
-import { motion } from "framer-motion";
 import * as Icons from "@mui/icons-material";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import terapiSureci from "@/data/terapi-sureci";
-import theme from "@/theme/theme";
-const { sectionPadding } = theme; // Tema'dan sectionPadding'i çekiyoruz
-const MotionBox = motion.create(Box);
-
-const scrollAnimation = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: "easeOut" },
-  }),
-};
 
 export default function TerapiSureci() {
   return (
-    <Box
-      sx={{
-        py: { xs: sectionPadding.xs, md: sectionPadding.md },
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Arka plan fotoğrafı → Unsplash */}
-      <Box
-        sx={{
-          position: "absolute",
-          inset: 0,
-          //backgroundImage: `url('_https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?w=1600&q=80')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          zIndex: 0,
-          // Overlay → yazıların okunabilirliği için
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
-          },
-        }}
-      />
+    <Box sx={{ py: 6, position: "relative" }}>
+      <Container maxWidth="lg">
+        <SectionBaslik altBaslik="NASIL ÇALIŞIYORUM?" baslik="Terapi Süreci" />
 
-      {/* Dekoratif alt gradient */}
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          height: "40%",
-          background:
-            "linear-gradient(0deg, rgba(124,158,135,0.08) 0%, transparent 100%)",
-          zIndex: 0,
-        }}
-      />
-
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <MotionBox
-          variants={scrollAnimation}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <SectionBaslik
-            altBaslik="Nasıl Çalışıyoruz?"
-            baslik="Terapi Süreci"
-          />
-        </MotionBox>
-
-        {/* Adımlar → yatay timeline */}
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
-            alignItems: { xs: "flex-start", md: "flex-start" },
             gap: { xs: 4, md: 0 },
             position: "relative",
+            mt: 4,
           }}
         >
           {terapiSureci.map((adim, index) => {
             const Ikon = Icons[adim.ikon];
-            const sonAdim = index === terapiSureci.length - 1;
+            const isLast = index === terapiSureci.length - 1;
 
             return (
-              <MotionBox
+              <Box
                 key={adim.id}
-                variants={scrollAnimation}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={index * 0.2}
                 sx={{
                   flex: 1,
                   display: "flex",
@@ -103,129 +34,116 @@ export default function TerapiSureci() {
                   alignItems: "center",
                   textAlign: "center",
                   position: "relative",
-                  px: { xs: 0, md: 3 },
+                  px: { md: 2 },
                 }}
               >
-                {/* Bağlantı çizgisi → adımlar arası */}
-                {!sonAdim && (
+                {/* Yatay Bağlantı Çizgisi (Sadece Masaüstü) */}
+                {!isLast && (
                   <Box
                     sx={{
                       display: { xs: "none", md: "block" },
                       position: "absolute",
                       top: 40,
-                      left: "60%",
-                      width: "80%",
-                      height: 2,
-                      background:
-                        "linear-gradient(90deg, #7C9E87 0%, #A8C5B0 100%)",
+                      left: "50%",
+                      width: "100%",
+                      height: "2px",
+                      bgcolor: "primary.light",
+                      opacity: 0.3,
                       zIndex: 0,
                     }}
                   />
                 )}
 
-                {/* Adım numarası + İkon */}
-                <MotionBox
-                  whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+                {/* İkon ve Numara Grubu */}
+                <Box
                   sx={{
                     width: 80,
                     height: 80,
+                    minWidth: 80,
+                    minHeight: 80,
+                    flexShrink: 0,
                     borderRadius: "50%",
-                    backgroundColor: "primary.main",
+                    bgcolor: "primary.main",
+                    color: "white",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     mb: 3,
                     position: "relative",
                     zIndex: 1,
-                    boxShadow: "0px 8px 25px rgba(124,158,135,0.35)",
-                    cursor: "default",
                   }}
                 >
-                  {Ikon && <Ikon sx={{ color: "white", fontSize: 36 }} />}
+                  {Ikon && <Ikon sx={{ fontSize: 32 }} />}
 
-                  {/* Adım numarası */}
+                  {/* Adım Numarası (Sağ Üst Köşe) */}
                   <Box
                     sx={{
                       position: "absolute",
-                      top: -8,
-                      right: -8,
-                      width: 28,
-                      height: 28,
+                      top: 0,
+                      right: 0,
+                      width: 24,
+                      height: 24,
                       borderRadius: "50%",
-                      backgroundColor: "white",
+                      bgcolor: "white",
                       border: "2px solid",
                       borderColor: "primary.main",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      transform: "translate(25%, -25%)",
                     }}
                   >
                     <Typography
                       variant="caption"
                       sx={{
-                        fontWeight: 700,
+                        fontWeight: 800,
                         color: "primary.main",
-                        fontSize: "0.75rem",
+                        fontSize: 10,
                       }}
                     >
                       {adim.id}
                     </Typography>
                   </Box>
-                </MotionBox>
+                </Box>
 
-                {/* İçerik kutusu */}
-                <MotionBox
-                  whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                {/* İçerik Kartı */}
+                <Box
                   sx={{
                     p: 3,
                     borderRadius: 4,
-                    backgroundColor: "rgba(255,255,255,0.85)",
-                    backdropFilter: "blur(10px)",
-                    boxShadow: "0px 4px 20px rgba(0,0,0,0.06)",
                     border: "1px solid",
                     borderColor: "custom.taupe",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      boxShadow: "0px 12px 40px rgba(124,158,135,0.2)",
-                      borderColor: "primary.light",
-                    },
+                    bgcolor: "background.paper",
+                    width: "100%",
+                    height: "100%",
                   }}
                 >
                   <Typography
                     variant="caption"
                     sx={{
                       color: "primary.main",
-                      fontWeight: 600,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
+                      fontWeight: 700,
                       display: "block",
                       mb: 1,
                     }}
                   >
                     {adim.altBaslik}
                   </Typography>
-
                   <Typography
                     variant="h6"
                     sx={{
                       fontFamily: "var(--font-playfair)",
                       fontWeight: 700,
-                      color: "text.primary",
-                      mb: 2,
+                      mb: 1.5,
                     }}
                   >
                     {adim.baslik}
                   </Typography>
-
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ lineHeight: 1.8 }}
-                  >
+                  <Typography variant="body2" color="text.secondary">
                     {adim.aciklama}
                   </Typography>
-                </MotionBox>
-              </MotionBox>
+                </Box>
+              </Box>
             );
           })}
         </Box>

@@ -15,7 +15,7 @@ const { sectionPadding } = theme;
 const MotionBox = motion.create(Box);
 
 const scrollAnimation = {
-  hidden: { opacity: 0, y: 50 }, //Başlangıçta elemanlar hafif aşağıda ve görünmez olacak şekilde tanımlanır.hangi elemanlar
+  hidden: { opacity: 0, y: 50 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
@@ -98,7 +98,7 @@ export default function VizyonMisyon() {
             >
               <Image
                 src="/images/leaf.webp"
-                alt="" // Dekoratif olduğu için SEO açısından boş bırakıldı
+                alt=""
                 width={leaf.size}
                 height={leaf.size}
                 style={{
@@ -127,7 +127,6 @@ export default function VizyonMisyon() {
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   display: "block",
-                  mb: 1,
                 }}
               >
                 ✦ Vizyon & Misyon
@@ -135,12 +134,8 @@ export default function VizyonMisyon() {
               <Typography
                 variant="h2"
                 sx={{
-                  fontFamily: "var(--font-playfair)",
-                  fontWeight: 700,
                   color: "text.primary",
                   fontSize: { xs: "2rem", md: "2.8rem" },
-                  lineHeight: 1.2,
-                  mb: 2,
                 }}
               >
                 Neden{" "}
@@ -156,8 +151,7 @@ export default function VizyonMisyon() {
                   width: 60,
                   height: 3,
                   backgroundColor: "primary.main",
-                  borderRadius: 2,
-                  mb: 5,
+                  borderRadius: 4,
                 }}
               />
             </MotionBox>
@@ -181,20 +175,15 @@ export default function VizyonMisyon() {
                       borderRadius: 4,
                       backgroundColor: "rgba(255,255,255,0.9)",
                       backdropFilter: "blur(5px)",
-                      boxShadow: "0px 4px 24px rgba(0,0,0,0.06)",
                       border: "1px solid",
                       borderColor: "custom.taupe",
-                      transition: "box-shadow 0.3s ease",
-                      "&:hover": {
-                        boxShadow: "0px 10px 30px rgba(124,158,135,0.15)",
-                      },
                     }}
                   >
                     <Box
                       sx={{
                         width: 56,
                         height: 56,
-                        borderRadius: 3,
+                        borderRadius: 4,
                         backgroundColor: "primary.light",
                         display: "flex",
                         alignItems: "center",
@@ -203,7 +192,7 @@ export default function VizyonMisyon() {
                       }}
                     >
                       {Ikon && (
-                        <Ikon sx={{ color: "primary.dark", fontSize: 28 }} />
+                        <Ikon sx={{ color: "primary.dark", fontSize: 30 }} />
                       )}
                     </Box>
                     <Box>
@@ -221,12 +210,10 @@ export default function VizyonMisyon() {
                         variant="body1"
                         color="text.secondary"
                         sx={{
-                          lineHeight: 1.8,
                           fontStyle: "italic",
-                          fontSize: "0.95rem",
                         }}
                       >
-                        "{item.icerik}"
+                        {item.icerik}
                       </Typography>
                     </Box>
                   </MotionBox>
@@ -248,10 +235,9 @@ export default function VizyonMisyon() {
                   whileHover={{ scale: 1.02 }}
                   sx={{
                     textAlign: "center",
-                    p: { xs: 4, md: 5 },
+                    p: 3,
                     borderRadius: 4,
                     backgroundColor: "white",
-                    boxShadow: "0px 4px 24px rgba(0,0,0,0.06)",
                     border: "1px solid",
                     borderColor: "custom.taupe",
                   }}

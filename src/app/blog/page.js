@@ -1,5 +1,5 @@
 import { Box, Container, Breadcrumbs, Typography } from "@mui/material";
-import BlogSection from "@/components/sections/blog-section/BlogSection";
+import BlogSection from "@/components/sections/blog-section/blog";
 import Link from "next/link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 

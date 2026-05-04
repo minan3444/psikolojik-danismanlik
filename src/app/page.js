@@ -1,15 +1,15 @@
 // src/app/page.js
-import HeroSection from "@/components/sections/hero-section/HeroSection";
-import UzmanlikAlanlari from "@/components/sections/UzmanlikAlanlari/UzmanlikAlanlari";
+import HeroSection from "@/components/sections/hero-section/hero";
+import UzmanlikAlanlari from "@/components/sections/uzmanlik-section/uzmanlik";
 import VizyonMisyon from "@/components/sections/VizyonMisyon";
 import VakaAnalizleri from "@/components/sections/VakaAnalizleri";
 import TerapiSureci from "@/components/sections/TerapiSureci";
 import NedenBirlikte from "@/components/sections/NedenBirlikte";
 import PsikolojikTestler from "@/components/sections/PsikolojikTestler";
 import KendineBirMola from "@/components/sections/kendineBirMola/KendineBirMola";
-import BlogSection from "@/components/sections/blog-section/BlogSection";
+import BlogSection from "@/components/sections/blog-section/blog";
 import SSSSection from "@/components/sections/SSSSection";
-import IletisimSection from "@/components/sections/IletisimSection";
+import Iletisim from "@/components/sections/iletisim-section/Iletisim";
 
 // --- SANITY BAĞLANTILARI ---
 import { client } from "@/sanity/lib/client"; // HATANIN ÇÖZÜMÜ OLAN SATIR
@@ -43,7 +43,7 @@ export default async function Home() {
       <BlogSection initialData={yazilar} />
       <SSSSection />
       {/* legalDocs verisini buraya paslıyoruz */}
-      <IletisimSection legalDocs={legalDocs} />
+      <Iletisim legalDocs={legalDocs} />
     </>
   );
 }

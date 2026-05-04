@@ -4,10 +4,8 @@ import { Box, Card, Container, Grid, Typography } from "@mui/material";
 import * as Icons from "@mui/icons-material";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import uzmanlikAlanlari from "@/data/uzmanlik-alanlari";
-import theme from "@/theme/theme";
 import AnimatedFrame from "@/app/shared/AnimatedFrame";
-import UzmanlikCard from "./UzmanlikCard";
-const { sectionPadding } = theme;
+import UzmanlikCard from "../../../app/shared/CardAlani";
 
 export default function UzmanlikAlanlari() {
   return (

@@ -39,13 +39,9 @@ const scrollAnimation = {
   }),
 };
 
-// 'legalDocs' prop'u eklendi
 export default function IletisimSection({ legalDocs = [] }) {
-  // Sanity slug'larını eşleştiren yardımcı fonksiyon
   const getLegalUrl = (keyword) => {
-    // Sanity'den gelen veriler içinde anahtar kelimeyi ara
     const doc = legalDocs?.find((d) => d.slug.includes(keyword));
-    // Bulursa tam slug'ı döner, bulamazsa senin fallback yapını korur
     return doc ? `/yasal/${doc.slug}` : `/yasal/${keyword}-metni`;
   };
 
@@ -140,34 +136,13 @@ export default function IletisimSection({ legalDocs = [] }) {
     <Box
       id="iletisim"
       sx={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        py: { xs: 8, md: 4 },
+        p: 3,
         position: "relative",
         overflow: "hidden",
-        bgcolor: "#FAF8F5",
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          inset: 0,
-          zIndex: 0,
-          background:
-            "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
-          pointerEvents: "none",
-        },
       }}
     >
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <MotionBox
-          variants={scrollAnimation}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          sx={{ mb: 3 }}
-        >
-          <SectionBaslik altBaslik="İletişim" baslik="İletişime Geçin" />
-        </MotionBox>
+      <Container maxWidth="lg">
+        <SectionBaslik altBaslik="İletişim" baslik="İletişime Geçin" />
 
         <Grid container spacing={3} sx={{ alignItems: "center" }}>
           <Grid size={{ xs: 12, md: 5 }}>
@@ -179,10 +154,9 @@ export default function IletisimSection({ legalDocs = [] }) {
               sx={{
                 position: "relative",
                 height: { xs: "250px", md: "480px" }, // Esnek yükseklik.yani ekran küçüldüğünde de görselin tamamı gözükür
-                maxHeight: "90vh", // Yüksekliği sınırlamak için maxHeight ekledik
-                borderRadius: 6, // Görselin köşelerini yuvarlamak için borderRadius ekledik
+
+                borderRadius: 4, // Görselin köşelerini yuvarlamak için borderRadius ekledik
                 overflow: "hidden", // Görselin taşmasını önlemek için overflow: hidden ekledik
-                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
               }}
             >
               <Image
@@ -204,10 +178,9 @@ export default function IletisimSection({ legalDocs = [] }) {
               viewport={{ once: true }}
               sx={{
                 p: { xs: 2.5, md: 3 },
-                borderRadius: 5,
+                borderRadius: 4,
                 bgcolor: "rgba(255, 255, 255, 0.5)",
                 backdropFilter: "blur(10px)",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.04)",
                 border: "1px solid rgba(255,255,255,0.3)",
                 mb: 1,
               }}

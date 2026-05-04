@@ -1,21 +1,17 @@
 // Tüm section'larda kullanılan başlık componenti
 // Tekrar kullanılabilir ve modüler yapı
 
-import { Box, Typography } from '@mui/material';
+import { Box, Typography } from "@mui/material";
 
 export default function SectionBaslik({ baslik, altBaslik, merkez = true }) {
   return (
-    <Box sx={{ mb: 6, textAlign: merkez ? 'center' : 'left' }}>
+    <Box sx={{ mb: 6, textAlign: merkez ? "center" : "left" }}>
       {altBaslik && (
         <Typography
           variant="caption"
           sx={{
-            color: 'primary.main',//sectionlardaki alt başlıkların rengi.
+            color: "primary.main", //sectionlardaki alt başlıkların rengi.
             fontWeight: 600,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            display: 'block',
-            mb: 1,
           }}
         >
           {altBaslik}
@@ -24,11 +20,10 @@ export default function SectionBaslik({ baslik, altBaslik, merkez = true }) {
       <Typography
         variant="h2"
         sx={{
-          fontFamily: 'var(--font-playfair)',
+          fontFamily: "var(--font-playfair)",
           fontWeight: 700,
-          color: 'text.primary',//sectionlardaki ana başlıkların rengi.
-          fontSize: { xs: '1.8rem', md: '2.5rem' },
-          lineHeight: 1.3,
+          color: "text.primary", //sectionlardaki ana başlıkların rengi.
+          fontSize: { xs: "1.8rem", md: "2.5rem" },
         }}
       >
         {baslik}
@@ -38,10 +33,10 @@ export default function SectionBaslik({ baslik, altBaslik, merkez = true }) {
         sx={{
           width: 60,
           height: 3,
-          backgroundColor: 'primary.main',
+          backgroundColor: "primary.main",
           borderRadius: 2,
           mt: 2,
-          mx: merkez ? 'auto' : 0,
+          mx: merkez ? "auto" : 0,
         }}
       />
     </Box>

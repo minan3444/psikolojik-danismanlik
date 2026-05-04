@@ -10,10 +10,10 @@ import rakamlar from "@/data/rakamlar";
 import Image from "next/image";
 import { useState, useEffect } from "react"; // 1. Hook'ları ekledik
 import theme from "@/theme/theme";
-const { sectionPadding } = theme; // Tema'dan sectionPadding'i çekiyoruz
+const { sectionPadding } = theme;
 
 const MotionBox = motion.create(Box);
-//aşağıdaki tüm satırları tek tek açıklayarak yazıyorum
+
 const scrollAnimation = {
   hidden: { opacity: 0, y: 50 }, //Başlangıçta elemanlar hafif aşağıda ve görünmez olacak şekilde tanımlanır.hangi elemanlar
   visible: (delay = 0) => ({
@@ -63,29 +63,11 @@ export default function VizyonMisyon() {
   return (
     <Box
       sx={{
-        py: { xs: sectionPadding.xs, md: sectionPadding.md },
+        py: 3,
         position: "relative",
         overflow: "hidden",
-        backgroundColor: "#faf8f5",
       }}
     >
-      <Box
-        sx={{
-          position: "absolute",
-          inset: 0,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          zIndex: 0,
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
-          },
-        }}
-      />
-
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Box
           sx={{

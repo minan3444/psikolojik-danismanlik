@@ -25,9 +25,9 @@ export default async function BlogPage() {
   return (
     <Box
       sx={{
-        pt: { xs: 10, md: 10 },
+        p: 6,
         bgcolor: "background.default",
-        minHeight: "100vh",
+        minHeight: "80vh",
       }}
     >
       <Container maxWidth="lg">

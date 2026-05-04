@@ -9,18 +9,14 @@ export default function UzmanlikCard({ ikon, baslik, aciklama }) {
   return (
     <Card
       sx={{
-        height: "40vh",
+        height: "45vh",
         borderRadius: 4,
         p: 3,
         backgroundColor: "white",
         border: "1px solid",
         borderColor: "custom.taupe",
-        transition: "all 0.3s ease",
         "&:hover": {
-          transform: "translateY(-8px)",
           backgroundColor: "primary.main",
-          boxShadow: "0px 20px 50px rgba(124, 158, 135, 0.3)",
-          borderColor: "primary.main",
           color: "white",
           "& .ikon-kutu": { backgroundColor: "rgba(255,255,255,0.2)" },
           "& .alan-aciklama": { opacity: 0.8 },
@@ -37,8 +33,6 @@ export default function UzmanlikCard({ ikon, baslik, aciklama }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          mb: 2,
-          transition: "background-color 0.3s ease",
         }}
       >
         {Ikon && <Ikon sx={{ fontSize: 30, color: "inherit" }} />}

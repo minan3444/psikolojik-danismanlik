@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Box, Typography, Button, Grid, CircularProgress } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { calismaSaatleri } from '@/data/randevu-ayarlari';
-import { getReservedSlots } from '@/app/actions/appointment';
-import dayjs from 'dayjs';
+import { useState, useEffect } from "react";
+import { Box, Typography, Button, Grid, CircularProgress } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { calismaSaatleri } from "@/data/randevu-ayarlari";
+import { getReservedSlots } from "@/app/actions/appointment";
+import dayjs from "dayjs";
 
 export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
-  const [loading,     setLoading]     = useState(true);
+  const [loading, setLoading] = useState(true);
   const [doluSaatler, setDoluSaatler] = useState([]);
-  const [seciliSaat,  setSeciliSaat]  = useState('');
+  const [seciliSaat, setSeciliSaat] = useState("");
 
-  const tarihKey = dayjs(seciliTarih).format('YYYY-MM-DD');
+  const tarihKey = dayjs(seciliTarih).format("YYYY-MM-DD");
 
   useEffect(() => {
     async function fetchAvailability() {
@@ -23,28 +23,30 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
     fetchAvailability();
   }, [tarihKey]);
 
-  const gunIndex    = dayjs(seciliTarih).day();
-  const temelSaatler = gunIndex === 6 ? calismaSaatleri.cumartesi : calismaSaatleri.haftaIci;
+  const gunIndex = dayjs(seciliTarih).day();
+  const temelSaatler =
+    gunIndex === 6 ? calismaSaatleri.cumartesi : calismaSaatleri.haftaIci;
 
-  if (loading) return (
-    <Box sx={{ textAlign: 'center', py: 6 }}>
-      <CircularProgress size={36} sx={{ mb: 1.5, color: 'primary.main' }} />
-      <Typography variant="body2" color="text.secondary">
-        Müsait saatler kontrol ediliyor...
-      </Typography>
-    </Box>
-  );
+  if (loading)
+    return (
+      <Box sx={{ textAlign: "center", py: 6 }}>
+        <CircularProgress size={36} sx={{ mb: 1.5, color: "primary.main" }} />
+        <Typography variant="body2" color="text.secondary">
+          Müsait saatler kontrol ediliyor...
+        </Typography>
+      </Box>
+    );
 
   return (
-    <Box sx={{ textAlign: 'center' }}>
+    <Box sx={{ textAlign: "center" }}>
       <Typography
         variant="h5"
-        sx={{ fontFamily: 'var(--font-playfair)', fontWeight: 700, mb: 2 }}
+        sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700, mb: 2 }}
       >
         Görüşme Saatini Seçin
       </Typography>
 
-      <Grid container spacing={1.5} sx={{ justifyContent: 'center' }}>
+      <Grid container spacing={1.5} sx={{ justifyContent: "center" }}>
         {temelSaatler.map((saat) => {
           const isFull = (doluSaatler || []).some((s) => s.time === saat);
           return (
@@ -52,20 +54,20 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
               <Button
                 fullWidth
                 disabled={isFull}
-                variant={seciliSaat === saat ? 'contained' : 'outlined'}
+                variant={seciliSaat === saat ? "contained" : "outlined"}
                 onClick={() => setSeciliSaat(saat)}
                 sx={{
-                  borderRadius: '10px',
+                  borderRadius: "10px",
                   py: 1,
-                  fontSize: '0.8rem',
-                  textTransform: 'none',
+                  fontSize: "0.8rem",
+                  textTransform: "none",
                   fontWeight: 600,
-                  transition: '0.2s',
+                  transition: "0.2s",
                   ...(isFull && {
-                    bgcolor: 'rgba(0,0,0,0.03) !important',
-                    color: 'rgba(0,0,0,0.15) !important',
-                    borderColor: 'rgba(0,0,0,0.05) !important',
-                    textDecoration: 'line-through',
+                    bgcolor: "rgba(0,0,0,0.03) !important",
+                    color: "rgba(0,0,0,0.15) !important",
+                    borderColor: "rgba(0,0,0,0.05) !important",
+                    textDecoration: "line-through",
                   }),
                 }}
               >
@@ -76,7 +78,7 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
         })}
       </Grid>
 
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
         <Button onClick={onBack} startIcon={<ArrowBackIcon />}>
           Geri
         </Button>
@@ -84,7 +86,7 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
           variant="contained"
           disabled={!seciliSaat}
           onClick={() => onSelect(seciliSaat)}
-          sx={{ borderRadius: '50px', px: 4, fontWeight: 700 }}
+          sx={{ borderRadius: "50px", px: 4, fontWeight: 700, color: "white" }}
         >
           Devam Et →
         </Button>

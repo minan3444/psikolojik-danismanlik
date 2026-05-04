@@ -159,7 +159,13 @@ export default function FarkindalikEgzersizi({ onBitir }) {
             variant="contained"
             color="primary"
             onClick={devamEt}
-            sx={{ borderRadius: "50px", px: 4, py: 1.5, fontWeight: 600 }}
+            sx={{
+              borderRadius: "50px",
+              px: 4,
+              py: 1.5,
+              fontWeight: 600,
+              color: "white",
+            }}
           >
             {adim + 1 >= ADIMLAR.length ? "Tamamla" : "Devam Et →"}
           </Button>

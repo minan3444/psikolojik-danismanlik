@@ -143,15 +143,6 @@ export default function TestlerPage() {
                       size="small"
                       sx={{ bgcolor: "custom.beige" }}
                     />
-                    <Chip
-                      label="Ücretsiz"
-                      size="small"
-                      sx={{
-                        bgcolor: "rgba(124,158,135,0.1)",
-                        color: "primary.dark",
-                        fontWeight: 600,
-                      }}
-                    />
                   </Box>
 
                   <Button

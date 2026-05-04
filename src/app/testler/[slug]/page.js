@@ -278,7 +278,7 @@ export default function EvrenselTestMotoru({ params }) {
                 Testi Tekrarla
               </Button>
               <CustomButton href="/randevu">
-                Ücretsiz Ön Görüşme Al →
+                Süreç Hakkında Bilgi Al →
               </CustomButton>
             </Box>
           </Paper>

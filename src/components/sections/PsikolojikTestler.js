@@ -142,15 +142,6 @@ export default function PsikolojikTestler({ isFullPage = false }) {
                         fontWeight: 500,
                       }}
                     />
-                    <Chip
-                      label="Ücretsiz"
-                      size="small"
-                      sx={{
-                        backgroundColor: "primary.light",
-                        color: "primary.dark",
-                        fontWeight: 600,
-                      }}
-                    />
                   </Box>
 
                   <CustomButton

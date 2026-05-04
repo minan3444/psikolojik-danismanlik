@@ -4,7 +4,7 @@
 const terapiSureci = [
   {
     id: 1,
-    baslik: "Ücretsiz Ön Görüşme 🏷️",
+    baslik: "Süreç Hakkında Bilgi ℹ️",
     altBaslik: "SENİ DİNLİYORUM",
     ikon: "HearingOutlined",
     aciklama:

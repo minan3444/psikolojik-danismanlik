@@ -80,14 +80,6 @@ export default function Footer() {
             >
               Güvenli • Ve • Yargısız • Bir Alan
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.8, maxWidth: 300 }}
-            >
-              Değişim, küçük bir adım ve nazik bir kararla başlar. Kendi
-              yolculuğunuzda size eşlik etmek için buradayım.
-            </Typography>
           </Grid>
 
           {/* Orta → Hızlı linkler */}

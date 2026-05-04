@@ -3,7 +3,7 @@
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { scrollAnimation } from "../animations";
+import { scrollAnimation } from "@/app/shared/scrollAnimation";
 
 const MotionBox = motion.create(Box);
 

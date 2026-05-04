@@ -23,7 +23,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import { MuiTelInput } from "mui-tel-input"; // Import edildiğinden emin ol
 import { sendContactEmail } from "@/app/actions/contact"; // Yeni action
-import { scrollAnimation } from "../animations";
+import { scrollAnimation } from "@/app/shared/scrollAnimation";
 
 const MotionBox = motion.create(Box);
 

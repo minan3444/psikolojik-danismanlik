@@ -2,7 +2,6 @@
 
 import { Box, Container, Grid, Typography, Button, Chip } from "@mui/material";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import { tumTestler } from "@/data/testler-data";
@@ -43,14 +42,6 @@ export default function PsikolojikTestler({ isFullPage = false }) {
             position: "absolute",
             inset: 0,
             zIndex: 0,
-            "&::after": {
-              content: '""',
-              position: "absolute",
-              inset: 0,
-              //background: 'rgba(245, 240, 234, 0.93)',
-              background:
-                "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
-            },
           }}
         />
       )}
@@ -63,7 +54,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
           viewport={{ once: true }}
         >
           <SectionBaslik
-            altBaslik="Psikolojik Testler"
+            altBaslik="PSİKOLOJİK TESTLER"
             baslik={
               isFullPage
                 ? "Tüm Değerlendirme Testleri"
@@ -133,7 +124,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ lineHeight: 1.8, mb: 3, flexGrow: 1 }}
+                    sx={{ mb: 2, flexGrow: 1 }}
                   >
                     {test.aciklama}
                   </Typography>

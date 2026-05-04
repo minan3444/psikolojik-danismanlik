@@ -12,7 +12,7 @@ export default function BlogGrid({ posts }) {
     <Grid
       component="ul"
       container
-      spacing={4}
+      spacing={3}
       sx={{ listStyle: "none", m: 0, p: 0 }}
     >
       <AnimatePresence mode="popLayout">

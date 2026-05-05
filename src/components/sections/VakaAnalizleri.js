@@ -5,6 +5,7 @@ import { Box, Container, Grid, Button, Chip, Typography } from "@mui/material";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import VakaKarti from "@/components/ui/VakaKarti";
 import CustomButton from "@/app/shared/customButton";
+import EastIcon from "@mui/icons-material/East";
 
 export default function VakaAnalizleri({
   isFullPage = false,
@@ -36,9 +37,26 @@ export default function VakaAnalizleri({
         <SectionBaslik
           altBaslik="VAKA ANALİZLERİ"
           baslik={
-            isFullPage
-              ? "Gerçek Hikayeler, Gerçek Dönüşümler"
-              : "Vaka Analizleri"
+            isFullPage ? (
+              "Gerçek Hikayeler, Gerçek Dönüşümler"
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center", // Yatayda ortalar
+                  gap: { xs: 1, md: 2 }, // Mobilde dar, masaüstünde geniş boşluk
+                  width: "100%", // Tüm genişliği kapla ki merkezleyebilsin
+                  flexWrap: "wrap", // Mobilde sığmazsa aşağı kaysın (bozulmasın)
+                }}
+              >
+                <span>Vaka</span>
+                <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
+                <span>Süreç</span>
+                <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
+                <span>Kazanım</span>
+              </Box>
+            )
           }
         />
         {isFullPage && (

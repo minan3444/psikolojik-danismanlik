@@ -10,7 +10,7 @@ export default function IletisimSection({ legalDocs = [] }) {
   return (
     <IletisimBackground>
       <Container maxWidth="lg">
-        <SectionBaslik altBaslik="İletişim" baslik="İletişime Geçin" />
+        <SectionBaslik altBaslik="İLETİŞİM" baslik="İletişime Geçin" />
 
         <Grid container spacing={3}>
           <Grid size={{ xs: 25, md: 5 }}>

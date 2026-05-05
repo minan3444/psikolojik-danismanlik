@@ -265,18 +265,17 @@ export default function EvrenselTestMotoru({ params }) {
                 flexWrap: "wrap",
               }}
             >
-              <Button
+              <CustomButton
                 onClick={() => {
                   setBitti(false);
                   setMevcutSoruIndex(0);
                   setCevaplar({});
                 }}
                 variant="outlined"
-                color="primary"
-                sx={{ borderRadius: "50px", px: 4 }}
+                sx={{ px: 4 }}
               >
                 Testi Tekrarla
-              </Button>
+              </CustomButton>
               <CustomButton href="/randevu">
                 Süreç Hakkında Bilgi Al →
               </CustomButton>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, memo } from "react";
 import {
   Box,
   Container,
@@ -9,143 +9,92 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import { motion } from "framer-motion";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import sss from "@/data/sss";
-import theme from "@/theme/theme";
-const { sectionPadding } = theme; // Tema'dan sectionPadding'i çekiyoruz
 
-const MotionBox = motion.create(Box);
+// 1. ADIM: Her bir Accordion'u ayrı bir bileşen yap ve memo ile sarmala
+const SSSItem = memo(({ item, index, acikPanel, onChange }) => {
+  const panelId = `panel${index}`;
+  const isExpanded = acikPanel === panelId;
 
-const scrollAnimation = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: "easeOut" },
-  }),
-};
+  return (
+    <Accordion
+      expanded={isExpanded}
+      onChange={onChange(panelId)}
+      // 3. ADIM: Kapalıyken içeriği DOM'dan silerek bellek tasarrufu sağlar
+      slotProps={{ transition: { unmountOnExit: true } }}
+      sx={{
+        mb: 2,
+        borderRadius: "12px !important",
+        bgcolor: "background.paper",
+        border: "1px solid",
+        borderColor: isExpanded ? "primary.light" : "custom.taupe",
+        boxShadow: "none",
+        "&:before": { display: "none" }, // MUI varsayılan çizgiyi kaldırır
+      }}
+    >
+      <AccordionSummary
+        expandIcon={
+          <ExpandMoreIcon
+            sx={{ color: isExpanded ? "primary.main" : "text.secondary" }}
+          />
+        }
+      >
+        <Typography
+          variant="subtitle1" // h7 yerine standart subtitle kullanmak daha güvenlidir
+          sx={{
+            color: isExpanded ? "primary.main" : "text.primary",
+            fontWeight: isExpanded ? 400 : 600,
+          }}
+        >
+          {item.soru}
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails sx={{ pb: 2 }}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ lineHeight: 1.7 }}
+        >
+          {item.cevap}
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+});
+
+// Memo bileşenine isim veriyoruz (Geliştirici araçları için)
+SSSItem.displayName = "SSSItem";
 
 export default function SSSSection() {
   const [acik, setAcik] = useState(false);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setAcik(isExpanded ? panel : false);
-  };
+  // 2. ADIM: Fonksiyonu belleğe sabitle
+  const handleChange = useCallback(
+    (panel) => (event, isExpanded) => {
+      setAcik(isExpanded ? panel : false);
+    },
+    [],
+  );
 
   return (
-    <Box
-      sx={{
-        py: { xs: sectionPadding.xs, md: sectionPadding.md },
-        position: "relative",
-        overflow: "hidden",
-        bgcolor: "custom.beige",
-      }}
-    >
-      {/* Dekoratif arka plan */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: "40%",
-          height: "100%",
-          background:
-            "linear-gradient(135deg, rgba(250,248,245,0) 0%, rgba(245,240,234,0) 50%, rgba(124,158,135,0.3) 100%)",
+    <Box sx={{ py: 3, position: "relative" }}>
+      <Container maxWidth="lg">
+        <SectionBaslik
+          altBaslik="MERAK EDİLENLER"
+          baslik="Aklındaki Soruların Cevapları"
+        />
 
-          zIndex: 0,
-        }}
-      />
-
-      <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
-        <MotionBox
-          variants={scrollAnimation}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <SectionBaslik
-            altBaslik="MERAK EDİLENLER"
-            baslik="Aklındaki Soruların Cevapları"
+        {sss.map((item, index) => (
+          <SSSItem
+            key={item.id}
+            item={item}
+            index={index}
+            acikPanel={acik}
+            onChange={handleChange}
           />
-        </MotionBox>
-
-        <MotionBox
-          variants={scrollAnimation}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={0.2}
-        >
-          {sss.map((item, index) => (
-            <Accordion
-              key={item.id}
-              expanded={acik === `panel${index}`}
-              onChange={handleChange(`panel${index}`)}
-              sx={{
-                mb: 2,
-                borderRadius: "12px !important",
-                bgcolor: "background.paper",
-                boxShadow: 1,
-                border: "1px solid",
-                borderColor:
-                  acik === `panel${index}` ? "primary.light" : "custom.taupe",
-                // Açık accordion'da border rengi değişir
-                transition: "all 0.3s ease",
-                "&:before": { display: "none" }, // MUI default divider'ı kaldır
-                "&:hover": {
-                  boxShadow: 2,
-                  borderColor: "primary.light",
-                },
-              }}
-            >
-              <AccordionSummary
-                expandIcon={
-                  <ExpandMoreIcon
-                    sx={{
-                      color:
-                        acik === `panel${index}`
-                          ? "primary.main"
-                          : "text.secondary",
-                      transition: "color 0.3s ease",
-                    }}
-                  />
-                }
-                sx={{
-                  py: 1,
-                  "& .MuiAccordionSummary-content": { my: 1.5 },
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontFamily: "var(--font-playfair)",
-                    fontWeight: 600,
-                    color:
-                      acik === `panel${index}`
-                        ? "primary.main"
-                        : "text.primary",
-                    fontSize: "1rem",
-                    transition: "color 0.3s ease",
-                  }}
-                >
-                  {item.soru}
-                </Typography>
-              </AccordionSummary>
-
-              <AccordionDetails sx={{ pt: 0, pb: 3 }}>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{ lineHeight: 1.9 }}
-                >
-                  {item.cevap}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
-        </MotionBox>
+        ))}
       </Container>
     </Box>
   );

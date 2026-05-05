@@ -118,7 +118,7 @@ export default function Navbar() {
                 <Typography
                   variant="caption"
                   sx={{
-                    color: "primary.main",
+                    color: "#9e7c93",
                     letterSpacing: { xs: "0.02em", md: "0.05em" },
                     fontWeight: 700,
                     fontSize: { xs: "0.55rem", md: "0.65rem" },

@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Lora, Montserrat } from "next/font/google";
 import "./globals.css";
 import Box from "@mui/material/Box";
 import Providers from "./providers";
@@ -15,6 +15,15 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
+});
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+});
+
+const montesserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
 });
 
 export const metadata = {
@@ -40,7 +49,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+      <body
+        className={`${inter.variable} ${playfair.variable} ${lora.variable} ${montesserrat.variable}`}
+      >
         <Providers>
           {/* Navbar → tüm sayfalarda görünür */}
           <Navbar />

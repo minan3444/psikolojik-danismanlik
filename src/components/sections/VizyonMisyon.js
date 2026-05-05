@@ -9,19 +9,9 @@ import vizyonMisyon from "@/data/vizyon-misyon";
 import rakamlar from "@/data/rakamlar";
 import Image from "next/image";
 import { useState, useEffect } from "react"; // 1. Hook'ları ekledik
-import theme from "@/theme/theme";
-const { sectionPadding } = theme;
+import { scrollAnimation } from "@/app/shared/scrollAnimation";
 
 const MotionBox = motion.create(Box);
-
-const scrollAnimation = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: "easeOut" },
-  }),
-};
 
 const leafVariants = {
   hidden: { y: -300, opacity: 0, rotate: 0 },

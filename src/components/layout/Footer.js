@@ -70,7 +70,7 @@ export default function Footer() {
             <Typography
               variant="caption"
               sx={{
-                color: "primary.main",
+                color: "#9e7c93",
                 letterSpacing: "0.1em",
                 display: "block",
                 fontWeight: 700,

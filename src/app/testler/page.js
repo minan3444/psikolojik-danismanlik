@@ -119,8 +119,6 @@ export default function TestlerPage() {
                   <Typography
                     variant="h5"
                     sx={{
-                      fontFamily: "var(--font-playfair)",
-                      fontWeight: 700,
                       mb: 2,
                     }}
                   >

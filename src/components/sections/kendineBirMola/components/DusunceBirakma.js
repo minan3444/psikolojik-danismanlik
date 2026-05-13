@@ -24,10 +24,7 @@ export default function DusunceBirakma({ onBitir }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        sx={{ fontFamily: "var(--font-playfair)", mb: 1 }}
-      >
+      <Typography variant="h5" sx={{ mb: 1 }}>
         Düşünce Bırakma
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>

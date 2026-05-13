@@ -70,10 +70,7 @@ export default function NefesEgzersizi({ onBitir }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        sx={{ fontFamily: "var(--font-playfair)", mb: 2 }}
-      >
+      <Typography variant="h5" sx={{ mb: 2 }}>
         4 • 7 • 8 Nefes Tekniği
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>

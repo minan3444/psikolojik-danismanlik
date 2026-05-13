@@ -39,10 +39,7 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700, mb: 2 }}
-      >
+      <Typography variant="h5" sx={{ mb: 2 }}>
         Görüşme Saatini Seçin
       </Typography>
 

@@ -50,12 +50,9 @@ export default function NedenBirlikte() {
           <Typography
             variant="h5"
             sx={{
-              fontFamily: "var(--font-playfair)",
-              fontWeight: 600,
               color: "text.primary",
               mb: 2,
               fontStyle: "italic",
-              fontSize: { xs: "1.1rem", md: "1.4rem" },
             }}
           >
             Değişim, küçük bir adım ve nazik bir kararla başlar. Kendine

@@ -58,7 +58,7 @@ const BILGI_KUTULARI = [
 function BasariBilgisi({ onReset }) {
   return (
     <Box sx={{ textAlign: "center", py: 5 }}>
-      <Typography variant="h5" color="primary" sx={{ fontWeight: 700, mb: 2 }}>
+      <Typography variant="h5" color="primary" sx={{ mb: 2 }}>
         Mesajınız İletildi 🌿
       </Typography>
       <Typography color="text.secondary" sx={{ mb: 4 }}>

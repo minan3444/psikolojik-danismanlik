@@ -140,10 +140,7 @@ export default async function BlogDetayPage({ params }) {
             borderRadius: 6,
           }}
         >
-          <Typography
-            variant="h5"
-            sx={{ fontFamily: "var(--font-playfair)", mb: 2, fontWeight: 700 }}
-          >
+          <Typography variant="h5" sx={{ mb: 2 }}>
             Bu yazı size nasıl hissettirdi?
           </Typography>
           <Typography sx={{ mb: 4, color: "text.secondary" }}>

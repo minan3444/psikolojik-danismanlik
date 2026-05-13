@@ -85,10 +85,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        sx={{ fontFamily: "var(--font-playfair)", mb: 1 }}
-      >
+      <Typography variant="h5" sx={{ mb: 1 }}>
         5 • 4 • 3 • 2 • 1 Tekniği
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>

@@ -147,9 +147,6 @@ export default function EvrenselTestMotoru({ params }) {
             <Typography
               variant="h5"
               sx={{
-                fontFamily: "var(--font-playfair)",
-                fontWeight: 600,
-                mb: 0,
                 minHeight: "40px",
               }}
             >
@@ -242,8 +239,6 @@ export default function EvrenselTestMotoru({ params }) {
             <Typography
               variant="h5"
               sx={{
-                fontFamily: "var(--font-playfair)",
-                fontWeight: 700,
                 mb: 3,
               }}
             >

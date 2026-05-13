@@ -47,7 +47,7 @@ const theme = createTheme({
     },
     h5: {
       fontFamily: "var(--font-playfair), serif",
-      fontWeight: 500,
+      fontWeight: 600,
     },
     h6: {
       fontFamily: "var(--font-playfair), serif",
@@ -67,7 +67,7 @@ const theme = createTheme({
     },
     // Eğer Montserrat veya Lora'yı belirli yerlerde kullanmak istersen buraya ekleyebilirsin:
     subtitle1: {
-      fontFamily: "var(--font-inter), serif",
+      fontFamily: "var(--font-playfair), serif",
       fontWeight: 600,
     },
     button: {

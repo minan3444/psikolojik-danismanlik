@@ -155,10 +155,7 @@ export default async function VakaDetayPage({ params }) {
 
         {/* İçerik Alanı */}
         <Box>
-          <Typography
-            variant="h5"
-            sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700, mb: 2 }}
-          >
+          <Typography variant="h5" sx={{ mb: 2 }}>
             Vaka Tanımı
           </Typography>
           <Typography
@@ -175,10 +172,7 @@ export default async function VakaDetayPage({ params }) {
 
           <Divider sx={{ mb: 6 }} />
 
-          <Typography
-            variant="h5"
-            sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700, mb: 2 }}
-          >
+          <Typography variant="h5" sx={{ mb: 2 }}>
             Süreç
           </Typography>
           <Typography

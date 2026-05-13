@@ -15,16 +15,9 @@ export default function TakvimAdimi({ onSelect, onBack }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700, mb: 0.5 }}
-      >
+      <Typography variant="h5" sx={{ mb: 2 }}>
         Görüşme Gününü Belirleyin
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
-        Müsait olan günleri takvim üzerinden seçebilirsiniz.
-      </Typography>
-
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="tr">
         <Paper
           elevation={0}
@@ -69,7 +62,7 @@ export default function TakvimAdimi({ onSelect, onBack }) {
             fontWeight: 600,
           }}
         >
-          Geri Dön
+          Geri
         </Button>
         <Button
           variant="contained"

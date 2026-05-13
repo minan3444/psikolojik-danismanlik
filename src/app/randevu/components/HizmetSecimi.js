@@ -19,20 +19,11 @@ export default function HizmetSecimi({ onSelect }) {
       <Typography
         variant="h5"
         sx={{
-          fontFamily: "var(--font-playfair)",
-          fontWeight: 700,
-          mb: 0.5,
+          mb: 2,
           color: "text.primary",
         }}
       >
-        Lütfen Randevu Türünü Seçiniz
-      </Typography>
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        sx={{ mb: 2.5, maxWidth: "500px", mx: "auto" }}
-      >
-        İhtiyacınıza en uygun görüşme türünü seçerek takvimi görüntüleyebilirsiniz.
+        Lütfen Randevu Türünü Seçiniz 🌿
       </Typography>
 
       {/* Hizmet kartları */}
@@ -45,9 +36,9 @@ export default function HizmetSecimi({ onSelect }) {
               elevation={0}
               onClick={() => onSelect(hizmet)}
               sx={{
-                p: { xs: 2, md: 2.5 },
-                borderRadius: 4,
-                border: "2px solid",
+                p: 3,
+                borderRadius: 3,
+                border: "1px solid",
                 borderColor: "custom.taupe",
                 backgroundColor: "background.paper",
                 display: "flex",
@@ -56,7 +47,6 @@ export default function HizmetSecimi({ onSelect }) {
                 gap: 2,
                 textAlign: "left",
                 cursor: "pointer",
-                transition: "all 0.3s ease",
                 width: "100%",
                 "&:hover": {
                   borderColor: "primary.main",
@@ -100,13 +90,17 @@ export default function HizmetSecimi({ onSelect }) {
 
                 <Stack direction="row" spacing={2}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                    <AccessTimeIcon sx={{ fontSize: 14, color: "primary.main" }} />
+                    <AccessTimeIcon
+                      sx={{ fontSize: 14, color: "primary.main" }}
+                    />
                     <Typography variant="caption" sx={{ fontWeight: 600 }}>
                       {hizmet.sure} Dakika
                     </Typography>
                   </Box>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                    <PaymentsOutlinedIcon sx={{ fontSize: 14, color: "primary.main" }} />
+                    <PaymentsOutlinedIcon
+                      sx={{ fontSize: 14, color: "primary.main" }}
+                    />
                     <Typography variant="caption" sx={{ fontWeight: 600 }}>
                       {hizmet.ucret}
                     </Typography>

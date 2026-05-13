@@ -195,8 +195,6 @@ export default async function HakkimdaPage() {
               <Typography
                 variant="h4"
                 sx={{
-                  fontFamily: "var(--font-playfair)",
-                  fontWeight: 700,
                   mb: 4,
                 }}
               >

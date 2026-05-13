@@ -43,11 +43,11 @@ const theme = createTheme({
     },
     h4: {
       fontFamily: "var(--font-playfair), serif",
-      fontWeight: 500,
+      fontWeight: 700, //700 kalacak
     },
     h5: {
       fontFamily: "var(--font-playfair), serif",
-      fontWeight: 600,
+      fontWeight: 600, //600 kalacak
     },
     h6: {
       fontFamily: "var(--font-playfair), serif",

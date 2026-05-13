@@ -112,12 +112,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
           exit={{ opacity: 0, x: -30 }}
           transition={{ duration: 0.4 }}
         >
-          <Typography
-            variant="h4"
-            sx={{ fontWeight: 700, color: mevcutAdim.renk, mb: 0 }}
-          >
-            {mevcutAdim.sayi}
-          </Typography>
+          <Typography variant="h4">{mevcutAdim.sayi}</Typography>
           <Typography
             variant="h6"
             sx={{

@@ -434,12 +434,7 @@ export default function AdminPage() {
           direction="row"
           sx={{ justifyContent: "space-between", alignItems: "center", mb: 4 }}
         >
-          <Typography
-            variant="h4"
-            sx={{ fontFamily: "var(--font-playfair)", fontWeight: 800 }}
-          >
-            Yönetici Paneli
-          </Typography>
+          <Typography variant="h4">Yönetici Paneli</Typography>
           <Stack direction="row" spacing={2}>
             <Button
               variant="contained"

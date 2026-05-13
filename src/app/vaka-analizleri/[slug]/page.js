@@ -240,10 +240,7 @@ export default async function VakaDetayPage({ params }) {
             textAlign: "center",
           }}
         >
-          <Typography
-            variant="h4"
-            sx={{ fontFamily: "var(--font-playfair)", mb: 2 }}
-          >
+          <Typography variant="h4" sx={{ mb: 2 }}>
             Benzer bir süreç mi yaşıyorsunuz?
           </Typography>
           <Typography variant="body1" sx={{ mb: 5, opacity: 0.9 }}>

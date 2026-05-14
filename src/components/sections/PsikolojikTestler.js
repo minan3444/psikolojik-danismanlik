@@ -75,7 +75,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
                 whileHover={{ y: -8 }}
                 sx={{
                   height: "100%",
-                  borderRadius: 4,
+                  borderRadius: 3,
                   overflow: "hidden",
                   backgroundColor: "rgba(255,255,255,0.9)",
                   backdropFilter: "blur(10px)",

@@ -50,7 +50,6 @@ export default function HizmetSecimi({ onSelect }) {
                 width: "100%",
                 "&:hover": {
                   borderColor: "primary.main",
-                  boxShadow: "0 8px 20px rgba(124,158,135,0.12)",
                   transform: "translateY(-3px)",
                 },
               }}
@@ -76,14 +75,14 @@ export default function HizmetSecimi({ onSelect }) {
               <Box sx={{ flexGrow: 1 }}>
                 <Typography
                   variant="subtitle1"
-                  sx={{ fontWeight: 700, mb: 0.25, color: "text.primary" }}
+                  sx={{ mb: 0.25, color: "text.primary" }}
                 >
                   {hizmet.baslik}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="text.secondary"
-                  sx={{ mb: 1, lineHeight: 1.5, fontSize: "0.8rem" }}
+                  sx={{ mb: 1, lineHeight: 1.5 }}
                 >
                   {hizmet.aciklama}
                 </Typography>

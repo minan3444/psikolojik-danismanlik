@@ -62,7 +62,7 @@ export default async function HakkimdaPage() {
                 sx={{
                   width: "100%",
                   aspectRatio: "3/4",
-                  borderRadius: 6,
+                  borderRadius: 3,
                   overflow: "hidden",
                   boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
                   position: "relative",
@@ -83,7 +83,7 @@ export default async function HakkimdaPage() {
               <Box
                 sx={{
                   p: 3,
-                  borderRadius: 4,
+                  borderRadius: 3,
                   bgcolor: "background.paper",
                   border: "1px solid",
                   borderColor: "custom.taupe",
@@ -158,7 +158,7 @@ export default async function HakkimdaPage() {
                   height: 4,
                   bgcolor: "primary.main",
                   border: "none",
-                  borderRadius: 2,
+                  borderRadius: 3,
                   mb: 5,
                 }}
               />
@@ -186,7 +186,7 @@ export default async function HakkimdaPage() {
               component="section"
               sx={{
                 p: { xs: 3, md: 5 },
-                borderRadius: 6,
+                borderRadius: 3,
                 bgcolor: "custom.beige",
                 border: "1px solid",
                 borderColor: "custom.taupe",
@@ -220,7 +220,6 @@ export default async function HakkimdaPage() {
                         <Typography
                           variant="subtitle1"
                           sx={{
-                            fontWeight: 700,
                             color: "text.primary",
                             lineHeight: 1.2,
                             mb: 0.5,

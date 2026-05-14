@@ -7,6 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
+import CustomButton from "@/app/shared/customButton";
 
 export default function TakvimAdimi({ onSelect, onBack }) {
   const [value, setValue] = useState(dayjs().add(1, "day"));
@@ -20,9 +21,8 @@ export default function TakvimAdimi({ onSelect, onBack }) {
       </Typography>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="tr">
         <Paper
-          elevation={0}
           sx={{
-            borderRadius: 4,
+            borderRadius: 3,
             border: "1px solid",
             borderColor: "custom.taupe",
             overflow: "hidden",
@@ -53,30 +53,24 @@ export default function TakvimAdimi({ onSelect, onBack }) {
       </LocalizationProvider>
 
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 1.5 }}>
-        <Button
+        <CustomButton
+          variant="outlined"
           onClick={onBack}
           startIcon={<ArrowBackIcon />}
-          sx={{
-            color: "text.secondary",
-            textTransform: "none",
-            fontWeight: 600,
-          }}
+          sx={{ color: "text.secondary", border: "none" }}
         >
           Geri
-        </Button>
-        <Button
+        </CustomButton>
+
+        <CustomButton
           variant="contained"
           onClick={() => onSelect(value.toDate())}
           sx={{
-            borderRadius: "50px",
-            px: 4,
-            fontWeight: 700,
             color: "white",
-            textTransform: "none",
           }}
         >
           Saat Seçimine Geç →
-        </Button>
+        </CustomButton>
       </Box>
     </Box>
   );

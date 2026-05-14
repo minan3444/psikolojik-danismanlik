@@ -116,7 +116,7 @@ export default function EvrenselTestMotoru({ params }) {
             elevation={0}
             sx={{
               p: { xs: 3, md: 6 },
-              borderRadius: 4,
+              borderRadius: 3,
               bgcolor: "background.paper",
               border: "1px solid",
               borderColor: "custom.taupe",
@@ -171,7 +171,7 @@ export default function EvrenselTestMotoru({ params }) {
                     sx={{
                       mb: 1,
                       p: 1.5,
-                      borderRadius: 2,
+                      borderRadius: 3,
                       border: "1px solid",
                       borderColor:
                         cevaplar[mevcutSoruIndex] === String(secenek.deger)
@@ -217,7 +217,7 @@ export default function EvrenselTestMotoru({ params }) {
             elevation={0}
             sx={{
               p: { xs: 3, md: 6 },
-              borderRadius: 4,
+              borderRadius: 3,
               border: "1px solid",
               borderColor: "custom.taupe",
               textAlign: "center",

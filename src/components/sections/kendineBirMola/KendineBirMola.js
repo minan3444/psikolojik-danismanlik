@@ -37,7 +37,7 @@ function EgzersizKarti({ egzersiz, index, onSec }) {
       onClick={() => onSec(egzersiz.id)}
       sx={{
         p: 4,
-        borderRadius: 4,
+        borderRadius: 3,
         textAlign: "center",
         cursor: "pointer",
         backgroundColor: "rgba(255,255,255,0.9)",
@@ -166,7 +166,7 @@ export default function KendineBirMola() {
               exit={{ opacity: 0, y: -30 }}
               sx={{
                 p: { xs: 2, md: 4 },
-                borderRadius: 4,
+                borderRadius: 3,
                 backgroundColor: "rgba(255,255,255,0.9)",
                 backdropFilter: "blur(10px)",
                 boxShadow: "0px 4px 24px rgba(0,0,0,0.08)",

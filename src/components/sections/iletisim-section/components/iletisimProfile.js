@@ -17,7 +17,7 @@ export default function IletisimProfile() {
       sx={{
         position: "relative",
         height: { xs: "250px", md: "480px" }, // Esnek yükseklik.yani ekran küçüldüğünde de görselin tamamı gözükür
-        borderRadius: 4, // Görselin köşelerini yuvarlamak için borderRadius ekledik
+        borderRadius: 3, // Görselin köşelerini yuvarlamak için borderRadius ekledik
         overflow: "hidden", // Görselin taşmasını önlemek için overflow: hidden ekledik
       }}
     >

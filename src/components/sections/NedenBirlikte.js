@@ -42,7 +42,7 @@ export default function NedenBirlikte() {
           sx={{
             textAlign: "center",
             p: 3,
-            borderRadius: 4,
+            borderRadius: 3,
             border: "1px solid",
             borderColor: "custom.taupe",
           }}

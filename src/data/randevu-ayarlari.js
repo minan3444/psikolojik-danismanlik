@@ -6,15 +6,14 @@ export const hizmetler = [
     baslik: "Süreç Hakkında Bilgi",
     sure: 15, // dakika
     ucret: "Bilgi Amaçlı",
-    aciklama: "Tanışma ve süreç hakkında kısa bilgilendirme görüşmesi (15 dk).",
+    aciklama: "Tanışma ve süreç hakkında kısa bilgilendirme görüşmesi",
   },
   {
     id: "bireysel-terapi",
     baslik: "Bireysel Terapi Seansı",
     sure: 50, // dakika
     //ucret: "Ücretli",
-    aciklama:
-      "Yetişkinlere yönelik online psikolojik danışmanlık seansı (50 dk).",
+    aciklama: "Yetişkinlere yönelik online psikolojik danışmanlık seansı",
   },
 ];
 

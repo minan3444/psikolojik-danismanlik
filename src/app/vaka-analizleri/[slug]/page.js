@@ -137,7 +137,7 @@ export default async function VakaDetayPage({ params }) {
         {/* Ana Görsel - Sanity urlFor Entegrasyonu */}
         <Box
           sx={{
-            borderRadius: 6,
+            borderRadius: 3,
             overflow: "hidden",
             mb: 8,
             height: { xs: 250, md: 450 },
@@ -191,7 +191,7 @@ export default async function VakaDetayPage({ params }) {
             sx={{
               bgcolor: "custom.beige",
               p: 4,
-              borderRadius: 4,
+              borderRadius: 3,
               borderLeft: "5px solid",
               borderColor: "primary.main",
               mb: 6,
@@ -234,7 +234,7 @@ export default async function VakaDetayPage({ params }) {
           sx={{
             mt: 10,
             p: { xs: 4, md: 8 },
-            borderRadius: 6,
+            borderRadius: 3,
             bgcolor: "primary.main",
             color: "white",
             textAlign: "center",

@@ -63,12 +63,17 @@ const theme = createTheme({
     },
     body2: {
       fontFamily: "var(--font-inter), sans-serif",
-      lineHeight: 1.6,
+      fontWeight: 600,
+    },
+    caption: {
+      fontFamily: "var(--font-inter), sans-serif",
+      fontSize: "0.75rem",
+      color: "text.secondary",
     },
     // Eğer Montserrat veya Lora'yı belirli yerlerde kullanmak istersen buraya ekleyebilirsin:
     subtitle1: {
       fontFamily: "var(--font-playfair), serif",
-      fontWeight: 600,
+      fontWeight: 700,
     },
     button: {
       fontFamily: "var(--font-montserrat), sans-serif",

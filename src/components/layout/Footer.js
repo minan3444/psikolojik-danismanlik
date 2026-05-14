@@ -86,7 +86,7 @@ export default function Footer() {
           <Grid size={{ xs: 12, md: 4 }}>
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 700, color: "text.primary", mb: 2.5 }}
+              sx={{ color: "text.primary", mb: 2.5 }}
             >
               Hızlı Bağlantılar
             </Typography>
@@ -118,7 +118,7 @@ export default function Footer() {
           <Grid size={{ xs: 12, md: 4 }}>
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 700, color: "text.primary", mb: 2.5 }}
+              sx={{ color: "text.primary", mb: 2.5 }}
             >
               Sosyal Medyada Takip Edin
             </Typography>

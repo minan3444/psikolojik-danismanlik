@@ -91,7 +91,7 @@ function RandevuTablosu({ data, onAction }) {
       sx={{
         border: "1px solid",
         borderColor: "custom.taupe",
-        borderRadius: 4,
+        borderRadius: 3,
         overflow: "hidden",
       }}
     >
@@ -554,9 +554,8 @@ export default function AdminPage() {
                 />
 
                 <Typography
-                  variant="subtitle2"
+                  variant="subtitle1"
                   sx={{
-                    fontWeight: 700,
                     textAlign: "center",
                     color: "text.secondary",
                   }}

@@ -10,7 +10,7 @@ export default function CardAlani({ ikon, baslik, aciklama }) {
     <Card
       sx={{
         height: "45vh",
-        borderRadius: 4,
+        borderRadius: 3,
         p: 3,
         backgroundColor: "white",
         border: "1px solid",

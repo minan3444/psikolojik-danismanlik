@@ -48,7 +48,7 @@ export default function DusunceBirakma({ onBitir }) {
               sx={{
                 width: "100%",
                 p: 2,
-                borderRadius: 2,
+                borderRadius: 3,
                 border: "2px solid",
                 borderColor: "custom.taupe",
                 fontFamily: "inherit",

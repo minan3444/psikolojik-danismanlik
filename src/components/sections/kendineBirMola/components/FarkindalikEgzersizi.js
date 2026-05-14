@@ -97,7 +97,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
         value={(adim / ADIMLAR.length) * 100}
         sx={{
           mb: 4,
-          borderRadius: 2,
+          borderRadius: 3,
           height: 6,
           backgroundColor: "custom.beige",
           "& .MuiLinearProgress-bar": { backgroundColor: mevcutAdim.renk },
@@ -133,7 +133,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
             sx={{
               width: "100%",
               p: 2,
-              borderRadius: 2,
+              borderRadius: 3,
               border: "2px solid",
               borderColor: "custom.taupe",
               fontFamily: "inherit",

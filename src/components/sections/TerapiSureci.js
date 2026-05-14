@@ -110,7 +110,7 @@ export default function TerapiSureci() {
                 <Box
                   sx={{
                     p: 3,
-                    borderRadius: 4,
+                    borderRadius: 3,
                     border: "1px solid",
                     borderColor: "custom.taupe",
                     bgcolor: "background.paper",

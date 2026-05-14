@@ -86,7 +86,7 @@ export default function TestlerPage() {
                 whileHover={{ y: -8 }}
                 sx={{
                   height: "100%",
-                  borderRadius: 4,
+                  borderRadius: 3,
                   backgroundColor: "rgba(255,255,255,0.9)",
                   backdropFilter: "blur(10px)",
                   border: "1px solid",

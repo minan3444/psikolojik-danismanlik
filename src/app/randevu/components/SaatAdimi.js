@@ -6,6 +6,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { calismaSaatleri } from "@/data/randevu-ayarlari";
 import { getReservedSlots } from "@/app/actions/appointment";
 import dayjs from "dayjs";
+import CustomButton from "@/app/shared/customButton";
 
 export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
   const [loading, setLoading] = useState(true);
@@ -76,17 +77,25 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
       </Grid>
 
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-        <Button onClick={onBack} startIcon={<ArrowBackIcon />}>
+        <CustomButton
+          variant="outlined"
+          onClick={onBack}
+          startIcon={<ArrowBackIcon />}
+          sx={{ color: "text.secondary", border: "none" }}
+        >
           Geri
-        </Button>
-        <Button
+        </CustomButton>
+
+        <CustomButton
           variant="contained"
           disabled={!seciliSaat}
           onClick={() => onSelect(seciliSaat)}
-          sx={{ borderRadius: "50px", px: 4, fontWeight: 700, color: "white" }}
+          sx={{
+            color: "white",
+          }}
         >
           Devam Et →
-        </Button>
+        </CustomButton>
       </Box>
     </Box>
   );

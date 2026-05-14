@@ -87,9 +87,7 @@ export default async function BlogDetayPage({ params }) {
         <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 5 }}>
           <Avatar sx={{ bgcolor: "primary.main" }}>Şİ</Avatar>
           <Box>
-            <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-              Şeyma İnan
-            </Typography>
+            <Typography variant="subtitle1">Şeyma İnan</Typography>
             <Typography variant="caption" color="text.secondary">
               {yazi.tarih} • {yazi.okumaSuresi} okuma
             </Typography>
@@ -98,7 +96,7 @@ export default async function BlogDetayPage({ params }) {
 
         <Box
           sx={{
-            borderRadius: 4,
+            borderRadius: 3,
             overflow: "hidden",
             mb: 6,
             height: { xs: 250, md: 450 },
@@ -137,7 +135,7 @@ export default async function BlogDetayPage({ params }) {
             textAlign: "center",
             p: 6,
             bgcolor: "custom.beige",
-            borderRadius: 6,
+            borderRadius: 3,
           }}
         >
           <Typography variant="h5" sx={{ mb: 2 }}>

@@ -225,7 +225,7 @@ export default function Navbar() {
                   color: "text.primary",
                   py: 1.5,
                   px: 2,
-                  borderRadius: 2,
+                  borderRadius: 3,
                   fontWeight: 500,
                   "&:hover": {
                     backgroundColor: "custom.beige",

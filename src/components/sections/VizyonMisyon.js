@@ -141,7 +141,7 @@ export default function VizyonMisyon() {
                   width: 60,
                   height: 3,
                   backgroundColor: "primary.main",
-                  borderRadius: 4,
+                  borderRadius: 3,
                 }}
               />
             </MotionBox>
@@ -162,7 +162,7 @@ export default function VizyonMisyon() {
                       gap: { xs: 2, md: 3 },
                       mb: 4,
                       p: { xs: 3, md: 4 },
-                      borderRadius: 4,
+                      borderRadius: 3,
                       backgroundColor: "rgba(255,255,255,0.9)",
                       backdropFilter: "blur(5px)",
                       border: "1px solid",
@@ -173,7 +173,7 @@ export default function VizyonMisyon() {
                       sx={{
                         width: 56,
                         height: 56,
-                        borderRadius: 4,
+                        borderRadius: 3,
                         backgroundColor: "primary.light",
                         display: "flex",
                         alignItems: "center",
@@ -224,7 +224,7 @@ export default function VizyonMisyon() {
                   sx={{
                     textAlign: "center",
                     p: 3,
-                    borderRadius: 4,
+                    borderRadius: 3,
                     backgroundColor: "white",
                     border: "1px solid",
                     borderColor: "custom.taupe",

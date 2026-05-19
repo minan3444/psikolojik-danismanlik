@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Typography, Button, Paper } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -23,8 +23,6 @@ export default function TakvimAdimi({ onSelect, onBack }) {
         <Paper
           sx={{
             borderRadius: 3,
-            border: "1px solid",
-            borderColor: "custom.taupe",
             overflow: "hidden",
             bgcolor: "transparent",
             // Takvim iç boşluklarını küçült
@@ -47,17 +45,26 @@ export default function TakvimAdimi({ onSelect, onBack }) {
             slotProps={{
               actionBar: { sx: { display: "none" } },
               toolbar: { sx: { display: "none" } },
+              // 🔧 EKLENEN KISIM: Header'daki ay yazısını küçültüp oklara yer açıyoruz
+              calendarHeader: {
+                sx: {
+                  "& .MuiTypography-root": {
+                    fontSize: { xs: "0.9rem", sm: "1rem" }, // Mobilde fontu küçülttük
+                    flexShrink: 1, // Gerekirse metin sığışsın
+                  },
+                },
+              },
             }}
           />
         </Paper>
       </LocalizationProvider>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 1.5 }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
         <CustomButton
           variant="outlined"
           onClick={onBack}
           startIcon={<ArrowBackIcon />}
-          sx={{ color: "text.secondary", border: "none" }}
+          sx={{ border: "none" }}
         >
           Geri
         </CustomButton>
@@ -67,6 +74,9 @@ export default function TakvimAdimi({ onSelect, onBack }) {
           onClick={() => onSelect(value.toDate())}
           sx={{
             color: "white",
+            fontSize: { xs: "0.75rem", sm: "0.875rem" },
+            px: { xs: 2, sm: 3 },
+            py: { xs: 1, sm: 1.5 },
           }}
         >
           Saat Seçimine Geç →

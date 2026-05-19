@@ -14,17 +14,7 @@ export default function SectionBaslik({ baslik, altBaslik, merkez = true }) {
           {altBaslik}
         </Typography>
       )}
-      <Typography
-        variant="h2"
-        sx={{
-          fontFamily: "var(--font-playfair)",
-          fontWeight: 600,
-          color: "text.primary",
-          fontSize: { xs: "1.8rem", md: "2.5rem" },
-        }}
-      >
-        {baslik}
-      </Typography>
+      <Typography variant="h2">{baslik}</Typography>
       {/* Dekoratif çizgi */}
       <Box
         sx={{

@@ -44,7 +44,6 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "background.paper",
         borderTop: "1px solid",
         borderColor: "custom.taupe",
         pt: 8,
@@ -59,9 +58,6 @@ export default function Footer() {
             <Typography
               variant="h6"
               sx={{
-                fontFamily: "var(--font-playfair)",
-                fontWeight: 800,
-                color: "text.primary",
                 mb: 1,
               }}
             >
@@ -84,10 +80,7 @@ export default function Footer() {
 
           {/* Orta → Hızlı linkler */}
           <Grid size={{ xs: 12, md: 4 }}>
-            <Typography
-              variant="subtitle1"
-              sx={{ color: "text.primary", mb: 2.5 }}
-            >
+            <Typography variant="h6" sx={{ mb: 1 }}>
               Hızlı Bağlantılar
             </Typography>
             <Stack spacing={1.5}>
@@ -116,10 +109,7 @@ export default function Footer() {
 
           {/* Sağ taraf → Sosyal medya */}
           <Grid size={{ xs: 12, md: 4 }}>
-            <Typography
-              variant="subtitle1"
-              sx={{ color: "text.primary", mb: 2.5 }}
-            >
+            <Typography variant="h6" sx={{ mb: 1 }}>
               Sosyal Medyada Takip Edin
             </Typography>
             <Box sx={{ display: "flex", gap: 1.5 }}>

@@ -1,9 +1,7 @@
-import { Box, Container, Breadcrumbs, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import BlogSection from "@/components/sections/blog-section/blog";
-import Link from "next/link";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-
-// SANITY İTHALATLARI
+import AppBreadcrumb from "../shared/Appbreadcrumb";
+// SANITY
 import { client } from "@/sanity/lib/client";
 import { BLOG_QUERY } from "@/sanity/lib/queries";
 
@@ -25,25 +23,15 @@ export default async function BlogPage() {
   return (
     <Box
       sx={{
-        p: 6,
-        bgcolor: "background.default",
+        pt: { xs: 10, md: 10 },
         minHeight: "80vh",
       }}
     >
       <Container maxWidth="lg">
-        <Breadcrumbs
-          separator={<NavigateNextIcon fontSize="small" />}
-          sx={{ mb: 1, color: "text.secondary" }}
-        >
-          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
-            Anasayfa
-          </Link>
-          <Typography color="text.primary" sx={{ fontWeight: 500 }}>
-            Blog
-          </Typography>
-        </Breadcrumbs>
+        <AppBreadcrumb
+          items={[{ label: "Anasayfa", href: "/" }, { label: "Blog" }]}
+        />
       </Container>
-
       <BlogSection isFullPage={true} initialData={yazilar} />
     </Box>
   );

@@ -1,20 +1,13 @@
 "use client";
 
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Button,
-  Chip,
-  Breadcrumbs,
-} from "@mui/material";
+import { Box, Container, Grid, Typography, Button, Chip } from "@mui/material";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 // Merkezi veriyi import ediyoruz
 import { tumTestler } from "@/data/testler-data";
+import AppBreadcrumb from "../shared/Appbreadcrumb";
+import CustomButton from "../shared/customButton";
 
 const MotionBox = motion.create(Box);
 
@@ -32,43 +25,30 @@ export default function TestlerPage() {
     <Box
       sx={{
         pt: { xs: 10, md: 10 },
-        pb: 10,
         bgcolor: "background.default",
         minHeight: "100vh",
       }}
     >
       <Container maxWidth="lg">
         {/* Navigasyon Yolu */}
-        <Breadcrumbs
-          separator={<NavigateNextIcon fontSize="small" />}
-          sx={{ mb: 4, color: "text.secondary" }}
-        >
-          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
-            Anasayfa
-          </Link>
-          <Typography color="text.primary" sx={{ fontWeight: 500 }}>
-            Psikolojik Testler
-          </Typography>
-        </Breadcrumbs>
+        <AppBreadcrumb
+          items={[
+            { label: "Anasayfa", href: "/" },
+            { label: "Psikolojik Testler" },
+          ]}
+        />
 
         {/* Başlık Alanı */}
         <Box sx={{ mb: 8 }}>
           <Typography
             variant="h2"
             sx={{
-              fontFamily: "var(--font-playfair)",
-              fontWeight: 800,
               mb: 2,
-              fontSize: { xs: "2.5rem", md: "3.5rem" },
             }}
           >
             Kendini Daha İyi Tanı
           </Typography>
-          <Typography
-            variant="body1"
-            color="text.secondary"
-            sx={{ maxWidth: 700, lineHeight: 1.8 }}
-          >
+          <Typography variant="body1">
             Kendi iç dünyanıza yapacağınız bir yolculuk, iyileşmenin ilk
             adımıdır. Aşağıdaki testlerle farkındalığınızı artırın.
           </Typography>
@@ -77,7 +57,11 @@ export default function TestlerPage() {
         {/* Test Listesi Grid Yapısı */}
         <Grid container spacing={4}>
           {tumTestler.map((test, index) => (
-            <Grid key={test.slug} size={{ xs: 12, sm: 6, md: 4 }}>
+            <Grid
+              key={test.slug}
+              size={{ xs: 12, sm: 6, md: 4 }}
+              sx={{ height: "100%" }}
+            >
               <MotionBox
                 variants={itemAnimation}
                 initial="hidden"
@@ -89,18 +73,12 @@ export default function TestlerPage() {
                   borderRadius: 3,
                   backgroundColor: "rgba(255,255,255,0.9)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid",
-                  borderColor: "custom.taupe",
                   display: "flex",
                   flexDirection: "column",
                   transition: "all 0.3s ease",
-                  "&:hover": {
-                    boxShadow: "0px 20px 50px rgba(124,158,135,0.15)",
-                    borderColor: "primary.light",
-                  },
                 }}
               >
-                {/* Test Rengi Şeridi */}
+                {/* Test Rengi Şeridi /testler */}
                 <Box
                   sx={{
                     height: 6,
@@ -110,7 +88,7 @@ export default function TestlerPage() {
 
                 <Box
                   sx={{
-                    p: 4,
+                    p: 3,
                     display: "flex",
                     flexDirection: "column",
                     flexGrow: 1,
@@ -127,8 +105,9 @@ export default function TestlerPage() {
 
                   <Typography
                     variant="body2"
-                    color="text.secondary"
-                    sx={{ mb: 3, flexGrow: 1, lineHeight: 1.8 }}
+                    sx={{
+                      mb: 3,
+                    }}
                   >
                     {test.aciklama}
                   </Typography>
@@ -139,28 +118,17 @@ export default function TestlerPage() {
                     <Chip
                       label={`${test.sorular.length} Soru`}
                       size="small"
-                      sx={{ bgcolor: "custom.beige" }}
+                      sx={{ bgcolor: "background.paper" }}
                     />
                   </Box>
 
-                  <Button
-                    component={Link}
-                    href={`/testler/${test.slug}`} // Dinamik slug yönlendirmesi
-                    variant="outlined"
-                    color="primary"
+                  <CustomButton
+                    href={`/testler/${test.slug}`}
                     endIcon={<ArrowForwardIcon />}
                     fullWidth
-                    sx={{
-                      borderRadius: "50px",
-                      py: 1.2,
-                      fontWeight: 700,
-                      borderWidth: 2,
-                      textTransform: "uppercase",
-                      letterSpacing: 1,
-                    }}
                   >
                     Testi Başlat
-                  </Button>
+                  </CustomButton>
                 </Box>
               </MotionBox>
             </Grid>

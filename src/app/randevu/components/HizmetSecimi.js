@@ -6,6 +6,7 @@ import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import SelfImprovementOutlinedIcon from "@mui/icons-material/SelfImprovementOutlined";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
+import CustomButton from "@/app/shared/customButton";
 
 const ikonlar = {
   "on-gorusme": ChatOutlinedIcon,
@@ -20,7 +21,6 @@ export default function HizmetSecimi({ onSelect }) {
         variant="h5"
         sx={{
           mb: 2,
-          color: "text.primary",
         }}
       >
         Lütfen Randevu Türünü Seçiniz 🌿
@@ -38,52 +38,38 @@ export default function HizmetSecimi({ onSelect }) {
               sx={{
                 p: 3,
                 borderRadius: 3,
-                border: "1px solid",
-                borderColor: "custom.taupe",
                 backgroundColor: "background.paper",
                 display: "flex",
                 flexDirection: { xs: "column", sm: "row" },
                 alignItems: { xs: "flex-start", sm: "center" },
-                gap: 2,
                 textAlign: "left",
                 cursor: "pointer",
                 width: "100%",
-                "&:hover": {
-                  borderColor: "primary.main",
-                  transform: "translateY(-3px)",
-                },
               }}
             >
               {/* İkon */}
               <Box
                 sx={{
-                  width: 52,
-                  height: 52,
                   borderRadius: 3,
-                  backgroundColor: "custom.beige",
+                  bgcolor: "background.paper",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   color: "primary.main",
                   flexShrink: 0,
+                  py: 1,
+                  px: 2,
                 }}
               >
-                {Ikon && <Ikon sx={{ fontSize: 26 }} />}
+                {Ikon && <Ikon sx={{ fontSize: 20 }} />}
               </Box>
 
               {/* İçerik */}
               <Box sx={{ flexGrow: 1 }}>
-                <Typography
-                  variant="subtitle1"
-                  sx={{ mb: 0.25, color: "text.primary" }}
-                >
+                <Typography variant="subtitle1" sx={{ mb: 1 }}>
                   {hizmet.baslik}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mb: 1, lineHeight: 1.5 }}
-                >
+                <Typography variant="body1" sx={{ mb: 1 }}>
                   {hizmet.aciklama}
                 </Typography>
 
@@ -92,7 +78,7 @@ export default function HizmetSecimi({ onSelect }) {
                     <AccessTimeIcon
                       sx={{ fontSize: 14, color: "primary.main" }}
                     />
-                    <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                    <Typography variant="caption">
                       {hizmet.sure} Dakika
                     </Typography>
                   </Box>
@@ -100,30 +86,22 @@ export default function HizmetSecimi({ onSelect }) {
                     <PaymentsOutlinedIcon
                       sx={{ fontSize: 14, color: "primary.main" }}
                     />
-                    <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                      {hizmet.ucret}
-                    </Typography>
+                    <Typography variant="caption">{hizmet.ucret}</Typography>
                   </Box>
                 </Stack>
               </Box>
 
               {/* Seç butonu */}
-              <Box
+
+              <CustomButton
                 sx={{
-                  display: { xs: "none", sm: "inline-flex" },
-                  bgcolor: "primary.main",
                   color: "white",
-                  borderRadius: "50px",
-                  px: 2.5,
-                  py: 0.8,
-                  fontWeight: 700,
-                  fontSize: "0.85rem",
-                  flexShrink: 0,
-                  transition: "0.2s",
+                  p: 1,
+                  display: { xs: "none", sm: "inline-flex" },
                 }}
               >
                 Seç →
-              </Box>
+              </CustomButton>
             </Paper>
           );
         })}

@@ -40,7 +40,7 @@ export default function BlogFilter({
             borderColor: activeKategori === k ? "primary.main" : "custom.taupe",
             transition: "0.3s all ease",
             "&:hover": {
-              bgcolor: activeKategori === k ? "primary.dark" : "custom.beige",
+              bgcolor: activeKategori === k ? "primary.dark" : "custom.taupe",
             },
           }}
         />

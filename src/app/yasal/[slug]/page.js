@@ -58,10 +58,7 @@ export default async function LegalPage({ params }) {
           </Typography>
         </Breadcrumbs>
 
-        <Typography
-          variant="h3"
-          sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700, mb: 2 }}
-        >
+        <Typography variant="h3" sx={{ mb: 2 }}>
           {belge.baslik}
         </Typography>
         <Box

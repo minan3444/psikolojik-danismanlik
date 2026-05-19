@@ -1,20 +1,11 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Breadcrumbs,
-  Divider,
-  Button,
-  Avatar,
-} from "@mui/material";
-import Link from "next/link";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Box, Container, Typography, Divider, Avatar } from "@mui/material";
 import { client } from "@/sanity/lib/client";
 import { BLOG_POST_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
-import CustomButton from "@/app/shared/customButton";
+import AppBreadcrumb from "@/app/shared/Appbreadcrumb";
+import Image from "next/image";
+import VakaBlogIletisimeGecme from "@/app/shared/VakaBlogIletisimeGecme";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -50,35 +41,26 @@ export default async function BlogDetayPage({ params }) {
   };
 
   return (
-    <Box sx={{ pt: 16, pb: 10, bgcolor: "white", minHeight: "100vh" }}>
+    <Box sx={{ pt: 10, pb: 10, bgcolor: "white", minHeight: "100vh" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Container maxWidth="md">
-        <Breadcrumbs
-          separator={<NavigateNextIcon fontSize="small" />}
-          sx={{ mb: 4 }}
-        >
-          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
-            Anasayfa
-          </Link>
-          <Link
-            href="/blog"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            Blog
-          </Link>
-          <Typography color="text.primary">{yazi.kategori}</Typography>
-        </Breadcrumbs>
+        <AppBreadcrumb
+          items={[
+            { label: "Anasayfa", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: yazi.kategori },
+          ]}
+        />
 
         <Typography
-          variant="h1"
+          variant="h2"
           sx={{
-            fontFamily: "var(--font-playfair)",
-            fontWeight: 800,
             mb: 3,
-            fontSize: { xs: "2rem", md: "3rem" },
+            fontSize: "min(8vw, 3.2rem)",
+            wordBreak: "break-word",
           }}
         >
           {yazi.baslik}
@@ -87,7 +69,7 @@ export default async function BlogDetayPage({ params }) {
         <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 5 }}>
           <Avatar sx={{ bgcolor: "primary.main" }}>Şİ</Avatar>
           <Box>
-            <Typography variant="subtitle1">Şeyma İnan</Typography>
+            <Typography variant="body1">Şeyma İnan</Typography>
             <Typography variant="caption" color="text.secondary">
               {yazi.tarih} • {yazi.okumaSuresi} okuma
             </Typography>
@@ -98,57 +80,37 @@ export default async function BlogDetayPage({ params }) {
           sx={{
             borderRadius: 3,
             overflow: "hidden",
-            mb: 6,
+            mb: 4,
+            position: "relative",
             height: { xs: 250, md: 450 },
           }}
         >
-          {/* Sanity Görsel Motoru Entegre Edildi */}
-          <img
+          <Image
             src={urlFor(yazi.gorsel).url()}
             alt={yazi.baslik}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            fill
+            style={{ objectFit: "cover" }}
           />
         </Box>
 
         <Box
           sx={{
             color: "text.secondary",
-            lineHeight: 2,
-            fontSize: "1.15rem",
-            "& h3": {
-              color: "text.primary",
-              mt: 4,
-              mb: 2,
-              fontFamily: "var(--font-playfair)",
-            },
             "& p": { mb: 3 },
           }}
         >
-          {/* dangerouslySetInnerHTML kaldırıldı, Sanity'nin PortableText bileşeni eklendi */}
           <PortableText value={yazi.icerik} />
         </Box>
 
-        <Divider sx={{ my: 8 }} />
+        <Divider sx={{ my: 3 }} />
 
-        <Box
-          sx={{
-            textAlign: "center",
-            p: 6,
-            bgcolor: "custom.beige",
-            borderRadius: 3,
-          }}
-        >
-          <Typography variant="h5" sx={{ mb: 2 }}>
-            Bu yazı size nasıl hissettirdi?
-          </Typography>
-          <Typography sx={{ mb: 4, color: "text.secondary" }}>
-            Duygusal sağlığınızla ilgili profesyonel bir yolculuğa başlamak
-            isterseniz buradayım.
-          </Typography>
-          <Link href="/randevu" style={{ textDecoration: "none" }}>
-            <CustomButton href="/randevu">ÜCRETSİZ ÖN GÖRÜŞME AL</CustomButton>
-          </Link>
-        </Box>
+        <VakaBlogIletisimeGecme
+          baslik="Bu yazı size nasıl hissettirdi?"
+          altMetin="Duygusal sağlığınızla ilgili profesyonel bir yolculuğa başlamak
+            isterseniz buradayım."
+          butonMetni="SÜREÇ HAKKINDA BİLGİ AL"
+          href="/randevu"
+        />
       </Container>
     </Box>
   );

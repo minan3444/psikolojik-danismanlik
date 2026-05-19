@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 import { tumTestler } from "@/data/testler-data";
 import CustomButton from "@/app/shared/customButton";
 
@@ -60,8 +60,8 @@ export default function EvrenselTestMotoru({ params }) {
       // Kategorili hesaplama (Sevgi dili, Bağlanma vb.)
       const skorlar = {};
       Object.entries(cevaplar).forEach(([index, deger]) => {
-        const kategori = test.sorular[index].kategori;
-        skorlar[kategori] = (skorlar[kategori] || 0) + parseInt(deger);
+        const kategori = test.sorular[index].kategori ?? deger; // arketipte deger zaten kategori
+        skorlar[kategori] = (skorlar[kategori] || 0) + 1;
       });
       const kazananKategori = Object.keys(skorlar).reduce((a, b) =>
         skorlar[a] > skorlar[b] ? a : b,
@@ -71,7 +71,17 @@ export default function EvrenselTestMotoru({ params }) {
   };
 
   const handleCevap = (deger) => {
-    setCevaplar({ ...cevaplar, [mevcutSoruIndex]: deger });
+    // Arketip testinde seçeneğin kategorisini bul
+    if (test.tip === "arketip") {
+      const aktifSecenekler = test.sorular[mevcutSoruIndex].secenekler;
+      const secenek = aktifSecenekler.find((s) => s.metin === deger);
+      setCevaplar({
+        ...cevaplar,
+        [mevcutSoruIndex]: secenek?.kategori ?? deger,
+      });
+    } else {
+      setCevaplar({ ...cevaplar, [mevcutSoruIndex]: deger });
+    }
   };
 
   const sonuc = bitti ? sonucHesapla() : null;
@@ -91,23 +101,9 @@ export default function EvrenselTestMotoru({ params }) {
           Tüm Testler
         </Button>
 
-        <Typography
-          variant="h3"
-          sx={{
-            fontFamily: "var(--font-playfair)",
-            fontWeight: 700,
-            mb: 1,
-            fontSize: { xs: "1.8rem", md: "2.5rem" },
-          }}
-        >
-          {test.baslik}
-        </Typography>
+        <Typography variant="h4">{test.baslik}</Typography>
 
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{ mb: 3, lineHeight: 1.8 }}
-        >
+        <Typography variant="body1" sx={{ mb: 3 }}>
           {test.aciklama}
         </Typography>
 
@@ -129,18 +125,14 @@ export default function EvrenselTestMotoru({ params }) {
                 <Typography variant="caption" color="text.secondary">
                   Soru {mevcutSoruIndex + 1} / {toplamSoru}
                 </Typography>
-                <Typography
-                  variant="caption"
-                  color="primary.main"
-                  sx={{ fontWeight: 600 }}
-                >
+                <Typography variant="caption" color="primary.main">
                   %{Math.round(ilerleme)}
                 </Typography>
               </Box>
               <LinearProgress
                 variant="determinate"
                 value={ilerleme}
-                sx={{ height: 6, borderRadius: 3, bgcolor: "custom.beige" }}
+                sx={{ height: 6, borderRadius: 3, bgcolor: "background.paper" }}
               />
             </Box>
 
@@ -155,30 +147,40 @@ export default function EvrenselTestMotoru({ params }) {
 
             <FormControl component="fieldset" fullWidth>
               <RadioGroup
-                value={cevaplar[mevcutSoruIndex] ?? ""}
+                value={
+                  test.tip === "arketip"
+                    ? (test.sorular[mevcutSoruIndex].secenekler?.find(
+                        (s) => s.kategori === cevaplar[mevcutSoruIndex],
+                      )?.metin ?? "")
+                    : (cevaplar[mevcutSoruIndex] ?? "")
+                }
                 onChange={(e) => handleCevap(e.target.value)}
               >
-                {test.secenekler.map((secenek) => (
+                {(
+                  test.sorular[mevcutSoruIndex].secenekler ?? test.secenekler
+                ).map((secenek) => (
                   <FormControlLabel
-                    key={secenek.deger}
-                    value={String(secenek.deger)}
+                    key={secenek.deger ?? secenek.metin}
+                    value={String(secenek.deger ?? secenek.metin)}
                     control={
                       <Radio
                         sx={{ "&.Mui-checked": { color: "primary.main" } }}
                       />
                     }
-                    label={secenek.etiket}
+                    label={secenek.etiket ?? secenek.metin}
                     sx={{
                       mb: 1,
                       p: 1.5,
                       borderRadius: 3,
                       border: "1px solid",
                       borderColor:
-                        cevaplar[mevcutSoruIndex] === String(secenek.deger)
+                        cevaplar[mevcutSoruIndex] ===
+                        (secenek.kategori ?? String(secenek.deger))
                           ? "primary.main"
                           : "custom.taupe",
                       bgcolor:
-                        cevaplar[mevcutSoruIndex] === String(secenek.deger)
+                        cevaplar[mevcutSoruIndex] ===
+                        (secenek.kategori ?? String(secenek.deger))
                           ? "rgba(124,158,135,0.08)"
                           : "transparent",
                     }}
@@ -227,8 +229,6 @@ export default function EvrenselTestMotoru({ params }) {
               <Typography
                 variant="h3"
                 sx={{
-                  fontFamily: "var(--font-playfair)",
-                  fontWeight: 700,
                   color: "primary.main",
                   mb: 1,
                 }}
@@ -239,15 +239,14 @@ export default function EvrenselTestMotoru({ params }) {
             <Typography
               variant="h5"
               sx={{
-                mb: 3,
+                mb: 2,
               }}
             >
               {sonuc.baslik}
             </Typography>
             <Typography
               variant="body1"
-              color="text.secondary"
-              sx={{ lineHeight: 1.9, mb: 6, maxWidth: 600, mx: "auto" }}
+              sx={{ mb: 6, maxWidth: 600, mx: "auto" }}
             >
               {sonuc.aciklama}
             </Typography>

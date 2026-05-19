@@ -102,17 +102,7 @@ export default function Navbar() {
               </Box>
 
               <Box sx={{ display: "block" }}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontFamily: "var(--font-playfair)",
-                    fontWeight: 800,
-                    color: "text.primary",
-                    lineHeight: 1,
-                    mb: { xs: 0.2, md: 0.5 },
-                    fontSize: { xs: "1rem", md: "1.4rem" },
-                  }}
-                >
+                <Typography variant="h6" sx={{ mb: 1 }}>
                   Şeyma İnan
                 </Typography>
                 <Typography
@@ -161,7 +151,7 @@ export default function Navbar() {
                 </Button>
               ))}
 
-              <CustomButton href="/randevu"> Online Randevu Al</CustomButton>
+              <CustomButton href="/randevu">Online Randevu Al</CustomButton>
             </Box>
 
             {/* Mobil menü ikonu */}
@@ -202,10 +192,7 @@ export default function Navbar() {
             mb: 4,
           }}
         >
-          <Typography
-            variant="h6"
-            sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700 }}
-          >
+          <Typography variant="h6" sx={{ mb: 1 }}>
             Menü
           </Typography>
           <IconButton onClick={() => setDrawerOpen(false)}>
@@ -228,7 +215,7 @@ export default function Navbar() {
                   borderRadius: 3,
                   fontWeight: 500,
                   "&:hover": {
-                    backgroundColor: "custom.beige",
+                    bgcolor: "background.paper",
                     color: "primary.main",
                   },
                 }}
@@ -238,7 +225,7 @@ export default function Navbar() {
             </ListItem>
           ))}
           <ListItem disablePadding sx={{ mt: 3 }}>
-            <CustomButton href="/randevu"> Online Randevu Al</CustomButton>
+            <CustomButton href="/randevu">Online Randevu Al</CustomButton>
           </ListItem>
         </List>
       </Drawer>

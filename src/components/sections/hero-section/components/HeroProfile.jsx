@@ -35,7 +35,7 @@ export default function HeroProfile() {
               overflow: "hidden",
               position: "relative",
               boxShadow: "0px 20px 60px rgba(124, 158, 135, 0.25)",
-              backgroundColor: "custom.beige",
+              bgcolor: "background.paper",
               zIndex: 1,
             }}
           >
@@ -57,15 +57,7 @@ export default function HeroProfile() {
           custom={0.4}
           sx={{ mt: { xs: 4, md: 3 } }}
         >
-          <Typography
-            variant="h1"
-            sx={{
-              fontFamily: "var(--font-playfair)",
-              fontSize: { xs: "1.6rem", md: "1.7rem", lg: "2rem" },
-              fontWeight: 700,
-              color: "text.primary",
-            }}
-          >
+          <Typography variant="h4">
             Kendine Giden Yolda{" "}
             <Box
               component="span"

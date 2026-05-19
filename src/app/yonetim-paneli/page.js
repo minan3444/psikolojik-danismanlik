@@ -554,10 +554,9 @@ export default function AdminPage() {
                 />
 
                 <Typography
-                  variant="subtitle1"
+                  variant="h6"
                   sx={{
                     textAlign: "center",
-                    color: "text.secondary",
                   }}
                 >
                   {isManualBlock

@@ -71,11 +71,7 @@ export default function VakaKarti({ vaka }) {
           <Typography
             variant="h6"
             sx={{
-              fontFamily: "var(--font-playfair)",
-              fontWeight: 700,
-              color: "text.primary",
-              mb: 1.5,
-              fontSize: "1.1rem",
+              mb: 1,
             }}
           >
             {vaka.baslik}

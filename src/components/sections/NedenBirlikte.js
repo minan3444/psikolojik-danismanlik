@@ -50,7 +50,6 @@ export default function NedenBirlikte() {
           <Typography
             variant="h5"
             sx={{
-              color: "text.primary",
               mb: 2,
               fontStyle: "italic",
             }}

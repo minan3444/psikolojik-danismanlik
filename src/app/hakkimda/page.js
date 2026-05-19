@@ -23,16 +23,9 @@ export const metadata = {
 export const revalidate = 0;
 
 export default async function HakkimdaPage() {
-  // 1. VERİYİ SANITY'DEN ÇEKİYORUZ
   const data = await client.fetch(HAKKIMDA_QUERY);
 
-  // Eğer veri henüz Sanity'den girilmemişse hata vermemesi için kontrol
-  if (!data)
-    return (
-      <Box sx={{ py: 20, textAlign: "center" }}>İçerik hazırlanıyor...</Box>
-    );
-
-  // SEO için Person Schema (Dinamik hale getirildi)
+  // SEO için Person Schema (Dinamik hale getirildi).seo için kalsın
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -44,27 +37,22 @@ export default async function HakkimdaPage() {
   };
 
   return (
-    <Box
-      component="main"
-      sx={{ pt: { xs: 12, md: 18 }, pb: 10, bgcolor: "background.default" }}
-    >
+    <Box component="main" sx={{ pt: { xs: 12, md: 14 }, pb: 10 }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 10 }}>
-          {/* SOL TARAF: Görsel ve Tecrübe Alanları */}
+          {/* SOL TARAF: Görsel */}
           <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ position: "sticky", top: 120 }}>
               <Box
                 sx={{
                   width: "100%",
                   aspectRatio: "3/4",
-                  borderRadius: 3,
+                  borderRadius: 4,
                   overflow: "hidden",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
                   position: "relative",
                   mb: 4,
                 }}
@@ -83,21 +71,12 @@ export default async function HakkimdaPage() {
               <Box
                 sx={{
                   p: 3,
-                  borderRadius: 3,
+                  borderRadius: 4,
                   bgcolor: "background.paper",
-                  border: "1px solid",
-                  borderColor: "custom.taupe",
                 }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontFamily: "var(--font-playfair)",
-                    fontWeight: 700,
-                    mb: 2.5,
-                  }}
-                >
-                  Tecrübe Alanları
+                <Typography variant="h6" sx={{ mb: 1 }}>
+                  Çalıştığım Kurumlar
                 </Typography>
                 <Stack spacing={2}>
                   {data.tecrubeler?.map((yer, idx) => (
@@ -108,13 +87,7 @@ export default async function HakkimdaPage() {
                       <LocalHospitalOutlinedIcon
                         sx={{ color: "primary.main", fontSize: 22 }}
                       />
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ fontWeight: 500 }}
-                      >
-                        {yer}
-                      </Typography>
+                      <Typography variant="body1">{yer}</Typography>
                     </Box>
                   ))}
                 </Stack>
@@ -125,33 +98,12 @@ export default async function HakkimdaPage() {
           {/* SAĞ TARAF: Biyografi ve Eğitim */}
           <Grid size={{ xs: 12, md: 8 }}>
             <Box component="section">
-              <Typography
-                variant="caption"
-                sx={{
-                  color: "primary.main",
-                  fontWeight: 800,
-                  letterSpacing: 2,
-                  textTransform: "uppercase",
-                  mb: 1,
-                  display: "block",
-                }}
-              >
+              <Typography variant="h6" sx={{ color: "custom.unvan" }}>
                 {data.unvan}
               </Typography>
-
-              <Typography
-                variant="h1"
-                sx={{
-                  fontFamily: "var(--font-playfair)",
-                  fontWeight: 800,
-                  color: "text.primary",
-                  fontSize: { xs: "2.5rem", md: "3.5rem" },
-                  mb: 3,
-                }}
-              >
+              <Typography variant="h2" sx={{ mb: 3 }}>
                 {data.isim}
               </Typography>
-
               <Divider
                 sx={{
                   width: 80,
@@ -162,7 +114,6 @@ export default async function HakkimdaPage() {
                   mb: 5,
                 }}
               />
-
               <Box sx={{ mb: 6 }}>
                 {/* Sanity'den gelen 'ozgecmis' paragrafları */}
                 {data.ozgecmis?.map((paragraf, index) => (
@@ -170,10 +121,7 @@ export default async function HakkimdaPage() {
                     key={index}
                     variant="body1"
                     sx={{
-                      lineHeight: 1.9,
                       mb: 3,
-                      color: "text.secondary",
-                      fontSize: "1.1rem",
                     }}
                   >
                     {paragraf}
@@ -187,20 +135,12 @@ export default async function HakkimdaPage() {
               sx={{
                 p: { xs: 3, md: 5 },
                 borderRadius: 3,
-                bgcolor: "custom.beige",
-                border: "1px solid",
-                borderColor: "custom.taupe",
+                bgcolor: "background.paper",
               }}
             >
-              <Typography
-                variant="h4"
-                sx={{
-                  mb: 4,
-                }}
-              >
+              <Typography variant="h4" sx={{ mb: 4 }}>
                 Eğitim & Uzmanlıklar
               </Typography>
-
               <Grid container spacing={3}>
                 {/* Sanity'den gelen 'egitimler' listesi */}
                 {data.egitimler?.map((item, index) => (
@@ -218,18 +158,14 @@ export default async function HakkimdaPage() {
                       />
                       <Box>
                         <Typography
-                          variant="subtitle1"
+                          variant="h6"
                           sx={{
-                            color: "text.primary",
-                            lineHeight: 1.2,
-                            mb: 0.5,
+                            mb: 1,
                           }}
                         >
                           {item.baslik}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {item.detay}
-                        </Typography>
+                        <Typography variant="body1">{item.detay}</Typography>
                       </Box>
                     </Box>
                   </Grid>

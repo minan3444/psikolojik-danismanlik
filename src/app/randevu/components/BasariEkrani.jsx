@@ -21,7 +21,7 @@ export default function BasariEkrani({ secimler }) {
         Talebiniz Alındı 🌿
       </Typography>
 
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+      <Typography variant="body1" sx={{ mb: 4 }}>
         {tarih?.toLocaleDateString("tr-TR")} tarihinde saat {saat} için
         <b> {hizmet?.baslik}</b> talebiniz iletildi. Bilgiler e-posta adresinize
         gönderilmiştir.

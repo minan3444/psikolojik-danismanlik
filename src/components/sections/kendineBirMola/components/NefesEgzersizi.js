@@ -95,7 +95,7 @@ export default function NefesEgzersizi({ onBitir }) {
       >
         <Typography
           variant="h6"
-          sx={{ color: "white", fontWeight: 700, px: 2, textAlign: "center" }}
+          sx={{ color: "white", px: 2, textAlign: "center" }}
         >
           {FASE_METIN[fase]?.metin}
         </Typography>

@@ -61,10 +61,17 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
                   textTransform: "none",
                   fontWeight: 600,
                   transition: "0.2s",
+                  color: isFull
+                    ? "text.disabled"
+                    : seciliSaat === saat
+                      ? "white"
+                      : "text.primary",
+                  borderColor: isFull
+                    ? "text.disabled"
+                    : seciliSaat === saat
+                      ? "primary.main"
+                      : "custom.taupe",
                   ...(isFull && {
-                    bgcolor: "rgba(0,0,0,0.03) !important",
-                    color: "rgba(0,0,0,0.15) !important",
-                    borderColor: "rgba(0,0,0,0.05) !important",
                     textDecoration: "line-through",
                   }),
                 }}
@@ -76,12 +83,12 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
         })}
       </Grid>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
         <CustomButton
           variant="outlined"
           onClick={onBack}
           startIcon={<ArrowBackIcon />}
-          sx={{ color: "text.secondary", border: "none" }}
+          sx={{ border: "none" }}
         >
           Geri
         </CustomButton>
@@ -92,6 +99,9 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
           onClick={() => onSelect(seciliSaat)}
           sx={{
             color: "white",
+            fontSize: { xs: "0.75rem", sm: "0.875rem" },
+            px: { xs: 2, sm: 3 },
+            py: { xs: 1, sm: 1.5 },
           }}
         >
           Devam Et →

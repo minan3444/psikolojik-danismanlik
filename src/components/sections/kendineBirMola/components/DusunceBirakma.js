@@ -24,7 +24,7 @@ export default function DusunceBirakma({ onBitir }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography variant="h5" sx={{ mb: 1 }}>
+      <Typography variant="h5" sx={{ mb: 2 }}>
         Düşünce Bırakma
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
@@ -83,11 +83,7 @@ export default function DusunceBirakma({ onBitir }) {
               transition={{ duration: 1.5, ease: "easeOut" }}
               sx={{ mb: 4 }}
             >
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                sx={{ fontStyle: "italic" }}
-              >
+              <Typography variant="body1" sx={{ fontStyle: "italic" }}>
                 {dusunce}
               </Typography>
             </MotionBox>
@@ -100,9 +96,8 @@ export default function DusunceBirakma({ onBitir }) {
               <Typography
                 variant="h6"
                 sx={{
-                  fontFamily: "var(--font-playfair)",
                   color: "primary.main",
-                  mb: 2,
+                  mb: 1,
                 }}
               >
                 🌿 Bu düşünce artık geride kaldı.

@@ -42,10 +42,9 @@ const SSSItem = memo(({ item, index, acikPanel, onChange }) => {
         }
       >
         <Typography
-          variant="subtitle1" // h7 yerine standart subtitle kullanmak daha güvenlidir
+          variant="h5"
           sx={{
             color: isExpanded ? "primary.main" : "text.primary",
-            fontWeight: isExpanded ? 400 : 600,
           }}
         >
           {item.soru}

@@ -1,11 +1,44 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* 🌍 GLOBAL CSS DEĞİŞKENLERİ - AÇIK TEMA (Light Mode) */
 :root {
+  /* Açık tema arka plan rengi - tüm sayfa tamamını kaplayacak arka plan
+     #a5b272 = Sarımsı yeşil (açık)
+     Nerde kullanılır: <body> arka planı, footer altı, sayfa tamamı
+     Kullanılan yerler: 
+       - Ana sayfa arka planı
+       - Blog sayfası arka planı
+       - Tüm dinamik sayfaların arka planı
+  */
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* 🌙 KOYU TEMA (Dark Mode) - Kullanıcı system dark mode'u açtığında geçerli */
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Koyu tema arka plan rengi
+       #0a0a0a = Neredeyse siyah (çok koyu, gözleri yormuyor)
+       Nerde kullanılır: Tüm sayfa tamamının arka planı (dark mode açıkken)
+       Kullanılan yerler:
+         - Gece kullanıcıları için otomatik karartılmış arka plan
+         - Tüm sayfa arka planı karanlık ortamlarda
+         - Footer alanı dahil
+    */
     --background: #0a0a0a;
+
+    /* Koyu tema yazı rengi (foreground = ön plan)
+       #ededed = Açık gri (neredeyse beyaz, koyu arka planda okunabilir)
+       Nerde kullanılır: Tüm yazı, başlıklar, paragraflar (dark mode'da)
+       Kullanılan yerler:
+         - Navbar yazıları
+         - İçerik yazıları
+         - Footer yazıları
+         - Tüm metinler dark mode'da
+    */
     --foreground: #ededed;
   }
 }
@@ -24,7 +57,17 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  /* 📝 Yazı rengi = CSS değişkeninden (light/dark mode'a göre değişir)
+     Light mode: #3D3530 (theme.js text.primary'den)
+     Dark mode: #ededed (üstünde tanımlı)
+  */
   color: var(--foreground);
+
+  /* 🎨 Sayfa arka plan rengi = CSS değişkeninden
+     Light mode: #a5b272 (sarımsı yeşil)
+     Dark mode: #0a0a0a (neredeyse siyah)
+     Nerede görünür: Tüm sayfa tamamının arka planı, footer altı, boş alanlar
+  */
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;

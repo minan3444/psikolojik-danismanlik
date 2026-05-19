@@ -4,7 +4,7 @@
 const terapiSureci = [
   {
     id: 1,
-    baslik: "Süreç Hakkında Bilgi ℹ️",
+    baslik: "Süreç Hakkında Bilgi",
     altBaslik: "SENİ DİNLİYORUM",
     ikon: "HearingOutlined",
     aciklama:
@@ -12,7 +12,7 @@ const terapiSureci = [
   },
   {
     id: 2,
-    baslik: "Birlikte Anlıyoruz 🧠",
+    baslik: "Birlikte Anlıyoruz",
     altBaslik: "KEŞİF SÜRECİ",
     ikon: "SearchOutlined",
     aciklama:
@@ -20,7 +20,7 @@ const terapiSureci = [
   },
   {
     id: 3,
-    baslik: "Değişim Başlıyor 🦋",
+    baslik: "Değişim Başlıyor",
     altBaslik: "BÜYÜME VE DÖNÜŞÜM",
     ikon: "AutoAwesomeOutlined",
     aciklama:

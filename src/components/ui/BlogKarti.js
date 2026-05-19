@@ -70,11 +70,7 @@ export default function BlogKarti({ yazi }) {
           <Typography
             variant="h6"
             sx={{
-              fontFamily: "var(--font-playfair)",
-              fontWeight: 700,
-              mb: 2,
-              fontSize: "1.1rem",
-              color: "text.primary",
+              mb: 1,
             }}
           >
             {yazi.baslik}

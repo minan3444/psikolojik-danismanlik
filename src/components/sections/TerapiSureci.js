@@ -119,10 +119,8 @@ export default function TerapiSureci() {
                   }}
                 >
                   <Typography
-                    variant="caption"
+                    variant="h5"
                     sx={{
-                      color: "primary.main",
-                      fontWeight: 700,
                       display: "block",
                       mb: 1,
                     }}
@@ -130,16 +128,15 @@ export default function TerapiSureci() {
                     {adim.altBaslik}
                   </Typography>
                   <Typography
-                    variant="h6"
+                    variant="h4"
                     sx={{
-                      fontFamily: "var(--font-playfair)",
-                      fontWeight: 700,
-                      mb: 1.5,
+                      mb: 1,
+                      color: "primary.main",
                     }}
                   >
                     {adim.baslik}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body1" color="text.secondary">
                     {adim.aciklama}
                   </Typography>
                 </Box>

@@ -5,25 +5,18 @@ import Providers from "./providers";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+/* 📚 FONTLAR - Google Fonts'tan import edildi */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
+/* Playfair Display = Başlıklar için (serif font) */
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
-});
-const lora = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
-});
-
-const montesserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
 });
 
 export const metadata = {
@@ -49,17 +42,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body
-        className={`${inter.variable} ${playfair.variable} ${lora.variable} ${montesserrat.variable}`}
-      >
+      <body className={`${inter.variable} ${playfair.variable}`}>
         <Providers>
-          {/* Navbar → tüm sayfalarda görünür */}
           <Navbar />
-          {/* Sayfa içeriği */}
           <Box component="main" sx={{ p: 1 }}>
             {children}
           </Box>
-          {/* Footer → tüm sayfalarda görünür */}
           <Footer />
         </Providers>
       </body>

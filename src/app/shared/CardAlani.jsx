@@ -13,8 +13,6 @@ export default function CardAlani({ ikon, baslik, aciklama }) {
         borderRadius: 3,
         p: 3,
         backgroundColor: "white",
-        border: "1px solid",
-        borderColor: "custom.taupe",
         "&:hover": {
           backgroundColor: "primary.main",
           color: "white",
@@ -29,7 +27,7 @@ export default function CardAlani({ ikon, baslik, aciklama }) {
           width: 64,
           height: 64,
           borderRadius: 3,
-          backgroundColor: "custom.beige",
+          bgcolor: "background.paper",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -39,21 +37,15 @@ export default function CardAlani({ ikon, baslik, aciklama }) {
       </Box>
 
       <Typography
-        variant="h6"
+        variant="subtitle1"
         sx={{
-          fontFamily: "var(--font-playfair)",
-          fontWeight: 700,
-          color: "inherit",
+          mb: 1,
         }}
       >
         {baslik}
       </Typography>
 
-      <Typography
-        className="alan-aciklama"
-        variant="body2"
-        sx={{ color: "inherit" }}
-      >
+      <Typography className="alan-aciklama" variant="body1" sx={{ mb: 1 }}>
         {aciklama}
       </Typography>
     </Card>

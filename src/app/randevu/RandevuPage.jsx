@@ -42,11 +42,9 @@ export default function RandevuPage() {
       sx={{
         pt: { xs: 10, md: 10 },
         pb: 10,
-        bgcolor: "background.default",
-        minHeight: "100vh",
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="sm">
         {/* Geri butonu */}
         <Box sx={{ mb: 1, textAlign: "center" }}>
           <CustomButton
@@ -66,10 +64,8 @@ export default function RandevuPage() {
         <Paper
           elevation={0}
           sx={{
-            p: 3,
+            p: 1,
             borderRadius: 3,
-            border: "1px solid",
-            borderColor: "custom.taupe",
             backgroundColor: "white",
             backdropFilter: "blur(10px)",
             minHeight: "400px",

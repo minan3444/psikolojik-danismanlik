@@ -2,7 +2,6 @@
 
 import { Box, Container, Grid, Typography, Button, Chip } from "@mui/material";
 import { motion } from "framer-motion";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import { tumTestler } from "@/data/testler-data";
 import CustomButton from "@/app/shared/customButton";
@@ -111,10 +110,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
                   <Typography
                     variant="h6"
                     sx={{
-                      fontFamily: "var(--font-playfair)",
-                      fontWeight: 700,
-                      color: "text.primary",
-                      mb: 2,
+                      mb: 1,
                     }}
                   >
                     {test.baslik}
@@ -137,7 +133,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
                       label={`${test.sorular.length} Soru`}
                       size="small"
                       sx={{
-                        backgroundColor: "custom.beige",
+                        bgcolor: "background.paper",
                         color: "text.secondary",
                         fontWeight: 500,
                       }}

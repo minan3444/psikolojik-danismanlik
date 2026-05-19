@@ -121,13 +121,7 @@ export default function VizyonMisyon() {
               >
                 ✦ Vizyon & Misyon
               </Typography>
-              <Typography
-                variant="h2"
-                sx={{
-                  color: "text.primary",
-                  fontSize: { xs: "2rem", md: "2.8rem" },
-                }}
-              >
+              <Typography variant="h2">
                 Neden{" "}
                 <Box
                   component="span"
@@ -189,14 +183,13 @@ export default function VizyonMisyon() {
                       <Typography
                         variant="h5"
                         sx={{
-                          mb: 1,
+                          mb: 2,
                         }}
                       >
                         {item.baslik}
                       </Typography>
                       <Typography
                         variant="body1"
-                        color="text.secondary"
                         sx={{
                           fontStyle: "italic",
                         }}
@@ -231,10 +224,7 @@ export default function VizyonMisyon() {
                   }}
                 >
                   <AnimasyonluSayac hedef={rakam.sayi} />
-                  <Typography
-                    variant="h6"
-                    sx={{ color: "text.secondary", fontWeight: 500, mt: 1 }}
-                  >
+                  <Typography variant="h6" sx={{ mb: 1 }}>
                     {rakam.etiket}
                   </Typography>
                 </MotionBox>

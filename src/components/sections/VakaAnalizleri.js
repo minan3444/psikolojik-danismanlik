@@ -35,7 +35,7 @@ export default function VakaAnalizleri({
     >
       <Container maxWidth="lg">
         <SectionBaslik
-          altBaslik="VAKA ANALİZLERİ"
+          altBaslik={isFullPage ? null : "VAKA ANALİZLERİ"}
           baslik={
             isFullPage ? (
               "Gerçek Hikayeler, Gerçek Dönüşümler"
@@ -106,7 +106,7 @@ export default function VakaAnalizleri({
             mt: 8,
             p: 3,
             borderRadius: 3,
-            bgcolor: "custom.beige",
+            bgcolor: "background.paper",
             border: "1px solid",
             borderColor: "custom.taupe",
             textAlign: "center",

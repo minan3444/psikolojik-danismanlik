@@ -7,7 +7,6 @@ import {
   Typography,
   TextField,
   Grid,
-  Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
@@ -105,17 +104,12 @@ export default function BilgiAdimi({
             elevation={0}
             sx={{
               p: 2,
-              bgcolor: "custom.beige",
+              bgcolor: "background.paper",
               borderRadius: 3,
-              border: "1px solid",
-              borderColor: "custom.taupe",
               height: "100%",
             }}
           >
-            <Typography
-              variant="subtitle1"
-              sx={{ mb: 1.5, color: "primary.dark" }}
-            >
+            <Typography variant="subtitle1" sx={{ mb: 1 }}>
               Randevu Özeti
             </Typography>
             {[
@@ -259,7 +253,7 @@ export default function BilgiAdimi({
                 variant="outlined"
                 onClick={onBack}
                 startIcon={<ArrowBackIcon />}
-                sx={{ color: "text.secondary", border: "none" }}
+                sx={{ border: "none" }}
               >
                 Geri
               </CustomButton>
@@ -268,7 +262,12 @@ export default function BilgiAdimi({
                 variant="contained"
                 disabled={loading}
                 endIcon={loading ? null : <CheckCircleIcon />}
-                sx={{ color: "white" }}
+                sx={{
+                  color: "white",
+                  fontSize: { xs: "0.75rem", sm: "0.875rem" },
+                  px: { xs: 2, sm: 3 },
+                  py: { xs: 1, sm: 1.5 },
+                }}
               >
                 {loading ? (
                   <CircularProgress size={22} color="inherit" />

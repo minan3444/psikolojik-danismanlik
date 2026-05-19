@@ -28,7 +28,7 @@ export default function BlogSection({ isFullPage = false, initialData = [] }) {
           viewport={{ once: true }}
         >
           <SectionBaslik
-            altBaslik="BLOG"
+            altBaslik={isFullPage ? null : "BLOG"}
             baslik={
               isFullPage ? "Psikolojik Danışma Rehberi" : "Güncel Yazılar"
             }

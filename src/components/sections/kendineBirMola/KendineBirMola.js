@@ -68,10 +68,7 @@ function EgzersizKarti({ egzersiz, index, onSec }) {
         <Ikon sx={{ fontSize: 36, color: egzersiz.renk }} />
       </Box>
 
-      <Typography
-        variant="h6"
-        sx={{ fontFamily: "var(--font-playfair)", fontWeight: 700, mb: 1 }}
-      >
+      <Typography variant="h6" sx={{ mb: 1 }}>
         {egzersiz.baslik}
       </Typography>
       <Typography
@@ -102,7 +99,6 @@ export default function KendineBirMola() {
         py: { xs: 10, md: 14 },
         position: "relative",
         overflow: "hidden",
-        backgroundColor: "custom.beige",
       }}
     >
       {/* Arka plan */}

@@ -1,9 +1,7 @@
 "use client";
 
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { fadeInUp, fadeInRight } from "../animations";
 import CustomButton from "@/app/shared/customButton";
 import AnimatedFrame from "@/app/shared/AnimatedFrame";
 
@@ -15,7 +13,6 @@ function MaddeListesi({ maddeler }) {
     <AnimatedFrame key={index}>
       <Typography
         variant="body1"
-        color="text.secondary"
         sx={{
           display: "list-item",
           ml: 3,
@@ -36,17 +33,10 @@ export default function HeroContent({ maddeler }) {
     <Grid size={{ xs: 12, md: 7 }}>
       <AnimatedFrame from="left">
         {/* Üst etiket */}
-        <Typography variant="h6" fontWeight="700" sx={{ color: "#9e7c93" }}>
+        <Typography variant="h6" sx={{ mb: 1, color: "custom.unvan" }}>
           ✦ PSİKOLOJİK DANIŞMAN
         </Typography>
-        <Typography
-          variant="h2"
-          fontWeight={700}
-          sx={{
-            fontFamily: "var(--font-playfair)",
-            color: "text.primary",
-          }}
-        >
+        <Typography variant="h2">
           Kıyıya Birlikte
           <Box
             component="span"
@@ -67,7 +57,7 @@ export default function HeroContent({ maddeler }) {
           sx={{ mt: 2 }}
           direction={{ xs: "column", md: "row" }}
         >
-          <CustomButton href="/randevu"> Online Randevu Al</CustomButton>
+          <CustomButton href="/randevu">Online Randevu Al</CustomButton>
           <CustomButton href="/hakkimda" backgroundColor="#9e7c93">
             Daha Fazla Tanı
           </CustomButton>

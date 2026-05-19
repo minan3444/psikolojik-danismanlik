@@ -9,7 +9,8 @@ export default function HeroSection({ maddeler }) {
     <Box
       sx={{
         minHeight: "100vh",
-        p: 8,
+        py: { xs: 8, md: 10 },
+        px: { xs: 1, md: 10 },
         position: "relative",
         display: "flex",
         alignItems: "center",

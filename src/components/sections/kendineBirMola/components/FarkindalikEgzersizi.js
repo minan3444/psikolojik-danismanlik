@@ -47,14 +47,13 @@ export default function FarkindalikEgzersizi({ onBitir }) {
         <Typography
           variant="h5"
           sx={{
-            fontFamily: "var(--font-playfair)",
             mb: 2,
             color: "primary.main",
           }}
         >
           🌿 Harika! Şu ana döndün.
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        <Typography variant="body1" sx={{ mb: 4 }}>
           Bu egzersizi düzenli yaparak zihnini şu ana sabitlemeyi
           öğrenebilirsin.
         </Typography>
@@ -85,7 +84,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography variant="h5" sx={{ mb: 1 }}>
+      <Typography variant="h5" sx={{ mb: 2 }}>
         5 • 4 • 3 • 2 • 1 Tekniği
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>
@@ -99,7 +98,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
           mb: 4,
           borderRadius: 3,
           height: 6,
-          backgroundColor: "custom.beige",
+          bgcolor: "background.paper",
           "& .MuiLinearProgress-bar": { backgroundColor: mevcutAdim.renk },
         }}
       />
@@ -116,9 +115,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
           <Typography
             variant="h6"
             sx={{
-              fontFamily: "var(--font-playfair)",
-              color: "text.primary",
-              mb: 0,
+              mb: 1,
             }}
           >
             Şu an {mevcutAdim.duygu} {mevcutAdim.sayi} şeyi yaz

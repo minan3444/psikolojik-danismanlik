@@ -174,7 +174,7 @@ export default function KendineBirMola() {
                 onClick={() => setSeciliEgzersiz(null)}
                 sx={{ mb: 4, color: "text.secondary", fontWeight: 500 }}
               >
-                ← Geri Dön
+                🡨 Geri Dön
               </Button>
 
               {AktifBileseni && (

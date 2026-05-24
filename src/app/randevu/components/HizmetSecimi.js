@@ -95,12 +95,11 @@ export default function HizmetSecimi({ onSelect }) {
 
               <CustomButton
                 sx={{
-                  color: "white",
                   p: 1,
                   display: { xs: "none", sm: "inline-flex" },
                 }}
               >
-                Seç →
+                Seç ➜
               </CustomButton>
             </Paper>
           );

@@ -1,17 +1,13 @@
 "use client";
 
 import { Box, Grid, Typography } from "@mui/material";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { fadeInUp } from "../animations";
 import AnimatedFrame from "@/app/shared/AnimatedFrame";
-
-const MotionBox = motion.create(Box);
 
 export default function HeroProfile() {
   return (
     <Grid size={{ xs: 20, md: 5 }}>
-      <AnimatedFrame>
+      <AnimatedFrame from="right">
         {/* Profil fotoğrafı */}
         <Box sx={{ position: "relative", width: "75%" }}>
           <Box
@@ -50,14 +46,8 @@ export default function HeroProfile() {
           </Box>
         </Box>
 
-        <MotionBox
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          custom={0.4}
-          sx={{ mt: { xs: 4, md: 3 } }}
-        >
-          <Typography variant="h4">
+        <AnimatedFrame from="up">
+          <Typography variant="h4" sx={{ mt: 2 }}>
             Kendine Giden Yolda{" "}
             <Box
               component="span"
@@ -72,15 +62,15 @@ export default function HeroProfile() {
           </Typography>
           <Typography
             variant="body2"
-            color="text.secondary"
             sx={{
               fontStyle: "italic",
+              mt: 1,
             }}
           >
             Hayat bazen bize ağır gelen valizlerle yola devam etmemizi bekler.
             Bu yükleri sizinle birlikte açıp, geride bırakmanız için buradayım
           </Typography>
-        </MotionBox>
+        </AnimatedFrame>
       </AnimatedFrame>
     </Grid>
   );

@@ -1,11 +1,9 @@
-//← "use client" (framer-motion)
 "use client";
 
-import { Box, Grid } from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
+import { Grid } from "@mui/material";
+import { AnimatePresence } from "framer-motion";
 import BlogKarti from "@/components/ui/BlogKarti";
-
-const MotionBox = motion.create(Box);
+import AnimatedFrame from "@/app/shared/AnimatedFrame";
 
 export default function BlogGrid({ posts }) {
   return (
@@ -22,16 +20,7 @@ export default function BlogGrid({ posts }) {
             component="li"
             size={{ xs: 12, sm: 6, md: 4 }}
           >
-            <MotionBox
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
-              sx={{ height: "100%" }}
-            >
-              <BlogKarti yazi={yazi} />
-            </MotionBox>
+            <BlogKarti yazi={yazi} />
           </Grid>
         ))}
       </AnimatePresence>

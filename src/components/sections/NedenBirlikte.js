@@ -11,7 +11,7 @@ export default function NedenBirlikte() {
   return (
     <Box
       sx={{
-        p: 3,
+        py: 3,
         position: "relative",
         overflow: "hidden",
       }}
@@ -22,7 +22,7 @@ export default function NedenBirlikte() {
           baslik="Yolculuğuna Eşlik Etmek İçin Buradayım"
         />
 
-        <Grid container spacing={3} sx={{ mb: 3 }}>
+        <Grid container spacing={4} sx={{ mb: 3 }}>
           {maddeler.map((madde) => {
             return (
               <Grid key={madde.id} size={{ xs: 12, md: 4 }}>
@@ -58,7 +58,7 @@ export default function NedenBirlikte() {
             ayıracağın bu zamanın hayatında neler dönüştürebileceğini görmek
             için ilk adımı birlikte atabiliriz.
           </Typography>
-          <CustomButton href="/randevu">İlk Adımı At →</CustomButton>
+          <CustomButton href="/randevu">İlk Adımı At ➜</CustomButton>
         </Box>
       </Container>
     </Box>

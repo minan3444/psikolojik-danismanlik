@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Box, Typography, Button, Grid, CircularProgress } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import { calismaSaatleri } from "@/data/randevu-ayarlari";
 import { getReservedSlots } from "@/app/actions/appointment";
 import dayjs from "dayjs";
@@ -87,10 +87,9 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
         <CustomButton
           variant="outlined"
           onClick={onBack}
-          startIcon={<ArrowBackIcon />}
           sx={{ border: "none" }}
         >
-          Geri
+          🡨 Geri
         </CustomButton>
 
         <CustomButton
@@ -98,13 +97,12 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
           disabled={!seciliSaat}
           onClick={() => onSelect(seciliSaat)}
           sx={{
-            color: "white",
             fontSize: { xs: "0.75rem", sm: "0.875rem" },
             px: { xs: 2, sm: 3 },
             py: { xs: 1, sm: 1.5 },
           }}
         >
-          Devam Et →
+          Devam Et ➜
         </CustomButton>
       </Box>
     </Box>

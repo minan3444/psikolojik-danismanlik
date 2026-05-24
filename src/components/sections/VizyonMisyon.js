@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import NatureOutlinedIcon from "@mui/icons-material/NatureOutlined";
 import AnimasyonluSayac from "@/components/ui/AnimasyonluSayac";
+import AnimatedFrame from "@/app/shared/AnimatedFrame";
 import vizyonMisyon from "@/data/vizyon-misyon";
 import rakamlar from "@/data/rakamlar";
 import Image from "next/image";
-import { useState, useEffect } from "react"; // 1. Hook'ları ekledik
-import { scrollAnimation } from "@/app/shared/scrollAnimation";
+import { useState, useEffect } from "react";
 
 const MotionBox = motion.create(Box);
 
@@ -27,38 +27,27 @@ const leafVariants = {
   }),
 };
 
+const ikonlar = { Vizyon: LightbulbOutlinedIcon, Misyon: NatureOutlinedIcon };
+
 export default function VizyonMisyon() {
-  // 2. Yaprakları state'e taşıdık (Başlangıçta boş dizi)
   const [leaves, setLeaves] = useState([]);
 
   useEffect(() => {
-    // 3. Rastgele sayı üretimini sadece İstemci (Client) tarafına hapsediyoruz
-    const randomNum = (min, max) => Math.random() * (max - min) + min;
-
-    const generatedLeaves = Array.from({ length: 20 }).map((_, i) => ({
-      id: i,
-      left: randomNum(-40, 40),
-      top: randomNum(0, 95),
-      size: randomNum(30, 65),
-    }));
-
-    setLeaves(generatedLeaves);
+    const r = (min, max) => Math.random() * (max - min) + min;
+    setLeaves(
+      Array.from({ length: 20 }).map((_, i) => ({
+        id: i,
+        left: r(-40, 40),
+        top: r(0, 95),
+        size: r(30, 65),
+      })),
+    );
   }, []);
 
-  const ikonlar = {
-    Vizyon: LightbulbOutlinedIcon,
-    Misyon: NatureOutlinedIcon,
-  };
-
   return (
-    <Box
-      sx={{
-        py: 3,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
+    <Box sx={{ py: 3, position: "relative", overflow: "hidden" }}>
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        {/* Yaprak animasyonu */}
         <Box
           sx={{
             position: "absolute",
@@ -69,11 +58,10 @@ export default function VizyonMisyon() {
             pointerEvents: "none",
           }}
         >
-          {/* 4. Sadece istemcide yapraklar oluştuktan sonra render et */}
-          {leaves.map((leaf, index) => (
+          {leaves.map((leaf, i) => (
             <MotionBox
               key={leaf.id}
-              custom={index}
+              custom={i}
               variants={leafVariants}
               initial="hidden"
               whileInView="visible"
@@ -100,134 +88,95 @@ export default function VizyonMisyon() {
           ))}
         </Box>
 
-        <Grid container spacing={6} sx={{ alignItems: "center" }}>
+        {/*Sol grid*/}
+        <Grid container spacing={2} sx={{ alignItems: "center" }}>
           <Grid size={{ xs: 12, md: 7 }}>
-            <MotionBox
-              variants={scrollAnimation}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              sx={{ mb: 4 }}
+            <Typography
+              variant="caption"
+              sx={{ fontWeight: 600, display: "block" }}
             >
-              <Typography
-                variant="caption"
-                sx={{
-                  color: "primary.main",
-                  fontWeight: 600,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  display: "block",
-                }}
-              >
-                ✦ Vizyon & Misyon
-              </Typography>
-              <Typography variant="h2">
-                Neden{" "}
-                <Box
-                  component="span"
-                  sx={{ color: "primary.main", fontStyle: "italic" }}
-                >
-                  Buradayım?
-                </Box>
-              </Typography>
+              ✦ VİZYON & MİSYON
+            </Typography>
+            <Typography variant="h2" sx={{ mb: 2 }}>
+              Neden{" "}
               <Box
-                sx={{
-                  width: 60,
-                  height: 3,
-                  backgroundColor: "primary.main",
-                  borderRadius: 3,
-                }}
-              />
-            </MotionBox>
+                component="span"
+                sx={{ color: "primary.main", fontStyle: "italic" }}
+              >
+                Buradayım?
+              </Box>
+            </Typography>
+            <Box
+              sx={{
+                width: 60,
+                height: 3,
+                backgroundColor: "primary.main",
+                borderRadius: 3,
+                mb: 3,
+              }}
+            />
 
-            <Box sx={{ position: "relative", zIndex: 10 }}>
-              {Object.values(vizyonMisyon).map((item, index) => {
-                const Ikon = ikonlar[item.baslik];
-                return (
-                  <MotionBox
-                    key={index}
-                    variants={scrollAnimation}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={index * 0.2}
+            {Object.values(vizyonMisyon).map((item, index) => {
+              const Ikon = ikonlar[item.baslik];
+              return (
+                <AnimatedFrame
+                  key={index}
+                  delay={index * 0.2}
+                  hover={false}
+                  sx={{
+                    flexDirection: "row", // ikon ve metin yan yana
+                    // alignItems: "flex-start", // üstten hizala
+                    mb: 2,
+                    p: 2, // ↓ Kart yüksekliği vizyon misyon
+                    backgroundColor: "white",
+                  }}
+                >
+                  <Box
                     sx={{
-                      display: "flex",
-                      gap: { xs: 2, md: 3 },
-                      mb: 4,
-                      p: { xs: 3, md: 4 },
+                      width: 56,
+                      height: 56,
                       borderRadius: 3,
-                      backgroundColor: "rgba(255,255,255,0.9)",
-                      backdropFilter: "blur(5px)",
-                      border: "1px solid",
-                      borderColor: "custom.taupe",
+                      backgroundColor: "primary.light",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
                     }}
                   >
-                    <Box
-                      sx={{
-                        width: 56,
-                        height: 56,
-                        borderRadius: 3,
-                        backgroundColor: "primary.light",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                      }}
+                    {Ikon && (
+                      <Ikon sx={{ color: "primary.dark", fontSize: 30 }} />
+                    )}
+                  </Box>
+                  <Box>
+                    <Typography variant="h5" sx={{ p: 1 }}>
+                      {item.baslik}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ p: 0.5, fontStyle: "italic" }}
                     >
-                      {Ikon && (
-                        <Ikon sx={{ color: "primary.dark", fontSize: 30 }} />
-                      )}
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          mb: 2,
-                        }}
-                      >
-                        {item.baslik}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          fontStyle: "italic",
-                        }}
-                      >
-                        {item.icerik}
-                      </Typography>
-                    </Box>
-                  </MotionBox>
-                );
-              })}
-            </Box>
+                      {item.icerik}
+                    </Typography>
+                  </Box>
+                </AnimatedFrame>
+              );
+            })}
           </Grid>
-
+          {/*sağ grid*/}
           <Grid size={{ xs: 12, md: 5 }}>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {rakamlar.map((rakam, index) => (
-                <MotionBox
+                <AnimatedFrame
                   key={rakam.id}
-                  variants={scrollAnimation}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={index * 0.2}
-                  whileHover={{ scale: 1.02 }}
                   sx={{
                     textAlign: "center",
-                    p: 3,
-                    borderRadius: 3,
                     backgroundColor: "white",
-                    border: "1px solid",
-                    borderColor: "custom.taupe",
+                    p: 1,
                   }}
                 >
                   <AnimasyonluSayac hedef={rakam.sayi} />
-                  <Typography variant="h6" sx={{ mb: 1 }}>
-                    {rakam.etiket}
-                  </Typography>
-                </MotionBox>
+                  <Typography variant="h6">{rakam.etiket}</Typography>
+                </AnimatedFrame>
               ))}
             </Box>
           </Grid>

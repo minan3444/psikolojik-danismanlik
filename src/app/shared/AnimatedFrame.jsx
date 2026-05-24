@@ -50,7 +50,7 @@ const AnimatedFrame = ({
   children,
   from = "up",
   delay = 0.3,
-  hover = false,
+  hover = true,
   once = true,
   sx = {},
   ...props
@@ -64,9 +64,13 @@ const AnimatedFrame = ({
       custom={delay}
       whileHover={hover ? { y: -6, transition: { duration: 0.25 } } : undefined}
       sx={{
+        width: "100%",
+        height: "100%",
+        display: "flex", // içeriği dikeyde hizalayalım.
+        flexDirection: "column",
+        justifyContent: "center", //yatayda hizala
+        borderRadius: 3,
         ...sx,
-        // Eğer hover varsa imleci pointer yapalım
-        cursor: hover ? "pointer" : "inherit",
       }}
       {...props}
     >

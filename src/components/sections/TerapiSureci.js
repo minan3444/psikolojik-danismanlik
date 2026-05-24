@@ -7,10 +7,9 @@ import terapiSureci from "@/data/terapi-sureci";
 
 export default function TerapiSureci() {
   return (
-    <Box sx={{ py: 6, position: "relative" }}>
+    <Box sx={{ py: 3, position: "relative" }}>
       <Container maxWidth="lg">
         <SectionBaslik altBaslik="NASIL ÇALIŞIYORUM ?" baslik="Terapi Süreci" />
-
         <Box
           sx={{
             display: "flex",
@@ -128,7 +127,7 @@ export default function TerapiSureci() {
                     {adim.altBaslik}
                   </Typography>
                   <Typography
-                    variant="h4"
+                    variant="h6"
                     sx={{
                       mb: 1,
                       color: "primary.main",
@@ -136,9 +135,7 @@ export default function TerapiSureci() {
                   >
                     {adim.baslik}
                   </Typography>
-                  <Typography variant="body1" color="text.secondary">
-                    {adim.aciklama}
-                  </Typography>
+                  <Typography variant="body2">{adim.aciklama}</Typography>
                 </Box>
               </Box>
             );

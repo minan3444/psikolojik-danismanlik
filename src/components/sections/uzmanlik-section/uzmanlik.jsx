@@ -23,17 +23,15 @@ export default function UzmanlikAlanlari() {
           />
         </AnimatedFrame>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
           {uzmanlikAlanlari.map((alan) => {
             return (
               <Grid key={alan.id} size={{ xs: 12, md: 3 }}>
-                <AnimatedFrame>
-                  <UzmanlikCard
-                    ikon={alan.ikon}
-                    baslik={alan.baslik}
-                    aciklama={alan.aciklama}
-                  />
-                </AnimatedFrame>
+                <UzmanlikCard
+                  ikon={alan.ikon}
+                  baslik={alan.baslik}
+                  aciklama={alan.aciklama}
+                />
               </Grid>
             );
           })}

@@ -9,23 +9,17 @@ export default function CardAlani({ ikon, baslik, aciklama }) {
   return (
     <Card
       sx={{
-        height: "45vh",
+        height: "vh", //kart yüksekliği
         borderRadius: 3,
-        p: 3,
+        p: 2,
         backgroundColor: "white",
-        "&:hover": {
-          backgroundColor: "primary.main",
-          color: "white",
-          "& .ikon-kutu": { backgroundColor: "rgba(255,255,255,0.2)" },
-          "& .alan-aciklama": { opacity: 0.8 },
-        },
       }}
     >
       <Box
         className="ikon-kutu"
         sx={{
-          width: 64,
-          height: 64,
+          width: 55,
+          height: 55,
           borderRadius: 3,
           bgcolor: "background.paper",
           display: "flex",
@@ -37,7 +31,7 @@ export default function CardAlani({ ikon, baslik, aciklama }) {
       </Box>
 
       <Typography
-        variant="subtitle1"
+        variant="h4"
         sx={{
           mb: 1,
         }}
@@ -45,7 +39,7 @@ export default function CardAlani({ ikon, baslik, aciklama }) {
         {baslik}
       </Typography>
 
-      <Typography className="alan-aciklama" variant="body1" sx={{ mb: 1 }}>
+      <Typography className="alan-aciklama" variant="body2" sx={{ mb: 1 }}>
         {aciklama}
       </Typography>
     </Card>

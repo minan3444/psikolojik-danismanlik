@@ -1,24 +1,10 @@
 "use client";
 
-import { Box, Container, Grid, Typography, Button, Chip } from "@mui/material";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-// Merkezi veriyi import ediyoruz
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { tumTestler } from "@/data/testler-data";
 import AppBreadcrumb from "../shared/Appbreadcrumb";
+import TestKarti from "./components/TestKarti";
 import CustomButton from "../shared/customButton";
-
-const MotionBox = motion.create(Box);
-
-const itemAnimation = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (delay) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: "easeOut" },
-  }),
-};
 
 export default function TestlerPage() {
   return (
@@ -30,7 +16,6 @@ export default function TestlerPage() {
       }}
     >
       <Container maxWidth="lg">
-        {/* Navigasyon Yolu */}
         <AppBreadcrumb
           items={[
             { label: "Anasayfa", href: "/" },
@@ -38,14 +23,8 @@ export default function TestlerPage() {
           ]}
         />
 
-        {/* Başlık Alanı */}
         <Box sx={{ mb: 8 }}>
-          <Typography
-            variant="h2"
-            sx={{
-              mb: 2,
-            }}
-          >
+          <Typography variant="h2" sx={{ mb: 2 }}>
             Kendini Daha İyi Tanı
           </Typography>
           <Typography variant="body1">
@@ -54,83 +33,21 @@ export default function TestlerPage() {
           </Typography>
         </Box>
 
-        {/* Test Listesi Grid Yapısı */}
-        <Grid container spacing={4}>
+        <Grid container spacing={4} sx={{ alignItems: "stretch" }}>
           {tumTestler.map((test, index) => (
             <Grid
               key={test.slug}
               size={{ xs: 12, sm: 6, md: 4 }}
               sx={{ height: "100%" }}
             >
-              <MotionBox
-                variants={itemAnimation}
-                initial="hidden"
-                animate="visible"
-                custom={index * 0.1}
-                whileHover={{ y: -8 }}
-                sx={{
-                  height: "100%",
-                  borderRadius: 3,
-                  backgroundColor: "rgba(255,255,255,0.9)",
-                  backdropFilter: "blur(10px)",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "all 0.3s ease",
-                }}
+              <TestKarti test={test} index={index} />
+              <CustomButton
+                href={`/testler/${test.slug}`}
+                fullWidth
+                color="white"
               >
-                {/* Test Rengi Şeridi /testler */}
-                <Box
-                  sx={{
-                    height: 6,
-                    backgroundColor: test.renk || "primary.main",
-                  }}
-                />
-
-                <Box
-                  sx={{
-                    p: 3,
-                    display: "flex",
-                    flexDirection: "column",
-                    flexGrow: 1,
-                  }}
-                >
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      mb: 2,
-                    }}
-                  >
-                    {test.baslik}
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      mb: 3,
-                    }}
-                  >
-                    {test.aciklama}
-                  </Typography>
-
-                  <Box
-                    sx={{ display: "flex", gap: 1, mb: 4, flexWrap: "wrap" }}
-                  >
-                    <Chip
-                      label={`${test.sorular.length} Soru`}
-                      size="small"
-                      sx={{ bgcolor: "background.paper" }}
-                    />
-                  </Box>
-
-                  <CustomButton
-                    href={`/testler/${test.slug}`}
-                    endIcon={<ArrowForwardIcon />}
-                    fullWidth
-                  >
-                    Testi Başlat
-                  </CustomButton>
-                </Box>
-              </MotionBox>
+                Testi Başlat ➜
+              </CustomButton>
             </Grid>
           ))}
         </Grid>

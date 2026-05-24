@@ -6,6 +6,7 @@ const theme = createTheme({
       main: "#7C9E87", // Soft Sage Green
       light: "#A8C5B0",
       dark: "#5A7A63",
+      contrastText: "#ffffff",
     },
     secondary: {
       main: "#8FA8C8", // Soft Dusty Blue

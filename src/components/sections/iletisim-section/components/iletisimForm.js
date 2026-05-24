@@ -360,7 +360,7 @@ export default function IletisimForm({ legalDocs = [] }) {
       </MotionBox>
 
       {/* Bilgi Kutuları */}
-      <Grid container spacing={1}>
+      <Grid container spacing={4}>
         {BILGI_KUTULARI.map((item, i) => (
           <BilgiKutusu key={i} {...item} />
         ))}

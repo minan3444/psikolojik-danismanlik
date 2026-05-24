@@ -68,7 +68,7 @@ export default function BlogKarti({ yazi }) {
             </Typography>
           </Box>
           <Typography
-            variant="h6"
+            variant="h4"
             sx={{
               mb: 1,
             }}

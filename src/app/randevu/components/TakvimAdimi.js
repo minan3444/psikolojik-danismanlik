@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Box, Typography, Paper } from "@mui/material";
 import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
 import CustomButton from "@/app/shared/customButton";
@@ -63,23 +62,21 @@ export default function TakvimAdimi({ onSelect, onBack }) {
         <CustomButton
           variant="outlined"
           onClick={onBack}
-          startIcon={<ArrowBackIcon />}
           sx={{ border: "none" }}
         >
-          Geri
+          🡨 Geri
         </CustomButton>
 
         <CustomButton
           variant="contained"
           onClick={() => onSelect(value.toDate())}
           sx={{
-            color: "white",
             fontSize: { xs: "0.75rem", sm: "0.875rem" },
             px: { xs: 2, sm: 3 },
             py: { xs: 1, sm: 1.5 },
           }}
         >
-          Saat Seçimine Geç →
+          Saat Seçimine Geç ➜
         </CustomButton>
       </Box>
     </Box>

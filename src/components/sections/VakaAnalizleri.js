@@ -87,7 +87,7 @@ export default function VakaAnalizleri({
           </Box>
         )}
 
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           {goruntulenecekVakalar.map((vaka) => (
             <Grid key={vaka._id || vaka.id} size={{ xs: 12, sm: 6, md: 4 }}>
               <VakaKarti vaka={vaka} />
@@ -95,32 +95,12 @@ export default function VakaAnalizleri({
           ))}
         </Grid>
         {!isFullPage && dataSource.length >= 3 && (
-          <Box sx={{ mt: 8, textAlign: "center" }}>
+          <Box sx={{ mt: 4, textAlign: "center" }}>
             <CustomButton href="/vaka-analizleri">
-              Tüm Vaka Analizlerini Gör →
+              Tüm Vaka Analizlerini Gör ➜
             </CustomButton>
           </Box>
         )}
-        <Box
-          sx={{
-            mt: 8,
-            p: 3,
-            borderRadius: 3,
-            bgcolor: "background.paper",
-            border: "1px solid",
-            borderColor: "custom.taupe",
-            textAlign: "center",
-          }}
-        >
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ fontStyle: "italic" }}
-          >
-            🔒 Tüm vaka analizleri danışan gizliliği korunarak anonim olarak
-            paylaşılmaktadır.
-          </Typography>
-        </Box>
       </Container>
     </Box>
   );

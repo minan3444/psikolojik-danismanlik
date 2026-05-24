@@ -102,7 +102,7 @@ export default function Navbar() {
               </Box>
 
               <Box sx={{ display: "block" }}>
-                <Typography variant="h6" sx={{ mb: 1 }}>
+                <Typography variant="h6" sx={{ color: "text.primary", mb: 1 }}>
                   Şeyma İnan
                 </Typography>
                 <Typography

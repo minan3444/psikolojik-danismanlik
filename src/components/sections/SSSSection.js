@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, memo } from "react";
+import { useState } from "react";
 import {
   Box,
   Container,
@@ -13,87 +13,79 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import sss from "@/data/sss";
 
-// 1. ADIM: Her bir Accordion'u ayrı bir bileşen yap ve memo ile sarmala
-const SSSItem = memo(({ item, index, acikPanel, onChange }) => {
-  const panelId = `panel${index}`;
-  const isExpanded = acikPanel === panelId;
-
-  return (
-    <Accordion
-      expanded={isExpanded}
-      onChange={onChange(panelId)}
-      // 3. ADIM: Kapalıyken içeriği DOM'dan silerek bellek tasarrufu sağlar
-      slotProps={{ transition: { unmountOnExit: true } }}
-      sx={{
-        mb: 2,
-        borderRadius: "12px !important",
-        bgcolor: "background.paper",
-        border: "1px solid",
-        borderColor: isExpanded ? "primary.light" : "custom.taupe",
-        boxShadow: "none",
-        "&:before": { display: "none" }, // MUI varsayılan çizgiyi kaldırır
-      }}
-    >
-      <AccordionSummary
-        expandIcon={
-          <ExpandMoreIcon
-            sx={{ color: isExpanded ? "primary.main" : "text.secondary" }}
-          />
-        }
-      >
-        <Typography
-          variant="h5"
-          sx={{
-            color: isExpanded ? "primary.main" : "text.primary",
-          }}
-        >
-          {item.soru}
-        </Typography>
-      </AccordionSummary>
-      <AccordionDetails sx={{ pb: 2 }}>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ lineHeight: 1.7 }}
-        >
-          {item.cevap}
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-  );
-});
-
-// Memo bileşenine isim veriyoruz (Geliştirici araçları için)
-SSSItem.displayName = "SSSItem";
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: sss.map((item) => ({
+    "@type": "Question",
+    name: item.soru,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.cevap,
+    },
+  })),
+};
 
 export default function SSSSection() {
   const [acik, setAcik] = useState(false);
 
-  // 2. ADIM: Fonksiyonu belleğe sabitle
-  const handleChange = useCallback(
-    (panel) => (event, isExpanded) => {
-      setAcik(isExpanded ? panel : false);
-    },
-    [],
-  );
+  const handleChange = (panel) => (_, isExpanded) => {
+    setAcik(isExpanded ? panel : false);
+  };
 
   return (
-    <Box sx={{ py: 3, position: "relative" }}>
+    <Box sx={{ py: 3, position: "relative", overflow: "hidden" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Container maxWidth="lg">
         <SectionBaslik
           altBaslik="MERAK EDİLENLER"
           baslik="Aklındaki Soruların Cevapları"
         />
 
-        {sss.map((item, index) => (
-          <SSSItem
-            key={item.id}
-            item={item}
-            index={index}
-            acikPanel={acik}
-            onChange={handleChange}
-          />
-        ))}
+        {sss.map((item, index) => {
+          const panelId = `panel${index}`;
+          const isExpanded = acik === panelId;
+
+          return (
+            <Accordion
+              key={item.id}
+              expanded={isExpanded}
+              onChange={handleChange(panelId)}
+              slotProps={{ transition: { unmountOnExit: true } }}
+              sx={{
+                mb: 2,
+                borderRadius: 3,
+                bgcolor: "background.paper",
+                boxShadow: "none",
+                "&:before": { display: "none" },
+              }}
+            >
+              <AccordionSummary
+                expandIcon={
+                  <ExpandMoreIcon
+                    sx={{
+                      color: isExpanded ? "primary.main" : "text.secondary",
+                    }}
+                  />
+                }
+              >
+                <Typography
+                  variant="subtitle1"
+                  component="h3"
+                  sx={{ color: isExpanded ? "primary.main" : "text.primary" }}
+                >
+                  {item.soru}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails sx={{ pb: 2 }}>
+                <Typography variant="body2">{item.cevap}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          );
+        })}
       </Container>
     </Box>
   );

@@ -15,7 +15,6 @@ import {
   CircularProgress,
 } from "@mui/material";
 import Link from "next/link";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { MuiTelInput } from "mui-tel-input";
 import dayjs from "dayjs";
@@ -252,10 +251,9 @@ export default function BilgiAdimi({
               <CustomButton
                 variant="outlined"
                 onClick={onBack}
-                startIcon={<ArrowBackIcon />}
                 sx={{ border: "none" }}
               >
-                Geri
+                🡨 Geri
               </CustomButton>
               <CustomButton
                 type="submit"
@@ -263,7 +261,6 @@ export default function BilgiAdimi({
                 disabled={loading}
                 endIcon={loading ? null : <CheckCircleIcon />}
                 sx={{
-                  color: "white",
                   fontSize: { xs: "0.75rem", sm: "0.875rem" },
                   px: { xs: 2, sm: 3 },
                   py: { xs: 1, sm: 1.5 },

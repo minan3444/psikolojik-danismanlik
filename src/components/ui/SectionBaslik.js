@@ -7,7 +7,6 @@ export default function SectionBaslik({ baslik, altBaslik, merkez = true }) {
         <Typography
           variant="caption"
           sx={{
-            color: "primary.main",
             fontWeight: 600,
           }}
         >

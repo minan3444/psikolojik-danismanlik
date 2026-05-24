@@ -156,7 +156,7 @@ export default function FarkindalikEgzersizi({ onBitir }) {
               color: "white",
             }}
           >
-            {adim + 1 >= ADIMLAR.length ? "Tamamla" : "Devam Et →"}
+            {adim + 1 >= ADIMLAR.length ? "Tamamla" : "Devam Et ➜"}
           </Button>
         </MotionBox>
       </AnimatePresence>

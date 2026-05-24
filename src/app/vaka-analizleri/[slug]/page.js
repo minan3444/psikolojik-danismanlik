@@ -1,30 +1,24 @@
 import { Box, Container, Typography, Divider, Chip } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import Image from "next/image";
 
-// SANITY BAĞLANTILARI
 import { client } from "@/sanity/lib/client";
 import { VAKA_DETAY_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import AppBreadcrumb from "@/app/shared/Appbreadcrumb";
-import Image from "next/image";
 import VakaBlogIletisimeGecme from "@/app/shared/VakaBlogIletisimeGecme";
 
-// SEO Meta Verileri - Sanity'den Dinamik Çekilir
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const vaka = await client.fetch(VAKA_DETAY_QUERY, { slug });
-
   return {
     title: vaka ? `${vaka.baslik} | Vaka Analizi` : "Vaka Bulunamadı",
   };
 }
 
 export default async function VakaDetayPage({ params }) {
-  // 1. Next.js 15+ için params await edilir
   const { slug } = await params;
-
-  // 2. URL'den gelen slug decode edilerek Sanity'den veri çekilir
   const decodedSlug = decodeURIComponent(slug);
   const vaka = await client.fetch(VAKA_DETAY_QUERY, { slug: decodedSlug });
 
@@ -39,13 +33,8 @@ export default async function VakaDetayPage({ params }) {
           ]}
         />
 
-        {/* Başlık Grubu */}
         <Box sx={{ mb: 3 }}>
-          <Chip
-            label={vaka.kategori}
-            color="primary"
-            sx={{ mb: 3, color: "white" }}
-          />
+          <Chip label={vaka.kategori} color="primary" variant="filled" />
           <Typography
             variant="h2"
             sx={{
@@ -82,17 +71,11 @@ export default async function VakaDetayPage({ params }) {
           )}
         </Box>
 
-        {/* İçerik Alanı */}
         <Box>
           <Typography variant="h5" sx={{ mb: 2 }}>
             Vaka Tanımı
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              mb: 2,
-            }}
-          >
+          <Typography variant="body1" sx={{ mb: 2 }}>
             {vaka.problem}
           </Typography>
 
@@ -101,12 +84,7 @@ export default async function VakaDetayPage({ params }) {
           <Typography variant="h5" sx={{ mb: 2 }}>
             Süreç
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              mb: 2,
-            }}
-          >
+          <Typography variant="body1" sx={{ mb: 2 }}>
             {vaka.surec}
           </Typography>
 
@@ -122,11 +100,7 @@ export default async function VakaDetayPage({ params }) {
           >
             <Typography
               variant="h5"
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 1,
-              }}
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
             >
               <CheckCircleIcon color="primary" /> Sonuç ve Kazanım
             </Typography>

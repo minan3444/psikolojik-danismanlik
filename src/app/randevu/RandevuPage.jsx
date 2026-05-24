@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { Box, Container, Paper, Button } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { useLegalDocs } from "./hooks/useLegalDocs";
 import RandevuStepper from "./components/RandevuStepper";
@@ -50,10 +48,9 @@ export default function RandevuPage() {
           <CustomButton
             variant="outlined"
             href="/"
-            startIcon={<ArrowBackIcon />}
             sx={{ mb: 1, border: "none", color: "text.secondary" }}
           >
-            Anasayfaya Dön
+            🡨 Anasayfaya Dön
           </CustomButton>
         </Box>
 

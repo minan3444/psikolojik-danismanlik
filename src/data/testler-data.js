@@ -1,439 +1,1243 @@
 export const tumTestler = [
   {
-    slug: 'algilanan-stres-testi',
-    baslik: 'Algılanan Stres Testi (PSS-10)',
-    aciklama: 'Son 1 ayı düşünerek aşağıdaki soruları cevaplayın.',
-    tip: 'puanli',
-    sorular: [
-      { id: 1, metin: 'Beklenmedik olaylar yüzünden ne kadar stres hissettin?', ters: false },
-      { id: 2, metin: 'Hayatındaki önemli şeyleri kontrol edemediğini ne sıklıkla hissettin?', ters: false },
-      { id: 3, metin: 'Gergin ve stresli hissettiğin oldu mu?', ters: false },
-      { id: 4, metin: 'Kişisel sorunlarını yönetebildiğini hissettin mi?', ters: true },
-      { id: 5, metin: 'Her şeyin yolunda gittiğini düşündün mü?', ters: true },
-      { id: 6, metin: 'Yapman gereken şeylerle başa çıkamadığını hissettin mi?', ters: false },
-      { id: 7, metin: 'Sinir bozucu durumları kontrol edebildiğini hissettin mi?', ters: true },
-      { id: 8, metin: 'İşlerin kontrolünde olduğunu düşündün mü?', ters: true },
-      { id: 9, metin: 'Seni kızdıran şeylerle baş edemediğin oldu mu?', ters: false },
-      { id: 10, metin: 'Zorlukların üstesinden gelemediğini düşündün mü?', ters: false },
-    ],
-    secenekler: [
-      { deger: 0, etiket: 'Hiç' },
-      { deger: 1, etiket: 'Nadiren' },
-      { deger: 2, etiket: 'Bazen' },
-      { deger: 3, etiket: 'Oldukça Sık' },
-      { deger: 4, etiket: 'Çok Sık' },
-    ],
-    yorumlar: [
-      { min: 0, max: 13, baslik: 'Düşük Stres', renk: 'success', aciklama: 'Hayatındaki stres düzeyin şu an yönetilebilir bir aralıkta. Bu dengeyi korumak için kendinle ilgilenmeye, sınırlarını belirlemeye ve iyi hissettiğin aktivitelere zaman ayırmaya devam et.' },
-      { min: 14, max: 26, baslik: 'Orta Stres', renk: 'warning', aciklama: 'Hayatındaki bazı alanlar seni zorluyor ve stres belirgin bir şekilde hissedilir hale gelmiş. Duygularını ve hayatındaki yükleri birlikte ele almak için profesyonel destek iyi bir başlangıç noktası olabilir.' },
-      { min: 27, max: 40, baslik: 'Yüksek Stres', renk: 'error', aciklama: 'Stres düzeyin oldukça yüksek ve bu durum günlük yaşamını olumsuz etkiliyor olabilir. Yalnız taşımak zorunda değilsin. Bir an önce profesyonel destek almak sana çok şey kazandırabilir.' },
-    ]
-  },
-  {
-    slug: 'anksiyete-bozuklugu-testi',
-    baslik: 'Anksiyete Bozukluğu Testi (GAD-7)',
-    aciklama: 'Son 2 hafta içerisinde aşağıdaki sorunlardan ne sıklıkla rahatsız oldunuz?',
-    tip: 'puanli',
-    sorular: [
-      { id: 1, metin: 'Kendimi sinirli, kaygılı veya çok gergin hissetmek.', ters: false },
-      { id: 2, metin: 'Kaygılanmayı durduramamak veya kontrol edememek.', ters: false },
-      { id: 3, metin: 'Farklı şeyler hakkında çok fazla kaygılanmak.', ters: false },
-      { id: 4, metin: 'Gevşemekte (rahatlamakta) zorluk çekmek.', ters: false },
-      { id: 5, metin: 'O kadar huzursuz olmak ki yerinde duramamak.', ters: false },
-      { id: 6, metin: 'Kolayca kızmak veya çabuk öfkelenmek.', ters: false },
-      { id: 7, metin: 'Sanki kötü bir şey olacakmış gibi korku hissetmek.', ters: false },
-    ],
-    secenekler: [
-      { deger: 0, etiket: 'Hiç' },
-      { deger: 1, etiket: 'Birkaç Gün' },
-      { deger: 2, etiket: 'Günlerin Yarısından Fazlası' },
-      { deger: 3, etiket: 'Hemen Hemen Her Gün' },
-    ],
-    yorumlar: [
-      { min: 0, max: 4, baslik: 'Minimal Anksiyete', renk: 'success', aciklama: 'Kaygı düzeyiniz şu an için normal sınırlar içerisinde görünüyor.' },
-      { min: 5, max: 9, baslik: 'Hafif Derece Anksiyete', renk: 'info', aciklama: 'Hafif düzeyde bir kaygı hissediyorsunuz. Profesyonel bir rehberlik almak, durumun ilerlemesini önlemede yardımcı olabilir.' },
-      { min: 10, max: 14, baslik: 'Orta Derece Anksiyete', renk: 'warning', aciklama: 'Belirgin bir kaygı düzeyi yaşıyorsunuz. Bu durum yaşamınızı etkilemeye başlamış olabilir.' },
-      { min: 15, max: 21, baslik: 'Şiddetli Anksiyete', renk: 'error', aciklama: 'Kaygı düzeyiniz oldukça yüksek görünüyor. Bir uzman desteği ile bu süreci yönetmek yaşam kalitenizi artıracaktır.' },
-    ]
-  },
-  {
-    slug: 'baglanma-stilleri-testi',
-    baslik: 'Bağlanma Stilleri Testi',
-    aciklama: 'İlişkilerinizde partnerinize karşı tutumlarınızı ve yakınlık kurma biçiminizi keşfedin.',
-    tip: 'kategorili',
-    sorular: [
-      { id: 1, metin: 'Partnerimle duygusal olarak yakın olmaktan ve duygularımı paylaşmaktan rahatlık duyarım.', kategori: 'guvenli' },
-      { id: 2, metin: 'Partnerimin beni gerçekten sevip sevmediği veya benden uzaklaşıp uzaklaşmadığı konusunda sık sık endişelenirim.', kategori: 'kaygili' },
-      { id: 3, metin: 'Birisi bana çok yakınlaştığında kendimi boğulmuş hissederim ve mesafe koyma ihtiyacı duyarım.', kategori: 'kacingan' },
-      { id: 4, metin: 'İlişkilerimde karşı tarafa güvenmekte ve ona ihtiyaç duyduğumda orada olacağına inanmakta zorlanmam.', kategori: 'guvenli' },
-      { id: 5, metin: 'Partnerimden beklediğim kadar yakınlık görmediğimde kendimi değersiz ve huzursuz hissederim.', kategori: 'kaygili' },
-      { id: 6, metin: 'Bağımsızlığım benim için her türlü yakın ilişkiden daha önemlidir.', kategori: 'kacingan' },
-      { id: 7, metin: 'Partnerimle tartıştığımızda konuyu konuşarak çözebileceğimize inanırım ve kendimi güvende hissederim.', kategori: 'guvenli' },
-      { id: 8, metin: 'Partnerimin beni terk edeceği korkusu zihnimi sık sık meşgul eder.', kategori: 'kaygili' },
-      { id: 9, metin: 'Duygularımı partnerime açmak benim için zordur, genellikle kendi içimde çözmeyi tercih ederim.', kategori: 'kacingan' },
-      { id: 10, metin: 'İlişkimde hem kendime ait bir alanım var hem de partnerimle kaliteli zaman geçirebiliyorum.', kategori: 'guvenli' },
-      { id: 11, metin: 'Partnerimden sürekli onay ve sevgi duymaya ihtiyaç duyuyorum.', kategori: 'kaygili' },
-      { id: 12, metin: 'İlişki çok ciddileşmeye başladığında kendimi geri çekme eğilimi gösteririm.', kategori: 'kacingan' },
-    ],
-    secenekler: [
-      { deger: 3, etiket: 'Kesinlikle Katılıyorum' },
-      { deger: 2, etiket: 'Katılıyorum' },
-      { deger: 1, etiket: 'Biraz Katılıyorum' },
-      { deger: 0, etiket: 'Hiç Katılmıyorum' },
-    ],
-    sonuclar: {
-      guvenli: { baslik: 'Güvenli Bağlanma', aciklama: 'Siz, ilişkilerde yakınlık kurmaktan çekinmeyen, hem kendine hem de partnerine güven duyan bir yapıdasınız. Sorunları açıkça konuşabiliyor ve duygusal sınırlarınızı sağlıklı bir şekilde çizebiliyorsunuz.' },
-      kaygili: { baslik: 'Kaygılı (Saplantılı) Bağlanma', aciklama: 'İlişkilerde yoğun bir yakınlık arayışı içindesiniz ancak bu arayışa sık sık "terk edilme korkusu" eşlik ediyor. Partnerinizin tepkilerini aşırı analiz etme ihtiyacı hissediyor olabilirsiniz.' },
-      kacingan: { baslik: 'Kaçıngan Bağlanma', aciklama: 'Sizin için bağımsızlık ve özgürlük her şeyden önce geliyor. Birisi size duygusal olarak fazla yaklaştığında bunu bir tehdit olarak algılayıp kendinizi geri çekiyor olabilirsiniz.' }
-    }
-  },
-  {
-    slug: 'benlik-saygisi-testi',
-    baslik: 'Benlik Saygısı Testi (Rosenberg)',
-    aciklama: 'Aşağıdaki ifadelerin size ne kadar uyduğunu, kendinizle ilgili genel duygu ve düşüncelerinizi yansıtacak şekilde cevaplayın.',
-    tip: 'puanli',
-    sorular: [
-      { id: 1, metin: 'Kendimi en az diğer insanlar kadar değerli buluyorum.', ters: false },
-      { id: 2, metin: 'Bazı olumlu özelliklerim olduğunu düşünüyorum.', ters: false },
-      { id: 3, metin: 'Genelde kendimi başarısız biri olarak görme eğilimindeyim.', ters: true },
-      { id: 4, metin: 'Ben de diğer insanların birçoğunun yapabildiği kadar bir şeyler yapabilirim.', ters: false },
-      { id: 5, metin: 'Kendimle gurur duyacak pek fazla bir şey bulamıyorum.', ters: true },
-      { id: 6, metin: 'Kendime karşı olumlu bir tutum içindeyim.', ters: false },
-      { id: 7, metin: 'Genel olarak kendimden memnunum.', ters: false },
-      { id: 8, metin: 'Kendime karşı daha fazla saygı duyabilmeyi isterdim.', ters: true },
-      { id: 9, metin: 'Bazen kesinlikle kendimin işe yaramaz biri olduğunu düşünüyorum.', ters: true },
-      { id: 10, metin: 'Bazen hiç de iyi biri olmadığımı düşünüyorum.', ters: true },
-    ],
-    secenekler: [
-      { deger: 0, etiket: 'Kesinlikle Katılmıyorum' },
-      { deger: 1, etiket: 'Katılmıyorum' },
-      { deger: 2, etiket: 'Katılıyorum' },
-      { deger: 3, etiket: 'Kesinlikle Katılıyorum' },
-    ],
-    yorumlar: [
-      { min: 0, max: 14, baslik: 'Düşük Benlik Saygısı', renk: 'error', aciklama: 'Şu anki değerlendirmelerin, kendine verdiğin değerin biraz düşük olduğunu gösteriyor. Kendine karşı oldukça eleştirel yaklaşıyor olabilirsin.' },
-      { min: 15, max: 25, baslik: 'Orta (Sağlıklı) Benlik Saygısı', renk: 'success', aciklama: 'Kendinle barışık, güçlü ve zayıf yönlerini kabul eden bir dengedesin.' },
-      { min: 26, max: 30, baslik: 'Yüksek Benlik Saygısı', renk: 'primary', aciklama: 'Kendine dair algın oldukça olumlu ve güçlü. Yeteneklerine güveniyor ve değerinin farkındasın.' },
-    ]
-  },
-  {
-    slug: 'bes-sevgi-dili-testi',
-    baslik: '5 Sevgi Dili Testi',
-    aciklama: 'Gary Chapman’ın modeline dayanarak, sevginizi ifade etme ve alma biçiminizi keşfedin.',
-    tip: 'kategorili',
-    sorular: [
-      { id: 1, metin: 'Partnerimin/Sevdiklerimin "Bunu çok iyi yaptın" demesi beni çok mutlu eder.', kategori: 'onay' },
-      { id: 2, metin: 'Partnerimin benim yerime bir işi halletmesi (yemek yapmak vb.) beni değerli hissettirir.', kategori: 'hizmet' },
-      { id: 3, metin: 'Küçük de olsa düşünülmüş bir hediye almak sevildiğimi hissettirir.', kategori: 'hediye' },
-      { id: 4, metin: 'Birlikte sadece birbirimize odaklandığımız zamanlar geçirmek benim için kritiktir.', kategori: 'zaman' },
-      { id: 5, metin: 'Yürürken el ele tutuşmak veya sarılmak sevgiyi hissetmemin en temel yoludur.', kategori: 'temas' },
-      { id: 6, metin: 'Takdir edilmek ve güzel sözler duymak motivasyonumu artırır.', kategori: 'onay' },
-      { id: 7, metin: 'Birinin bana yardım teklif etmesi paha biçilemezdir.', kategori: 'hizmet' },
-      { id: 8, metin: 'Özel günler dışında da sürprizlerle karşılaşmaktan hoşlanırım.', kategori: 'hediye' },
-      { id: 9, metin: 'Derin sohbetler etmek sevgi bağımı güçlendirir.', kategori: 'zaman' },
-      { id: 10, metin: 'Fiziksel yakınlık, kelimelerden daha güçlü bir sevgi gösterisidir.', kategori: 'temas' },
-      { id: 11, metin: 'Sevdiğim kişinin başarılarımı fark etmesi benim için çok önemlidir.', kategori: 'onay' },
-      { id: 12, metin: 'Ev işlerinde yardım görmek, bana olan saygının bir ifadesidir.', kategori: 'hizmet' },
-      { id: 13, metin: 'Gezdiğim yerlerden bana ufak bir hatıra getirilmesi beni çok özel hissettirir.', kategori: 'hediye' },
-      { id: 14, metin: 'Göz teması kurarak dinlenilmek bağımızı kuvvetlendirir.', kategori: 'zaman' },
-      { id: 15, metin: 'Sık sık dokunulmak (omuzda bir el, sarılma) güven hissi verir.', kategori: 'temas' },
-    ],
-    secenekler: [
-      { deger: 3, etiket: 'Kesinlikle Beni Yansıtıyor' },
-      { deger: 2, etiket: 'Genelde Böyle Hissederim' },
-      { deger: 1, etiket: 'Nadiren Böyle Hissederim' },
-      { deger: 0, etiket: 'Beni Hiç Yansıtmıyor' },
-    ],
-    sonuclar: {
-      onay: { baslik: 'Onay Sözleri', aciklama: 'Sizin için sevgi kelimelerle inşa edilir. Övgü ve takdir sözleri sizi değerli hissettirir.' },
-      hizmet: { baslik: 'Hizmet Davranışları', aciklama: 'Eylemler sizin için kelimelerden daha değerlidir. Size yardım edilmesi sevginin en somut halidir.' },
-      hediye: { baslik: 'Hediye Alma', aciklama: 'Hediye sizin için sevginin sembolüdür. Düşünülmüş olma fikrine değer verirsiniz.' },
-      zaman: { baslik: 'Kaliteli Zaman', aciklama: 'En büyük hediye, birinin size bölünmemiş dikkatini vermesidir.' },
-      temas: { baslik: 'Fiziksel Temas', aciklama: 'Sevgi dokunmaktır. Sarılmak, el ele tutuşmak gibi yakınlıklar güven hissinizi pekiştirir.' }
-    }
-  },
-  {
-    slug: 'duygusal-zeka-testi',
-    baslik: 'Duygusal Zeka (EQ) Testi',
-    aciklama: 'Daniel Goleman’ın 5 boyutlu modeline dayanarak hazırlanan bu test, duygularınızı yönetme becerinizi ölçer.',
-    tip: 'puanli',
-    sorular: [
-      { id: 1, metin: 'Duygularımın fiziksel etkilerini (çarpıntı vb.) anında fark ederim.', boyut: 'Öz-Farkındalık' },
-      { id: 2, metin: 'Hangi durumlarda özgüvenimin azaldığını net bir şekilde bilirim.', boyut: 'Öz-Farkındalık' },
-      { id: 3, metin: 'Güçlü ve zayıf yönlerimin neler olduğunun bilincindeyimdir.', boyut: 'Öz-Farkındalık' },
-      { id: 4, metin: 'Bir kararı verirken mantığım kadar sezgilerime de güvenirim.', boyut: 'Öz-Farkındalık' },
-      { id: 5, metin: 'Beklenmedik kriz anlarında soğukkanlılığımı koruyabilirim.', boyut: 'Öz-Düzenleme' },
-      { id: 6, metin: 'Tepki vermeden önce durumun sonuçlarını hızlıca düşünürüm.', boyut: 'Öz-Düzenleme' },
-      { id: 7, metin: 'Değişen şartlara ve yeni fikirlere kolayca uyum sağlarım.', boyut: 'Öz-Düzenleme' },
-      { id: 8, metin: 'Dürtülerimi kontrol etmekte başarılıyımdır.', boyut: 'Öz-Düzenleme' },
-      { id: 9, metin: 'Hedeflerime ulaşmak için dışarıdan bir ödül beklemeden kendimi harekete geçirebilirim.', boyut: 'Motivasyon' },
-      { id: 10, metin: 'Zorluklarla karşılaştığımda pes etmek yerine çözüm yolları ararım.', boyut: 'Motivasyon' },
-      { id: 11, metin: 'İşimi sadece yapmak için değil, en iyisini ortaya koymak için yaparım.', boyut: 'Motivasyon' },
-      { id: 12, metin: 'Gelecekteki olaylara dair genellikle iyimser bir bakış açısına sahibimdir.', boyut: 'Motivasyon' },
-      { id: 13, metin: 'Karşımdaki kişinin dile getirmediği duygularını hissedebilirim.', boyut: 'Empati' },
-      { id: 14, metin: 'Başkalarının bakış açısıyla olaylara bakmak benim için doğaldır.', boyut: 'Empati' },
-      { id: 15, metin: 'Farklı kültürlerden veya karakterlerden gelen insanları anlamaya çalışırım.', boyut: 'Empati' },
-      { id: 16, metin: 'Birine yardım etmeden önce onun gerçek ihtiyacının ne olduğunu sezerim.', boyut: 'Empati' },
-      { id: 17, metin: 'İnsanlar arasındaki anlaşmazlıklarda arabuluculuk yapabilirim.', boyut: 'Sosyal Beceriler' },
-      { id: 18, metin: 'Düşüncelerimi başkalarını kırmadan net bir şekilde ifade ederim.', boyut: 'Sosyal Beceriler' },
-      { id: 19, metin: 'Takım çalışmalarında uyumlu ve birleştirici bir rol üstlenirim.', boyut: 'Sosyal Beceriler' },
-      { id: 20, metin: 'Yeni ortamlarda insanlarla kolayca iletişim kurar ve bağ oluştururum.', boyut: 'Sosyal Beceriler' },
-    ],
-    secenekler: [
-      { deger: 4, etiket: 'Her Zaman' },
-      { deger: 3, etiket: 'Sık Sık' },
-      { deger: 2, etiket: 'Bazen' },
-      { deger: 1, etiket: 'Nadiren' },
-      { deger: 0, etiket: 'Hiçbir Zaman' },
-    ],
-    yorumlar: [
-      { min: 61, max: 80, baslik: 'Yüksek Duygusal Zeka', renk: 'success', aciklama: 'Duygusal farkındalığınız ve sosyal becerileriniz mükemmel düzeyde.' },
-      { min: 31, max: 60, baslik: 'Gelişmiş Duygusal Zeka', renk: 'primary', aciklama: 'Duygusal zeka boyutlarında dengeli ve sağlıklı bir grafik çiziyorsunuz.' },
-      { min: 0, max: 30, baslik: 'Potansiyel Gelişim Alanı', renk: 'warning', aciklama: 'Duyguları tanıma ve yönetme konusunda bazen zorluk yaşıyor olabilirsiniz.' },
-    ]
-  },
-  {
-    slug: 'icsel-motivasyon-testi',
-    baslik: 'İçsel Motivasyon Kaynağın Ne?',
-    aciklama: 'Hayattaki ana motivasyonunu ve ruhunun hangi arketipe daha yakın olduğunu keşfet.',
-    tip: 'arketip',
+    slug: "algilanan-stres-testi",
+    baslik: "Algılanan Stres Testi (PSS-10)",
+    aciklama: "Son 1 ayı düşünerek aşağıdaki soruları cevaplayın.",
+    ikon: "Psychology",
+    tip: "puanli",
     sorular: [
       {
         id: 1,
-        metin: 'Yeni bir projeye başlarken sizi en çok ne heyecanlandırır?',
-        secenekler: [
-          { metin: 'Daha önce gidilmemiş yolları keşfetmek.', kategori: 'kasif' },
-          { metin: 'Bu projenin insanlara nasıl yardım edeceği.', kategori: 'yardimsever' },
-          { metin: 'Süreçleri kusursuzca planlamak.', kategori: 'duzenleyici' },
-          { metin: 'Konu hakkında derinlemesine bilgi sahibi olmak.', kategori: 'bilge' },
-          { metin: 'Özgün bir şey ortaya koymak.', kategori: 'yaratici' },
-        ]
+        metin: "Beklenmedik olaylar yüzünden ne kadar stres hissettin?",
+        ters: false,
       },
       {
         id: 2,
-        metin: 'Bir problemle karşılaştığınızda ilk refleksiniz hangisidir?',
-        secenekler: [
-          { metin: 'Yeni bir çözüm yolu ararım.', kategori: 'kasif' },
-          { metin: 'Başkalarının nasıl etkilendiğine bakarım.', kategori: 'yardimsever' },
-          { metin: 'Hemen bir aksiyon planı hazırlarım.', kategori: 'duzenleyici' },
-          { metin: 'Nedenlerini analiz ederim.', kategori: 'bilge' },
-          { metin: 'Alışılmışın dışında bir çözüm geliştiririm.', kategori: 'yaratici' },
-        ]
+        metin:
+          "Hayatındaki önemli şeyleri kontrol edemediğini ne sıklıkla hissettin?",
+        ters: false,
+      },
+      { id: 3, metin: "Gergin ve stresli hissettiğin oldu mu?", ters: false },
+      {
+        id: 4,
+        metin: "Kişisel sorunlarını yönetebildiğini hissettin mi?",
+        ters: true,
+      },
+      { id: 5, metin: "Her şeyin yolunda gittiğini düşündün mü?", ters: true },
+      {
+        id: 6,
+        metin: "Yapman gereken şeylerle başa çıkamadığını hissettin mi?",
+        ters: false,
+      },
+      {
+        id: 7,
+        metin: "Sinir bozucu durumları kontrol edebildiğini hissettin mi?",
+        ters: true,
+      },
+      { id: 8, metin: "İşlerin kontrolünde olduğunu düşündün mü?", ters: true },
+      {
+        id: 9,
+        metin: "Seni kızdıran şeylerle baş edemediğin oldu mu?",
+        ters: false,
+      },
+      {
+        id: 10,
+        metin: "Zorlukların üstesinden gelemediğini düşündün mü?",
+        ters: false,
+      },
+    ],
+    secenekler: [
+      { deger: 0, etiket: "Hiç" },
+      { deger: 1, etiket: "Nadiren" },
+      { deger: 2, etiket: "Bazen" },
+      { deger: 3, etiket: "Oldukça Sık" },
+      { deger: 4, etiket: "Çok Sık" },
+    ],
+    yorumlar: [
+      {
+        min: 0,
+        max: 13,
+        baslik: "Düşük Stres",
+        renk: "success",
+        aciklama:
+          "Hayatındaki stres düzeyin şu an yönetilebilir bir aralıkta. Bu dengeyi korumak için kendinle ilgilenmeye, sınırlarını belirlemeye ve iyi hissettiğin aktivitelere zaman ayırmaya devam et.",
+      },
+      {
+        min: 14,
+        max: 26,
+        baslik: "Orta Stres",
+        renk: "warning",
+        aciklama:
+          "Hayatındaki bazı alanlar seni zorluyor ve stres belirgin bir şekilde hissedilir hale gelmiş. Duygularını ve hayatındaki yükleri birlikte ele almak için profesyonel destek iyi bir başlangıç noktası olabilir.",
+      },
+      {
+        min: 27,
+        max: 40,
+        baslik: "Yüksek Stres",
+        renk: "error",
+        aciklama:
+          "Stres düzeyin oldukça yüksek ve bu durum günlük yaşamını olumsuz etkiliyor olabilir. Yalnız taşımak zorunda değilsin. Bir an önce profesyonel destek almak sana çok şey kazandırabilir.",
+      },
+    ],
+  },
+  {
+    slug: "anksiyete-bozuklugu-testi",
+    baslik: "Anksiyete Bozukluğu Testi (GAD-7)",
+    ikon: "SentimentDissatisfied",
+    aciklama:
+      "Son 2 hafta içerisinde aşağıdaki sorunlardan ne sıklıkla rahatsız oldunuz?",
+    tip: "puanli",
+    sorular: [
+      {
+        id: 1,
+        metin: "Kendimi sinirli, kaygılı veya çok gergin hissetmek.",
+        ters: false,
+      },
+      {
+        id: 2,
+        metin: "Kaygılanmayı durduramamak veya kontrol edememek.",
+        ters: false,
       },
       {
         id: 3,
-        metin: 'Başkaları tarafından nasıl anılmak istersiniz?',
+        metin: "Farklı şeyler hakkında çok fazla kaygılanmak.",
+        ters: false,
+      },
+      { id: 4, metin: "Gevşemekte (rahatlamakta) zorluk çekmek.", ters: false },
+      {
+        id: 5,
+        metin: "O kadar huzursuz olmak ki yerinde duramamak.",
+        ters: false,
+      },
+      { id: 6, metin: "Kolayca kızmak veya çabuk öfkelenmek.", ters: false },
+      {
+        id: 7,
+        metin: "Sanki kötü bir şey olacakmış gibi korku hissetmek.",
+        ters: false,
+      },
+    ],
+    secenekler: [
+      { deger: 0, etiket: "Hiç" },
+      { deger: 1, etiket: "Birkaç Gün" },
+      { deger: 2, etiket: "Günlerin Yarısından Fazlası" },
+      { deger: 3, etiket: "Hemen Hemen Her Gün" },
+    ],
+    yorumlar: [
+      {
+        min: 0,
+        max: 4,
+        baslik: "Minimal Anksiyete",
+        renk: "success",
+        aciklama:
+          "Kaygı düzeyiniz şu an için normal sınırlar içerisinde görünüyor.",
+      },
+      {
+        min: 5,
+        max: 9,
+        baslik: "Hafif Derece Anksiyete",
+        renk: "info",
+        aciklama:
+          "Hafif düzeyde bir kaygı hissediyorsunuz. Profesyonel bir rehberlik almak, durumun ilerlemesini önlemede yardımcı olabilir.",
+      },
+      {
+        min: 10,
+        max: 14,
+        baslik: "Orta Derece Anksiyete",
+        renk: "warning",
+        aciklama:
+          "Belirgin bir kaygı düzeyi yaşıyorsunuz. Bu durum yaşamınızı etkilemeye başlamış olabilir.",
+      },
+      {
+        min: 15,
+        max: 21,
+        baslik: "Şiddetli Anksiyete",
+        renk: "error",
+        aciklama:
+          "Kaygı düzeyiniz oldukça yüksek görünüyor. Bir uzman desteği ile bu süreci yönetmek yaşam kalitenizi artıracaktır.",
+      },
+    ],
+  },
+  {
+    slug: "baglanma-stilleri-testi",
+    baslik: "Bağlanma Stilleri Testi",
+    ikon: "Favorite",
+    aciklama:
+      "İlişkilerinizde partnerinize karşı tutumlarınızı ve yakınlık kurma biçiminizi keşfedin.",
+    tip: "kategorili",
+    sorular: [
+      {
+        id: 1,
+        metin:
+          "Partnerimle duygusal olarak yakın olmaktan ve duygularımı paylaşmaktan rahatlık duyarım.",
+        kategori: "guvenli",
+      },
+      {
+        id: 2,
+        metin:
+          "Partnerimin beni gerçekten sevip sevmediği veya benden uzaklaşıp uzaklaşmadığı konusunda sık sık endişelenirim.",
+        kategori: "kaygili",
+      },
+      {
+        id: 3,
+        metin:
+          "Birisi bana çok yakınlaştığında kendimi boğulmuş hissederim ve mesafe koyma ihtiyacı duyarım.",
+        kategori: "kacingan",
+      },
+      {
+        id: 4,
+        metin:
+          "İlişkilerimde karşı tarafa güvenmekte ve ona ihtiyaç duyduğumda orada olacağına inanmakta zorlanmam.",
+        kategori: "guvenli",
+      },
+      {
+        id: 5,
+        metin:
+          "Partnerimden beklediğim kadar yakınlık görmediğimde kendimi değersiz ve huzursuz hissederim.",
+        kategori: "kaygili",
+      },
+      {
+        id: 6,
+        metin:
+          "Bağımsızlığım benim için her türlü yakın ilişkiden daha önemlidir.",
+        kategori: "kacingan",
+      },
+      {
+        id: 7,
+        metin:
+          "Partnerimle tartıştığımızda konuyu konuşarak çözebileceğimize inanırım ve kendimi güvende hissederim.",
+        kategori: "guvenli",
+      },
+      {
+        id: 8,
+        metin:
+          "Partnerimin beni terk edeceği korkusu zihnimi sık sık meşgul eder.",
+        kategori: "kaygili",
+      },
+      {
+        id: 9,
+        metin:
+          "Duygularımı partnerime açmak benim için zordur, genellikle kendi içimde çözmeyi tercih ederim.",
+        kategori: "kacingan",
+      },
+      {
+        id: 10,
+        metin:
+          "İlişkimde hem kendime ait bir alanım var hem de partnerimle kaliteli zaman geçirebiliyorum.",
+        kategori: "guvenli",
+      },
+      {
+        id: 11,
+        metin: "Partnerimden sürekli onay ve sevgi duymaya ihtiyaç duyuyorum.",
+        kategori: "kaygili",
+      },
+      {
+        id: 12,
+        metin:
+          "İlişki çok ciddileşmeye başladığında kendimi geri çekme eğilimi gösteririm.",
+        kategori: "kacingan",
+      },
+    ],
+    secenekler: [
+      { deger: 3, etiket: "Kesinlikle Katılıyorum" },
+      { deger: 2, etiket: "Katılıyorum" },
+      { deger: 1, etiket: "Biraz Katılıyorum" },
+      { deger: 0, etiket: "Hiç Katılmıyorum" },
+    ],
+    sonuclar: {
+      guvenli: {
+        baslik: "Güvenli Bağlanma",
+        aciklama:
+          "Siz, ilişkilerde yakınlık kurmaktan çekinmeyen, hem kendine hem de partnerine güven duyan bir yapıdasınız. Sorunları açıkça konuşabiliyor ve duygusal sınırlarınızı sağlıklı bir şekilde çizebiliyorsunuz.",
+      },
+      kaygili: {
+        baslik: "Kaygılı (Saplantılı) Bağlanma",
+        aciklama:
+          'İlişkilerde yoğun bir yakınlık arayışı içindesiniz ancak bu arayışa sık sık "terk edilme korkusu" eşlik ediyor. Partnerinizin tepkilerini aşırı analiz etme ihtiyacı hissediyor olabilirsiniz.',
+      },
+      kacingan: {
+        baslik: "Kaçıngan Bağlanma",
+        aciklama:
+          "Sizin için bağımsızlık ve özgürlük her şeyden önce geliyor. Birisi size duygusal olarak fazla yaklaştığında bunu bir tehdit olarak algılayıp kendinizi geri çekiyor olabilirsiniz.",
+      },
+    },
+  },
+  {
+    slug: "benlik-saygisi-testi",
+    baslik: "Benlik Saygısı Testi (Rosenberg)",
+    ikon: "EmojiPeople",
+    aciklama:
+      "Aşağıdaki ifadelerin size ne kadar uyduğunu, kendinizle ilgili genel duygu ve düşüncelerinizi yansıtacak şekilde cevaplayın.",
+    tip: "puanli",
+    sorular: [
+      {
+        id: 1,
+        metin: "Kendimi en az diğer insanlar kadar değerli buluyorum.",
+        ters: false,
+      },
+      {
+        id: 2,
+        metin: "Bazı olumlu özelliklerim olduğunu düşünüyorum.",
+        ters: false,
+      },
+      {
+        id: 3,
+        metin: "Genelde kendimi başarısız biri olarak görme eğilimindeyim.",
+        ters: true,
+      },
+      {
+        id: 4,
+        metin:
+          "Ben de diğer insanların birçoğunun yapabildiği kadar bir şeyler yapabilirim.",
+        ters: false,
+      },
+      {
+        id: 5,
+        metin: "Kendimle gurur duyacak pek fazla bir şey bulamıyorum.",
+        ters: true,
+      },
+      {
+        id: 6,
+        metin: "Kendime karşı olumlu bir tutum içindeyim.",
+        ters: false,
+      },
+      { id: 7, metin: "Genel olarak kendimden memnunum.", ters: false },
+      {
+        id: 8,
+        metin: "Kendime karşı daha fazla saygı duyabilmeyi isterdim.",
+        ters: true,
+      },
+      {
+        id: 9,
+        metin:
+          "Bazen kesinlikle kendimin işe yaramaz biri olduğunu düşünüyorum.",
+        ters: true,
+      },
+      {
+        id: 10,
+        metin: "Bazen hiç de iyi biri olmadığımı düşünüyorum.",
+        ters: true,
+      },
+    ],
+    secenekler: [
+      { deger: 0, etiket: "Kesinlikle Katılmıyorum" },
+      { deger: 1, etiket: "Katılmıyorum" },
+      { deger: 2, etiket: "Katılıyorum" },
+      { deger: 3, etiket: "Kesinlikle Katılıyorum" },
+    ],
+    yorumlar: [
+      {
+        min: 0,
+        max: 14,
+        baslik: "Düşük Benlik Saygısı",
+        renk: "error",
+        aciklama:
+          "Şu anki değerlendirmelerin, kendine verdiğin değerin biraz düşük olduğunu gösteriyor. Kendine karşı oldukça eleştirel yaklaşıyor olabilirsin.",
+      },
+      {
+        min: 15,
+        max: 25,
+        baslik: "Orta (Sağlıklı) Benlik Saygısı",
+        renk: "success",
+        aciklama:
+          "Kendinle barışık, güçlü ve zayıf yönlerini kabul eden bir dengedesin.",
+      },
+      {
+        min: 26,
+        max: 30,
+        baslik: "Yüksek Benlik Saygısı",
+        renk: "primary",
+        aciklama:
+          "Kendine dair algın oldukça olumlu ve güçlü. Yeteneklerine güveniyor ve değerinin farkındasın.",
+      },
+    ],
+  },
+  {
+    slug: "bes-sevgi-dili-testi",
+    baslik: "5 Sevgi Dili Testi",
+    ikon: "VolunteerActivism",
+    aciklama:
+      "Gary Chapman’ın modeline dayanarak, sevginizi ifade etme ve alma biçiminizi keşfedin.",
+    tip: "kategorili",
+    sorular: [
+      {
+        id: 1,
+        metin:
+          'Partnerimin/Sevdiklerimin "Bunu çok iyi yaptın" demesi beni çok mutlu eder.',
+        kategori: "onay",
+      },
+      {
+        id: 2,
+        metin:
+          "Partnerimin benim yerime bir işi halletmesi (yemek yapmak vb.) beni değerli hissettirir.",
+        kategori: "hizmet",
+      },
+      {
+        id: 3,
+        metin:
+          "Küçük de olsa düşünülmüş bir hediye almak sevildiğimi hissettirir.",
+        kategori: "hediye",
+      },
+      {
+        id: 4,
+        metin:
+          "Birlikte sadece birbirimize odaklandığımız zamanlar geçirmek benim için kritiktir.",
+        kategori: "zaman",
+      },
+      {
+        id: 5,
+        metin:
+          "Yürürken el ele tutuşmak veya sarılmak sevgiyi hissetmemin en temel yoludur.",
+        kategori: "temas",
+      },
+      {
+        id: 6,
+        metin: "Takdir edilmek ve güzel sözler duymak motivasyonumu artırır.",
+        kategori: "onay",
+      },
+      {
+        id: 7,
+        metin: "Birinin bana yardım teklif etmesi paha biçilemezdir.",
+        kategori: "hizmet",
+      },
+      {
+        id: 8,
+        metin: "Özel günler dışında da sürprizlerle karşılaşmaktan hoşlanırım.",
+        kategori: "hediye",
+      },
+      {
+        id: 9,
+        metin: "Derin sohbetler etmek sevgi bağımı güçlendirir.",
+        kategori: "zaman",
+      },
+      {
+        id: 10,
+        metin:
+          "Fiziksel yakınlık, kelimelerden daha güçlü bir sevgi gösterisidir.",
+        kategori: "temas",
+      },
+      {
+        id: 11,
+        metin:
+          "Sevdiğim kişinin başarılarımı fark etmesi benim için çok önemlidir.",
+        kategori: "onay",
+      },
+      {
+        id: 12,
+        metin: "Ev işlerinde yardım görmek, bana olan saygının bir ifadesidir.",
+        kategori: "hizmet",
+      },
+      {
+        id: 13,
+        metin:
+          "Gezdiğim yerlerden bana ufak bir hatıra getirilmesi beni çok özel hissettirir.",
+        kategori: "hediye",
+      },
+      {
+        id: 14,
+        metin: "Göz teması kurarak dinlenilmek bağımızı kuvvetlendirir.",
+        kategori: "zaman",
+      },
+      {
+        id: 15,
+        metin: "Sık sık dokunulmak (omuzda bir el, sarılma) güven hissi verir.",
+        kategori: "temas",
+      },
+    ],
+    secenekler: [
+      { deger: 3, etiket: "Kesinlikle Beni Yansıtıyor" },
+      { deger: 2, etiket: "Genelde Böyle Hissederim" },
+      { deger: 1, etiket: "Nadiren Böyle Hissederim" },
+      { deger: 0, etiket: "Beni Hiç Yansıtmıyor" },
+    ],
+    sonuclar: {
+      onay: {
+        baslik: "Onay Sözleri",
+        aciklama:
+          "Sizin için sevgi kelimelerle inşa edilir. Övgü ve takdir sözleri sizi değerli hissettirir.",
+      },
+      hizmet: {
+        baslik: "Hizmet Davranışları",
+        aciklama:
+          "Eylemler sizin için kelimelerden daha değerlidir. Size yardım edilmesi sevginin en somut halidir.",
+      },
+      hediye: {
+        baslik: "Hediye Alma",
+        aciklama:
+          "Hediye sizin için sevginin sembolüdür. Düşünülmüş olma fikrine değer verirsiniz.",
+      },
+      zaman: {
+        baslik: "Kaliteli Zaman",
+        aciklama:
+          "En büyük hediye, birinin size bölünmemiş dikkatini vermesidir.",
+      },
+      temas: {
+        baslik: "Fiziksel Temas",
+        aciklama:
+          "Sevgi dokunmaktır. Sarılmak, el ele tutuşmak gibi yakınlıklar güven hissinizi pekiştirir.",
+      },
+    },
+  },
+  {
+    slug: "duygusal-zeka-testi",
+    baslik: "Duygusal Zeka (EQ) Testi",
+    ikon: "Lightbulb",
+    aciklama:
+      "Daniel Goleman’ın 5 boyutlu modeline dayanarak hazırlanan bu test, duygularınızı yönetme becerinizi ölçer.",
+    tip: "puanli",
+    sorular: [
+      {
+        id: 1,
+        metin:
+          "Duygularımın fiziksel etkilerini (çarpıntı vb.) anında fark ederim.",
+        boyut: "Öz-Farkındalık",
+      },
+      {
+        id: 2,
+        metin:
+          "Hangi durumlarda özgüvenimin azaldığını net bir şekilde bilirim.",
+        boyut: "Öz-Farkındalık",
+      },
+      {
+        id: 3,
+        metin: "Güçlü ve zayıf yönlerimin neler olduğunun bilincindeyimdir.",
+        boyut: "Öz-Farkındalık",
+      },
+      {
+        id: 4,
+        metin: "Bir kararı verirken mantığım kadar sezgilerime de güvenirim.",
+        boyut: "Öz-Farkındalık",
+      },
+      {
+        id: 5,
+        metin: "Beklenmedik kriz anlarında soğukkanlılığımı koruyabilirim.",
+        boyut: "Öz-Düzenleme",
+      },
+      {
+        id: 6,
+        metin: "Tepki vermeden önce durumun sonuçlarını hızlıca düşünürüm.",
+        boyut: "Öz-Düzenleme",
+      },
+      {
+        id: 7,
+        metin: "Değişen şartlara ve yeni fikirlere kolayca uyum sağlarım.",
+        boyut: "Öz-Düzenleme",
+      },
+      {
+        id: 8,
+        metin: "Dürtülerimi kontrol etmekte başarılıyımdır.",
+        boyut: "Öz-Düzenleme",
+      },
+      {
+        id: 9,
+        metin:
+          "Hedeflerime ulaşmak için dışarıdan bir ödül beklemeden kendimi harekete geçirebilirim.",
+        boyut: "Motivasyon",
+      },
+      {
+        id: 10,
+        metin:
+          "Zorluklarla karşılaştığımda pes etmek yerine çözüm yolları ararım.",
+        boyut: "Motivasyon",
+      },
+      {
+        id: 11,
+        metin:
+          "İşimi sadece yapmak için değil, en iyisini ortaya koymak için yaparım.",
+        boyut: "Motivasyon",
+      },
+      {
+        id: 12,
+        metin:
+          "Gelecekteki olaylara dair genellikle iyimser bir bakış açısına sahibimdir.",
+        boyut: "Motivasyon",
+      },
+      {
+        id: 13,
+        metin:
+          "Karşımdaki kişinin dile getirmediği duygularını hissedebilirim.",
+        boyut: "Empati",
+      },
+      {
+        id: 14,
+        metin:
+          "Başkalarının bakış açısıyla olaylara bakmak benim için doğaldır.",
+        boyut: "Empati",
+      },
+      {
+        id: 15,
+        metin:
+          "Farklı kültürlerden veya karakterlerden gelen insanları anlamaya çalışırım.",
+        boyut: "Empati",
+      },
+      {
+        id: 16,
+        metin:
+          "Birine yardım etmeden önce onun gerçek ihtiyacının ne olduğunu sezerim.",
+        boyut: "Empati",
+      },
+      {
+        id: 17,
+        metin: "İnsanlar arasındaki anlaşmazlıklarda arabuluculuk yapabilirim.",
+        boyut: "Sosyal Beceriler",
+      },
+      {
+        id: 18,
+        metin:
+          "Düşüncelerimi başkalarını kırmadan net bir şekilde ifade ederim.",
+        boyut: "Sosyal Beceriler",
+      },
+      {
+        id: 19,
+        metin:
+          "Takım çalışmalarında uyumlu ve birleştirici bir rol üstlenirim.",
+        boyut: "Sosyal Beceriler",
+      },
+      {
+        id: 20,
+        metin:
+          "Yeni ortamlarda insanlarla kolayca iletişim kurar ve bağ oluştururum.",
+        boyut: "Sosyal Beceriler",
+      },
+    ],
+    secenekler: [
+      { deger: 4, etiket: "Her Zaman" },
+      { deger: 3, etiket: "Sık Sık" },
+      { deger: 2, etiket: "Bazen" },
+      { deger: 1, etiket: "Nadiren" },
+      { deger: 0, etiket: "Hiçbir Zaman" },
+    ],
+    yorumlar: [
+      {
+        min: 61,
+        max: 80,
+        baslik: "Yüksek Duygusal Zeka",
+        renk: "success",
+        aciklama:
+          "Duygusal farkındalığınız ve sosyal becerileriniz mükemmel düzeyde.",
+      },
+      {
+        min: 31,
+        max: 60,
+        baslik: "Gelişmiş Duygusal Zeka",
+        renk: "primary",
+        aciklama:
+          "Duygusal zeka boyutlarında dengeli ve sağlıklı bir grafik çiziyorsunuz.",
+      },
+      {
+        min: 0,
+        max: 30,
+        baslik: "Potansiyel Gelişim Alanı",
+        renk: "warning",
+        aciklama:
+          "Duyguları tanıma ve yönetme konusunda bazen zorluk yaşıyor olabilirsiniz.",
+      },
+    ],
+  },
+  {
+    slug: "icsel-motivasyon-testi",
+    baslik: "İçsel Motivasyon Kaynağın Ne?",
+    ikon: "Explore",
+    aciklama:
+      "Hayattaki ana motivasyonunu ve ruhunun hangi arketipe daha yakın olduğunu keşfet.",
+    tip: "arketip",
+    sorular: [
+      {
+        id: 1,
+        metin: "Yeni bir projeye başlarken sizi en çok ne heyecanlandırır?",
         secenekler: [
-          { metin: 'Cesur biri olarak.', kategori: 'kasif' },
-          { metin: 'Şefkatli biri olarak.', kategori: 'yardimsever' },
-          { metin: 'Güçlü ve düzen kuran biri olarak.', kategori: 'duzenleyici' },
-          { metin: 'Bilgili biri olarak.', kategori: 'bilge' },
-          { metin: 'İlham veren biri olarak.', kategori: 'yaratici' },
-        ]
+          {
+            metin: "Daha önce gidilmemiş yolları keşfetmek.",
+            kategori: "kasif",
+          },
+          {
+            metin: "Bu projenin insanlara nasıl yardım edeceği.",
+            kategori: "yardimsever",
+          },
+          { metin: "Süreçleri kusursuzca planlamak.", kategori: "duzenleyici" },
+          {
+            metin: "Konu hakkında derinlemesine bilgi sahibi olmak.",
+            kategori: "bilge",
+          },
+          { metin: "Özgün bir şey ortaya koymak.", kategori: "yaratici" },
+        ],
+      },
+      {
+        id: 2,
+        metin: "Bir problemle karşılaştığınızda ilk refleksiniz hangisidir?",
+        secenekler: [
+          { metin: "Yeni bir çözüm yolu ararım.", kategori: "kasif" },
+          {
+            metin: "Başkalarının nasıl etkilendiğine bakarım.",
+            kategori: "yardimsever",
+          },
+          {
+            metin: "Hemen bir aksiyon planı hazırlarım.",
+            kategori: "duzenleyici",
+          },
+          { metin: "Nedenlerini analiz ederim.", kategori: "bilge" },
+          {
+            metin: "Alışılmışın dışında bir çözüm geliştiririm.",
+            kategori: "yaratici",
+          },
+        ],
+      },
+      {
+        id: 3,
+        metin: "Başkaları tarafından nasıl anılmak istersiniz?",
+        secenekler: [
+          { metin: "Cesur biri olarak.", kategori: "kasif" },
+          { metin: "Şefkatli biri olarak.", kategori: "yardimsever" },
+          {
+            metin: "Güçlü ve düzen kuran biri olarak.",
+            kategori: "duzenleyici",
+          },
+          { metin: "Bilgili biri olarak.", kategori: "bilge" },
+          { metin: "İlham veren biri olarak.", kategori: "yaratici" },
+        ],
       },
       {
         id: 4,
         metin: 'Sizin için "ideal gün" tanımı hangisidir?',
         secenekler: [
-          { metin: 'Hiç gitmediğim bir şehirde kaybolmak.', kategori: 'kasif' },
-          { metin: 'Sevdiklerimle vakit geçirip onlara destek olmak.', kategori: 'yardimsever' },
-          { metin: 'Planladığım her işi tıkır tıkır bitirmek.', kategori: 'duzenleyici' },
-          { metin: 'Yeni bir şey öğrenmek.', kategori: 'bilge' },
-          { metin: 'Bir şeyler tasarlamak veya üretmek.', kategori: 'yaratici' },
-        ]
+          { metin: "Hiç gitmediğim bir şehirde kaybolmak.", kategori: "kasif" },
+          {
+            metin: "Sevdiklerimle vakit geçirip onlara destek olmak.",
+            kategori: "yardimsever",
+          },
+          {
+            metin: "Planladığım her işi tıkır tıkır bitirmek.",
+            kategori: "duzenleyici",
+          },
+          { metin: "Yeni bir şey öğrenmek.", kategori: "bilge" },
+          {
+            metin: "Bir şeyler tasarlamak veya üretmek.",
+            kategori: "yaratici",
+          },
+        ],
       },
       {
         id: 5,
-        metin: 'En büyük korkunuz hangisidir?',
+        metin: "En büyük korkunuz hangisidir?",
         secenekler: [
-          { metin: 'Monotonluk ve hapsolmak.', kategori: 'kasif' },
-          { metin: 'İhtiyaç duyulmamak.', kategori: 'yardimsever' },
-          { metin: 'Kaos ve kontrolü kaybetmek.', kategori: 'duzenleyici' },
-          { metin: 'Cahil kalmak.', kategori: 'bilge' },
-          { metin: 'Sıradanlaşmak.', kategori: 'yaratici' },
-        ]
-      }
+          { metin: "Monotonluk ve hapsolmak.", kategori: "kasif" },
+          { metin: "İhtiyaç duyulmamak.", kategori: "yardimsever" },
+          { metin: "Kaos ve kontrolü kaybetmek.", kategori: "duzenleyici" },
+          { metin: "Cahil kalmak.", kategori: "bilge" },
+          { metin: "Sıradanlaşmak.", kategori: "yaratici" },
+        ],
+      },
     ],
     sonuclar: {
-      kasif: { baslik: 'Siz Bir "Kaşif"siniz!', aciklama: 'Ruhunuz özgürlükten besleniyor. Yeni yerler ve fikirler en büyük yakıtınız.', ikon: '🧭' },
-      yardimsever: { baslik: 'Siz Bir "Yardımsever"siniz!', aciklama: 'Sizin için hayatın anlamı bağ kurmakta gizli. Şefkatinizle dünyayı iyileştiriyorsunuz.', ikon: '🤍' },
-      duzenleyici: { baslik: 'Siz Bir "Düzenleyici"siniz!', aciklama: 'Kaosu düzene çevirmek sizin süper gücünüz. İstikrar sizin için çok önemli.', ikon: '🏛️' },
-      bilge: { baslik: 'Siz Bir "Bilge"siniz!', aciklama: 'Bilgi sizin en büyük tutkunuz. Anlamak ve gerçeğe ulaşmak için yaşıyorsunuz.', ikon: '📜' },
-      yaratici: { baslik: 'Siz Bir "Yaratıcı"sınız!', aciklama: 'Dünyayı olduğu gibi değil, olabileceği gibi görüyorsunuz.', ikon: '🎨' }
-    }
+      kasif: {
+        baslik: 'Siz Bir "Kaşif"siniz!',
+        aciklama:
+          "Ruhunuz özgürlükten besleniyor. Yeni yerler ve fikirler en büyük yakıtınız.",
+        ikon: "🧭",
+      },
+      yardimsever: {
+        baslik: 'Siz Bir "Yardımsever"siniz!',
+        aciklama:
+          "Sizin için hayatın anlamı bağ kurmakta gizli. Şefkatinizle dünyayı iyileştiriyorsunuz.",
+        ikon: "🤍",
+      },
+      duzenleyici: {
+        baslik: 'Siz Bir "Düzenleyici"siniz!',
+        aciklama:
+          "Kaosu düzene çevirmek sizin süper gücünüz. İstikrar sizin için çok önemli.",
+        ikon: "🏛️",
+      },
+      bilge: {
+        baslik: 'Siz Bir "Bilge"siniz!',
+        aciklama:
+          "Bilgi sizin en büyük tutkunuz. Anlamak ve gerçeğe ulaşmak için yaşıyorsunuz.",
+        ikon: "📜",
+      },
+      yaratici: {
+        baslik: 'Siz Bir "Yaratıcı"sınız!',
+        aciklama: "Dünyayı olduğu gibi değil, olabileceği gibi görüyorsunuz.",
+        ikon: "🎨",
+      },
+    },
   },
   {
-    slug: 'kendini-tanima-testi',
-    baslik: 'Kendini Tanıma & Farkındalık Testi',
-    aciklama: 'İçsel dünyanızla ne kadar bağ kurduğunuzu anlamanıza yardımcı olmak için tasarlanmıştır.',
-    tip: 'puanli',
+    slug: "kendini-tanima-testi",
+    baslik: "Kendini Tanıma & Farkındalık Testi",
+    ikon: "SelfImprovement",
+    aciklama:
+      "İçsel dünyanızla ne kadar bağ kurduğunuzu anlamanıza yardımcı olmak için tasarlanmıştır.",
+    tip: "puanli",
     sorular: [
-      { id: 1, metin: 'Bir duygu hissettiğimde bunun altında yatan gerçek nedeni hemen anlayabilirim.' },
-      { id: 2, metin: 'Davranışlarımın çevremdeki insanlar üzerindeki etkisini düzenli olarak düşünürüm.' },
-      { id: 3, metin: 'Hangi temel değerlerin hayatımı yönlendirdiğini net bir şekilde biliyorum.' },
-      { id: 4, metin: 'Zayıf yönlerimi kabul etmekte ve onlar üzerinde çalışmakta zorlanmam.' },
-      { id: 5, metin: 'Zor bir durumla karşılaştığımda kendi tepkilerime de odaklanırım.' },
-      { id: 6, metin: 'Gelecekteki hedeflerim başkalarının beklentilerinden ziyade benim gerçek arzularımı yansıtıyor.' },
-      { id: 7, metin: 'Hangi durumların beni strese soktuğunu önceden kestirebilirim.' },
-      { id: 8, metin: 'Günün sonunda kendi duygu ve düşüncelerimi değerlendirmek için kendime zaman ayırırım.' },
+      {
+        id: 1,
+        metin:
+          "Bir duygu hissettiğimde bunun altında yatan gerçek nedeni hemen anlayabilirim.",
+      },
+      {
+        id: 2,
+        metin:
+          "Davranışlarımın çevremdeki insanlar üzerindeki etkisini düzenli olarak düşünürüm.",
+      },
+      {
+        id: 3,
+        metin:
+          "Hangi temel değerlerin hayatımı yönlendirdiğini net bir şekilde biliyorum.",
+      },
+      {
+        id: 4,
+        metin:
+          "Zayıf yönlerimi kabul etmekte ve onlar üzerinde çalışmakta zorlanmam.",
+      },
+      {
+        id: 5,
+        metin:
+          "Zor bir durumla karşılaştığımda kendi tepkilerime de odaklanırım.",
+      },
+      {
+        id: 6,
+        metin:
+          "Gelecekteki hedeflerim başkalarının beklentilerinden ziyade benim gerçek arzularımı yansıtıyor.",
+      },
+      {
+        id: 7,
+        metin: "Hangi durumların beni strese soktuğunu önceden kestirebilirim.",
+      },
+      {
+        id: 8,
+        metin:
+          "Günün sonunda kendi duygu ve düşüncelerimi değerlendirmek için kendime zaman ayırırım.",
+      },
     ],
     secenekler: [
-      { deger: 4, etiket: 'Her Zaman' },
-      { deger: 3, etiket: 'Sık Sık' },
-      { deger: 2, etiket: 'Bazen' },
-      { deger: 1, etiket: 'Nadiren' },
-      { deger: 0, etiket: 'Hiçbir Zaman' },
+      { deger: 4, etiket: "Her Zaman" },
+      { deger: 3, etiket: "Sık Sık" },
+      { deger: 2, etiket: "Bazen" },
+      { deger: 1, etiket: "Nadiren" },
+      { deger: 0, etiket: "Hiçbir Zaman" },
     ],
     yorumlar: [
-      { min: 25, max: 32, baslik: 'Yüksek Öz-Farkındalık', renk: 'success', aciklama: 'İç dünyanızla oldukça güçlü bir bağınız var.' },
-      { min: 15, max: 24, baslik: 'Gelişmekte Olan Farkındalık', renk: 'primary', aciklama: 'Kendinize dair bir bakış açınız var ancak bazı alanlarda "otomatik pilotta" yaşıyor olabilirsiniz.' },
-      { min: 0, max: 14, baslik: 'İçsel Bakış İhtiyacı', renk: 'warning', aciklama: 'Şu an dış dünyaya odaklanmış durumdasınız ve kendi iç sesinizi duymakta zorlanıyor olabilirsiniz.' },
-    ]
+      {
+        min: 25,
+        max: 32,
+        baslik: "Yüksek Öz-Farkındalık",
+        renk: "success",
+        aciklama: "İç dünyanızla oldukça güçlü bir bağınız var.",
+      },
+      {
+        min: 15,
+        max: 24,
+        baslik: "Gelişmekte Olan Farkındalık",
+        renk: "primary",
+        aciklama:
+          'Kendinize dair bir bakış açınız var ancak bazı alanlarda "otomatik pilotta" yaşıyor olabilirsiniz.',
+      },
+      {
+        min: 0,
+        max: 14,
+        baslik: "İçsel Bakış İhtiyacı",
+        renk: "warning",
+        aciklama:
+          "Şu an dış dünyaya odaklanmış durumdasınız ve kendi iç sesinizi duymakta zorlanıyor olabilirsiniz.",
+      },
+    ],
   },
   {
-    slug: 'oz-sefkat-testi',
-    baslik: 'Öz-Şefkat Testi (SCS)',
-    aciklama: 'Zor zamanlarda kendinize nasıl yaklaştığınızı keşfedin.',
-    tip: 'puanli',
+    slug: "oz-sefkat-testi",
+    baslik: "Öz-Şefkat Testi (SCS)",
+    ikon: "Spa",
+    aciklama: "Zor zamanlarda kendinize nasıl yaklaştığınızı keşfedin.",
+    tip: "puanli",
     sorular: [
-      { id: 1, metin: 'Zor zamanlarımda kendime karşı sabırlı ve anlayışlı olurum.', ters: false },
-      { id: 2, metin: 'İşler yolunda gitmediğinde kusurlarım üzerine çok fazla düşünür ve kendimi suçlarım.', ters: true },
-      { id: 3, metin: 'Acı çektiğimde, diğer insanların da benzer zorluklar yaşadığını kendime hatırlatırım.', ters: false },
-      { id: 4, metin: 'Kendimi kötü hissettiğimde, bu duyguyu olduğundan çok daha büyük ve yıkıcı görmeye meyilliyimdir.', ters: true },
-      { id: 5, metin: 'Hata yaptığımda kendime karşı oldukça sert ve eleştirel bir dil kullanırım.', ters: true },
-      { id: 6, metin: 'Üzgün olduğumda ne hissettiğime sakince odaklanmaya çalışırım.', ters: false },
-      { id: 7, metin: 'Kendimi yetersiz hissettiğimde, bunun çoğu insanın zaman zaman hissettiği bir duygu olduğunu bilirim.', ters: false },
-      { id: 8, metin: 'Hoşlanmadığım yönlerim için kendimi cezalandırmak yerine onları kabul etmeye çalışırım.', ters: false },
-      { id: 9, metin: 'İşler kötü gittiğinde kendimi dünyadan kopmuş ve yalnız hissederim.', ters: true },
-      { id: 10, metin: 'Duygularımı dengeli bir şekilde gözlemlemeye çalışırım.', ters: false },
-      { id: 11, metin: 'Beklentilerimin altında kaldığımda, kendimi diğer insanlardan daha başarısız görürüm.', ters: true },
-      { id: 12, metin: 'Zor bir dönemden geçerken kendime ihtiyaç duyduğum ilgiyi ve şefkati gösteririm.', ters: false },
+      {
+        id: 1,
+        metin: "Zor zamanlarımda kendime karşı sabırlı ve anlayışlı olurum.",
+        ters: false,
+      },
+      {
+        id: 2,
+        metin:
+          "İşler yolunda gitmediğinde kusurlarım üzerine çok fazla düşünür ve kendimi suçlarım.",
+        ters: true,
+      },
+      {
+        id: 3,
+        metin:
+          "Acı çektiğimde, diğer insanların da benzer zorluklar yaşadığını kendime hatırlatırım.",
+        ters: false,
+      },
+      {
+        id: 4,
+        metin:
+          "Kendimi kötü hissettiğimde, bu duyguyu olduğundan çok daha büyük ve yıkıcı görmeye meyilliyimdir.",
+        ters: true,
+      },
+      {
+        id: 5,
+        metin:
+          "Hata yaptığımda kendime karşı oldukça sert ve eleştirel bir dil kullanırım.",
+        ters: true,
+      },
+      {
+        id: 6,
+        metin: "Üzgün olduğumda ne hissettiğime sakince odaklanmaya çalışırım.",
+        ters: false,
+      },
+      {
+        id: 7,
+        metin:
+          "Kendimi yetersiz hissettiğimde, bunun çoğu insanın zaman zaman hissettiği bir duygu olduğunu bilirim.",
+        ters: false,
+      },
+      {
+        id: 8,
+        metin:
+          "Hoşlanmadığım yönlerim için kendimi cezalandırmak yerine onları kabul etmeye çalışırım.",
+        ters: false,
+      },
+      {
+        id: 9,
+        metin:
+          "İşler kötü gittiğinde kendimi dünyadan kopmuş ve yalnız hissederim.",
+        ters: true,
+      },
+      {
+        id: 10,
+        metin: "Duygularımı dengeli bir şekilde gözlemlemeye çalışırım.",
+        ters: false,
+      },
+      {
+        id: 11,
+        metin:
+          "Beklentilerimin altında kaldığımda, kendimi diğer insanlardan daha başarısız görürüm.",
+        ters: true,
+      },
+      {
+        id: 12,
+        metin:
+          "Zor bir dönemden geçerken kendime ihtiyaç duyduğum ilgiyi ve şefkati gösteririm.",
+        ters: false,
+      },
     ],
     secenekler: [
-      { deger: 5, etiket: 'Her Zaman' },
-      { deger: 4, etiket: 'Sık Sık' },
-      { deger: 3, etiket: 'Bazen' },
-      { deger: 2, etiket: 'Nadiren' },
-      { deger: 1, etiket: 'Neredeyse Hiç' },
+      { deger: 5, etiket: "Her Zaman" },
+      { deger: 4, etiket: "Sık Sık" },
+      { deger: 3, etiket: "Bazen" },
+      { deger: 2, etiket: "Nadiren" },
+      { deger: 1, etiket: "Neredeyse Hiç" },
     ],
     yorumlar: [
-      { min: 48, max: 60, baslik: 'Yüksek Öz-Şefkat', renk: 'success', aciklama: 'Kendinize karşı harika bir dost gibi yaklaşıyorsunuz.' },
-      { min: 25, max: 47, baslik: 'Orta Düzey Öz-Şefkat', renk: 'primary', aciklama: 'Zaman zaman kendinize şefkat gösterseniz de, içsel eleştirmeninizin sesine yenik düşebiliyorsunuz.' },
-      { min: 12, max: 24, baslik: 'Düşük Öz-Şefkat', renk: 'error', aciklama: 'Kendinize karşı oldukça katı ve eleştirel bir tutum içindesiniz.' },
-    ]
+      {
+        min: 48,
+        max: 60,
+        baslik: "Yüksek Öz-Şefkat",
+        renk: "success",
+        aciklama: "Kendinize karşı harika bir dost gibi yaklaşıyorsunuz.",
+      },
+      {
+        min: 25,
+        max: 47,
+        baslik: "Orta Düzey Öz-Şefkat",
+        renk: "primary",
+        aciklama:
+          "Zaman zaman kendinize şefkat gösterseniz de, içsel eleştirmeninizin sesine yenik düşebiliyorsunuz.",
+      },
+      {
+        min: 12,
+        max: 24,
+        baslik: "Düşük Öz-Şefkat",
+        renk: "error",
+        aciklama:
+          "Kendinize karşı oldukça katı ve eleştirel bir tutum içindesiniz.",
+      },
+    ],
   },
   {
-    slug: 'sosyal-kaygi-testi',
-    baslik: 'Sosyal Kaygı Testi (LSAS Bazlı)',
-    aciklama: 'Toplum içinde ne kadar endişe hissettiğinizi keşfedin.',
-    tip: 'puanli',
+    slug: "sosyal-kaygi-testi",
+    baslik: "Sosyal Kaygı Testi (LSAS Bazlı)",
+    ikon: "Groups",
+    aciklama: "Toplum içinde ne kadar endişe hissettiğinizi keşfedin.",
+    tip: "puanli",
     sorular: [
-      { id: 1, metin: 'Topluluk önünde bir konuşma yapmak veya bir sunum gerçekleştirmek.' },
-      { id: 2, metin: 'Başkaları sizi izlerken bir şeyler yazmak veya çalışmak.' },
-      { id: 3, metin: 'Tanımadığınız kişilerin olduğu bir odaya girmek.' },
-      { id: 4, metin: 'Restoran gibi halka açık bir yerde yemek yemek.' },
-      { id: 5, metin: 'Yetkili biriyle (patron, öğretmen) yüz yüze konuşmak.' },
-      { id: 6, metin: 'Doğrudan gözlerinin içine bakarak konuşmak.' },
-      { id: 7, metin: 'Bir toplantıda veya sınıfta söz alıp fikrinizi belirtmek.' },
-      { id: 8, metin: 'Komik duruma düştüğünüzde insanların size bakması.' },
-      { id: 9, metin: 'Yeni tanıştığınız biriyle sohbeti devam ettirmeye çalışmak.' },
-      { id: 10, metin: 'Mağazada aldığınız bir ürünü iade etmek için konuşmak.' },
-      { id: 11, metin: 'İlgi odağı olmak.' },
-      { id: 12, metin: 'Başkaları varken telefonla görüşme yapmak.' },
+      {
+        id: 1,
+        metin:
+          "Topluluk önünde bir konuşma yapmak veya bir sunum gerçekleştirmek.",
+      },
+      {
+        id: 2,
+        metin: "Başkaları sizi izlerken bir şeyler yazmak veya çalışmak.",
+      },
+      { id: 3, metin: "Tanımadığınız kişilerin olduğu bir odaya girmek." },
+      { id: 4, metin: "Restoran gibi halka açık bir yerde yemek yemek." },
+      { id: 5, metin: "Yetkili biriyle (patron, öğretmen) yüz yüze konuşmak." },
+      { id: 6, metin: "Doğrudan gözlerinin içine bakarak konuşmak." },
+      {
+        id: 7,
+        metin: "Bir toplantıda veya sınıfta söz alıp fikrinizi belirtmek.",
+      },
+      { id: 8, metin: "Komik duruma düştüğünüzde insanların size bakması." },
+      {
+        id: 9,
+        metin: "Yeni tanıştığınız biriyle sohbeti devam ettirmeye çalışmak.",
+      },
+      {
+        id: 10,
+        metin: "Mağazada aldığınız bir ürünü iade etmek için konuşmak.",
+      },
+      { id: 11, metin: "İlgi odağı olmak." },
+      { id: 12, metin: "Başkaları varken telefonla görüşme yapmak." },
     ],
     secenekler: [
-      { deger: 3, etiket: 'Çok Fazla / Kaçınırım' },
-      { deger: 2, etiket: 'Orta Derece' },
-      { deger: 1, etiket: 'Hafif Derece' },
-      { deger: 0, etiket: 'Hiç Kaygı Duymam' },
+      { deger: 3, etiket: "Çok Fazla / Kaçınırım" },
+      { deger: 2, etiket: "Orta Derece" },
+      { deger: 1, etiket: "Hafif Derece" },
+      { deger: 0, etiket: "Hiç Kaygı Duymam" },
     ],
     yorumlar: [
-      { min: 0, max: 12, baslik: 'Düşük Sosyal Kaygı', renk: 'success', aciklama: 'Sosyal ortamlarda kendinizi oldukça rahat hissediyorsunuz.' },
-      { min: 13, max: 24, baslik: 'Orta Derece Sosyal Kaygı', renk: 'warning', aciklama: 'Belirli sosyal durumlar sizi zorluyor.' },
-      { min: 25, max: 36, baslik: 'Belirgin Sosyal Kaygı (Sosyal Fobi)', renk: 'error', aciklama: 'Sosyal durumlar sizin için oldukça yıpratıcı olabiliyor.' },
-    ]
+      {
+        min: 0,
+        max: 12,
+        baslik: "Düşük Sosyal Kaygı",
+        renk: "success",
+        aciklama: "Sosyal ortamlarda kendinizi oldukça rahat hissediyorsunuz.",
+      },
+      {
+        min: 13,
+        max: 24,
+        baslik: "Orta Derece Sosyal Kaygı",
+        renk: "warning",
+        aciklama: "Belirli sosyal durumlar sizi zorluyor.",
+      },
+      {
+        min: 25,
+        max: 36,
+        baslik: "Belirgin Sosyal Kaygı (Sosyal Fobi)",
+        renk: "error",
+        aciklama: "Sosyal durumlar sizin için oldukça yıpratıcı olabiliyor.",
+      },
+    ],
   },
   {
-    slug: 'uyku-kalitesi-testi',
-    baslik: 'Uyku Kalitesi Testi',
-    aciklama: 'Son 1 ay içerisindeki uyku düzeninizi değerlendirmek için soruları yanıtlayın.',
-    tip: 'puanli',
+    slug: "uyku-kalitesi-testi",
+    baslik: "Uyku Kalitesi Testi",
+    ikon: "Bedtime",
+    aciklama:
+      "Son 1 ay içerisindeki uyku düzeninizi değerlendirmek için soruları yanıtlayın.",
+    tip: "puanli",
     sorular: [
-      { id: 1, metin: 'Genel olarak uyku kalitenizi nasıl değerlendirirsiniz?', ters: false },
-      { id: 2, metin: 'Geceleri uykuya dalmakta ne kadar zorluk çekiyorsunuz?', ters: false },
-      { id: 3, metin: 'Gece yarısı veya sabah erken uyanıp uyumakta zorluk yaşıyor musunuz?', ters: false },
-      { id: 4, metin: 'Gündüzleri işlerinizi yürütmek için gereken enerjiyi bulabiliyor musunuz?', ters: true },
-      { id: 5, metin: 'Sabahları uyandığınızda kendinizi dinlenmiş hissediyor musunuz?', ters: true },
-      { id: 6, metin: 'Uykusuzluk nedeniyle gün içinde huzursuzluk yaşıyor musunuz?', ters: false },
-      { id: 7, metin: 'Haftada kaç kez uykunuzun bölündüğünü hissediyorsunuz?', ters: false },
-      { id: 8, metin: 'Uyku düzeninizin ruh halinizi olumsuz etkilediğini düşünüyor musunuz?', ters: false },
+      {
+        id: 1,
+        metin: "Genel olarak uyku kalitenizi nasıl değerlendirirsiniz?",
+        ters: false,
+      },
+      {
+        id: 2,
+        metin: "Geceleri uykuya dalmakta ne kadar zorluk çekiyorsunuz?",
+        ters: false,
+      },
+      {
+        id: 3,
+        metin:
+          "Gece yarısı veya sabah erken uyanıp uyumakta zorluk yaşıyor musunuz?",
+        ters: false,
+      },
+      {
+        id: 4,
+        metin:
+          "Gündüzleri işlerinizi yürütmek için gereken enerjiyi bulabiliyor musunuz?",
+        ters: true,
+      },
+      {
+        id: 5,
+        metin:
+          "Sabahları uyandığınızda kendinizi dinlenmiş hissediyor musunuz?",
+        ters: true,
+      },
+      {
+        id: 6,
+        metin: "Uykusuzluk nedeniyle gün içinde huzursuzluk yaşıyor musunuz?",
+        ters: false,
+      },
+      {
+        id: 7,
+        metin: "Haftada kaç kez uykunuzun bölündüğünü hissediyorsunuz?",
+        ters: false,
+      },
+      {
+        id: 8,
+        metin:
+          "Uyku düzeninizin ruh halinizi olumsuz etkilediğini düşünüyor musunuz?",
+        ters: false,
+      },
     ],
     secenekler: [
-      { deger: 0, etiket: 'Çok İyi / Hiç' },
-      { deger: 1, etiket: 'İyi / Nadiren' },
-      { deger: 2, etiket: 'Kötü / Bazen' },
-      { deger: 3, etiket: 'Çok Kötü / Sık' },
+      { deger: 0, etiket: "Çok İyi / Hiç" },
+      { deger: 1, etiket: "İyi / Nadiren" },
+      { deger: 2, etiket: "Kötü / Bazen" },
+      { deger: 3, etiket: "Çok Kötü / Sık" },
     ],
     yorumlar: [
-      { min: 0, max: 8, baslik: 'İyi Uyku Kalitesi', renk: 'success', aciklama: 'Uyku kaliteniz oldukça sağlıklı görünüyor.' },
-      { min: 17, max: 24, baslik: 'Düşük Uyku Kalitesi', renk: 'error', aciklama: 'Uyku kaliteniz ciddi anlamda düşmüş görünüyor.' },
-    ]
+      {
+        min: 0,
+        max: 8,
+        baslik: "İyi Uyku Kalitesi",
+        renk: "success",
+        aciklama: "Uyku kaliteniz oldukça sağlıklı görünüyor.",
+      },
+      {
+        min: 17,
+        max: 24,
+        baslik: "Düşük Uyku Kalitesi",
+        renk: "error",
+        aciklama: "Uyku kaliteniz ciddi anlamda düşmüş görünüyor.",
+      },
+    ],
   },
   {
-    slug: 'yasam-doyumu-testi',
-    baslik: 'Yaşam Doyumu Testi (SWLS)',
-    aciklama: 'Hayatınızdan ne ölçüde tatmin olduğunuzu keşfedin.',
-    tip: 'puanli',
+    slug: "yasam-doyumu-testi",
+    baslik: "Yaşam Doyumu Testi (SWLS)",
+    ikon: "StarRate",
+    aciklama: "Hayatınızdan ne ölçüde tatmin olduğunuzu keşfedin.",
+    tip: "puanli",
     sorular: [
-      { id: 1, metin: 'Pek çok açıdan ideallerime yakın bir yaşamım var.' },
-      { id: 2, metin: 'Yaşam koşullarım mükemmel.' },
-      { id: 3, metin: 'Yaşamımdan memnunum.' },
-      { id: 4, metin: 'Şimdiye kadar istediğim önemli şeyleri elde ettim.' },
-      { id: 5, metin: 'Hayatımı bir daha yaşasaydım hiçbir şeyi değiştirmezdim.' },
+      { id: 1, metin: "Pek çok açıdan ideallerime yakın bir yaşamım var." },
+      { id: 2, metin: "Yaşam koşullarım mükemmel." },
+      { id: 3, metin: "Yaşamımdan memnunum." },
+      { id: 4, metin: "Şimdiye kadar istediğim önemli şeyleri elde ettim." },
+      {
+        id: 5,
+        metin: "Hayatımı bir daha yaşasaydım hiçbir şeyi değiştirmezdim.",
+      },
     ],
     secenekler: [
-      { deger: 7, etiket: 'Kesinlikle Katılıyorum' },
-      { deger: 6, etiket: 'Katılıyorum' },
-      { deger: 5, etiket: 'Biraz Katılıyorum' },
-      { deger: 4, etiket: 'Ne Katılıyorum Ne Katılmıyorum' },
-      { deger: 3, etiket: 'Biraz Katılmıyorum' },
-      { deger: 2, etiket: 'Katılmıyorum' },
-      { deger: 1, etiket: 'Kesinlikle Katılmıyorum' },
+      { deger: 7, etiket: "Kesinlikle Katılıyorum" },
+      { deger: 6, etiket: "Katılıyorum" },
+      { deger: 5, etiket: "Biraz Katılıyorum" },
+      { deger: 4, etiket: "Ne Katılıyorum Ne Katılmıyorum" },
+      { deger: 3, etiket: "Biraz Katılmıyorum" },
+      { deger: 2, etiket: "Katılmıyorum" },
+      { deger: 1, etiket: "Kesinlikle Katılmıyorum" },
     ],
     yorumlar: [
-      { min: 31, max: 35, baslik: 'Çok Yüksek Yaşam Doyumu', renk: 'success', aciklama: 'Harika! Hayatınızın her alanında büyük bir memnuniyet içerisindesiniz.' },
-      { min: 21, max: 25, baslik: 'Ortalama Düzeyde Yaşam Doyumu', renk: 'primary', aciklama: 'Yaşamınızdan ne çok memnunsunuz ne de çok şikayetçisiniz.' },
-      { min: 5, max: 14, baslik: 'Çok Düşük Yaşam Doyumu', renk: 'error', aciklama: 'Yaşamınızdan ciddi bir memnuniyetsizlik duyduğunuzu gösteriyor.' },
-    ]
+      {
+        min: 31,
+        max: 35,
+        baslik: "Çok Yüksek Yaşam Doyumu",
+        renk: "success",
+        aciklama:
+          "Harika! Hayatınızın her alanında büyük bir memnuniyet içerisindesiniz.",
+      },
+      {
+        min: 21,
+        max: 25,
+        baslik: "Ortalama Düzeyde Yaşam Doyumu",
+        renk: "primary",
+        aciklama: "Yaşamınızdan ne çok memnunsunuz ne de çok şikayetçisiniz.",
+      },
+      {
+        min: 5,
+        max: 14,
+        baslik: "Çok Düşük Yaşam Doyumu",
+        renk: "error",
+        aciklama:
+          "Yaşamınızdan ciddi bir memnuniyetsizlik duyduğunuzu gösteriyor.",
+      },
+    ],
   },
   {
-    slug: 'zaman-yonetimi-testi',
-    baslik: 'Zaman Yönetimi ve Erteleme Testi',
-    aciklama: 'Günlük görevlerinizi ne kadar verimli yönettiğinizi keşfedin.',
-    tip: 'puanli',
+    slug: "zaman-yonetimi-testi",
+    baslik: "Zaman Yönetimi ve Erteleme Testi",
+    ikon: "Schedule",
+    aciklama: "Günlük görevlerinizi ne kadar verimli yönettiğinizi keşfedin.",
+    tip: "puanli",
     sorular: [
-      { id: 1, metin: 'Son teslim tarihi yaklaşana kadar bir işe başlamakta zorlanırım.', ters: false },
-      { id: 2, metin: 'Günlük yapacaklarımı önem sırasına göre listelerim.', ters: true },
-      { id: 3, metin: 'Dikkatimi dağıtan şeyler yüzünden işlerimi sık sık yarım bırakırım.', ters: false },
-      { id: 4, metin: 'Zor görünen görevleri sürekli yarına erteleme eğilimindeyim.', ters: false },
-      { id: 5, metin: 'Zamanımı planlamak için takvim veya hatırlatıcı kullanırım.', ters: true },
-      { id: 6, metin: 'Bir işe başlamadan önce hazırlık sürecini gereğinden fazla uzatırım.', ters: false },
-      { id: 7, metin: 'Aynı anda çok fazla işle uğraşırken hiçbirini tam bitiremiyorum.', ters: false },
-      { id: 8, metin: 'Günün sonunda işlerin çoğunu bitirmiş olmanın huzurunu yaşarım.', ters: true },
-      { id: 9, metin: 'Önemli işler dururken önemsizlerle vakit kaybetmeyi tercih ederim.', ters: false },
-      { id: 10, metin: 'Beklenmedik bir durumda planlarımı esnetebilirim.', ters: true },
+      {
+        id: 1,
+        metin:
+          "Son teslim tarihi yaklaşana kadar bir işe başlamakta zorlanırım.",
+        ters: false,
+      },
+      {
+        id: 2,
+        metin: "Günlük yapacaklarımı önem sırasına göre listelerim.",
+        ters: true,
+      },
+      {
+        id: 3,
+        metin:
+          "Dikkatimi dağıtan şeyler yüzünden işlerimi sık sık yarım bırakırım.",
+        ters: false,
+      },
+      {
+        id: 4,
+        metin: "Zor görünen görevleri sürekli yarına erteleme eğilimindeyim.",
+        ters: false,
+      },
+      {
+        id: 5,
+        metin: "Zamanımı planlamak için takvim veya hatırlatıcı kullanırım.",
+        ters: true,
+      },
+      {
+        id: 6,
+        metin:
+          "Bir işe başlamadan önce hazırlık sürecini gereğinden fazla uzatırım.",
+        ters: false,
+      },
+      {
+        id: 7,
+        metin:
+          "Aynı anda çok fazla işle uğraşırken hiçbirini tam bitiremiyorum.",
+        ters: false,
+      },
+      {
+        id: 8,
+        metin:
+          "Günün sonunda işlerin çoğunu bitirmiş olmanın huzurunu yaşarım.",
+        ters: true,
+      },
+      {
+        id: 9,
+        metin:
+          "Önemli işler dururken önemsizlerle vakit kaybetmeyi tercih ederim.",
+        ters: false,
+      },
+      {
+        id: 10,
+        metin: "Beklenmedik bir durumda planlarımı esnetebilirim.",
+        ters: true,
+      },
     ],
     secenekler: [
-      { deger: 4, etiket: 'Her Zaman' },
-      { deger: 3, etiket: 'Sık Sık' },
-      { deger: 2, etiket: 'Bazen' },
-      { deger: 1, etiket: 'Nadiren' },
-      { deger: 0, etiket: 'Hiçbir Zaman' },
+      { deger: 4, etiket: "Her Zaman" },
+      { deger: 3, etiket: "Sık Sık" },
+      { deger: 2, etiket: "Bazen" },
+      { deger: 1, etiket: "Nadiren" },
+      { deger: 0, etiket: "Hiçbir Zaman" },
     ],
     yorumlar: [
-      { min: 0, max: 13, baslik: 'Verimli Zaman Yönetimi', renk: 'success', aciklama: 'Zamanınızı oldukça verimli kullanıyorsunuz.' },
-      { min: 14, max: 26, baslik: 'Orta Düzey Erteleme Eğilimi', renk: 'warning', aciklama: 'Bazı durumlarda erteleme alışkanlığınızın kurbanı olabiliyorsunuz.' },
-      { min: 27, max: 40, baslik: 'Yüksek Erteleme Sorunu', renk: 'error', aciklama: 'Erteleme alışkanlığınız hayatınızda ciddi bir stres kaynağı haline gelmiş olabilir.' },
-    ]
-  }
+      {
+        min: 0,
+        max: 13,
+        baslik: "Verimli Zaman Yönetimi",
+        renk: "success",
+        aciklama: "Zamanınızı oldukça verimli kullanıyorsunuz.",
+      },
+      {
+        min: 14,
+        max: 26,
+        baslik: "Orta Düzey Erteleme Eğilimi",
+        renk: "warning",
+        aciklama:
+          "Bazı durumlarda erteleme alışkanlığınızın kurbanı olabiliyorsunuz.",
+      },
+      {
+        min: 27,
+        max: 40,
+        baslik: "Yüksek Erteleme Sorunu",
+        renk: "error",
+        aciklama:
+          "Erteleme alışkanlığınız hayatınızda ciddi bir stres kaynağı haline gelmiş olabilir.",
+      },
+    ],
+  },
 ];

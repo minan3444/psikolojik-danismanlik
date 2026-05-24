@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 // Sanity görsel motoru eklendi
 import { urlFor } from "@/sanity/lib/image";
+import CustomButton from "@/app/shared/customButton";
+import AnimatedFrame from "@/app/shared/AnimatedFrame";
 
 const MotionBox = motion.create(Box);
 
@@ -17,92 +19,61 @@ export default function VakaKarti({ vaka }) {
 
   return (
     // Link bileşeni kartın tamamını sarmalı
-    <Link
-      href={`/vaka-analizleri/${vaka.slug}`}
-      style={{ textDecoration: "none" }}
-    >
-      <MotionBox
-        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+
+    <AnimatedFrame sx={{ borderRadius: 3, overflow: "hidden" }}>
+      {/* Görsel */}
+      <Box
         sx={{
-          borderRadius: 3,
-          overflow: "hidden",
-          bgcolor: "background.paper",
-          border: "1px solid",
-          borderColor: "custom.taupe",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          transition: "all 0.3s ease",
-          cursor: "pointer",
-          "&:hover": {
-            boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
-            borderColor: "primary.light",
-          },
+          height: 200,
+          // imageUrl değişkeni buraya bağlandı
+          backgroundImage: `url('${imageUrl}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
         }}
       >
-        {/* Görsel */}
-        <Box
+        <Chip
+          label={vaka.kategori}
+          size="small"
           sx={{
-            height: 200,
-            // imageUrl değişkeni buraya bağlandı
-            backgroundImage: `url('${imageUrl}')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            position: "relative",
+            position: "absolute",
+            top: 15,
+            left: 15,
+            bgcolor: "primary.main",
+            color: "white",
+          }}
+        />
+      </Box>
+
+      <Box sx={{ p: 3, flexGrow: 1, display: "flex", flexDirection: "column" }}>
+        <Typography
+          variant="h4"
+          sx={{
+            mb: 1,
           }}
         >
-          <Chip
-            label={vaka.kategori}
-            size="small"
-            sx={{
-              position: "absolute",
-              top: 16,
-              left: 16,
-              bgcolor: "primary.main",
-              color: "white",
-              fontWeight: 600,
-            }}
-          />
-        </Box>
+          {vaka.baslik}
+        </Typography>
 
-        <Box
-          sx={{ p: 3, flexGrow: 1, display: "flex", flexDirection: "column" }}
+        <Typography
+          variant="body2"
+          sx={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+            mb: 4,
+          }}
         >
-          <Typography
-            variant="h6"
-            sx={{
-              mb: 1,
-            }}
-          >
-            {vaka.baslik}
-          </Typography>
+          {vaka.ozet}
+        </Typography>
 
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{
-              lineHeight: 1.8,
-              mb: 2,
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {vaka.ozet}
-          </Typography>
-
-          <Box sx={{ mt: "auto" }}>
-            <Button
-              variant="text"
-              color="primary"
-              sx={{ p: 0, fontWeight: 700, fontSize: "0.8rem" }}
-            >
-              DETAYLARI OKU →
-            </Button>
-          </Box>
+        <Box>
+          <CustomButton href={`/vaka-analizleri/${vaka.slug}`}>
+            Detayları Oku →
+          </CustomButton>
         </Box>
-      </MotionBox>
-    </Link>
+      </Box>
+    </AnimatedFrame>
   );
 }

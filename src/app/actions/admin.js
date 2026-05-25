@@ -1,4 +1,3 @@
-//admin.js: Yönetim paneliyle ilgili tüm sunucu tarafı işlemler burada toplanır. Randevu yönetimi, bloklama, tarih/saat güncelleme gibi fonksiyonlar içerir.
 "use server";
 import { supabase } from "@/lib/supabase";
 import { Resend } from "resend";
@@ -26,6 +25,7 @@ export async function updateAppointmentStatus(appointment, newStatus) {
       .from("appointments")
       .update({ status: newStatus })
       .eq("id", appointment.id);
+
     if (error) throw error;
 
     if (newStatus === "onaylandı" || newStatus === "iptal") {
@@ -39,8 +39,9 @@ export async function updateAppointmentStatus(appointment, newStatus) {
             : "Randevu Talebiniz Hakkında",
           html: `<div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;"><h2 style="color: ${isApproved ? "#7C9E87" : "#d32f2f"};">Randevu Talebi Güncellemesi</h2><p>Merhaba <b>${appointment.full_name}</b>,</p><p>${appointment.appointment_date} tarihindeki randevunuzun durumu <b>${newStatus.toUpperCase()}</b> olarak güncellenmiştir.</p><p>Sevgiler.</p></div>`,
         })
-        .catch((e) => console.error("Email gönderilemedi:", e));
+        .catch((e) => console.error("Email gönderilemedi: ", e));
     }
+
     revalidatePath("/yonetim-paneli");
     return { success: true };
   } catch (err) {
@@ -64,6 +65,7 @@ export async function updateAppointmentDateTime(
       .in("status", ["beklemede", "onaylandı"])
       .neq("id", id)
       .maybeSingle();
+
     if (conflict)
       return {
         success: false,
@@ -78,6 +80,7 @@ export async function updateAppointmentDateTime(
         status: "onaylandı",
       })
       .eq("id", id);
+
     if (error) throw error;
 
     await resend.emails
@@ -97,14 +100,22 @@ export async function updateAppointmentDateTime(
   }
 }
 
+// ★★★ TEMİZLENMİŞ FONKSİYON ★★★
 export async function saveBatchBlocks(date, selectedTimes) {
   try {
-    await supabase
+    // Önce o tarihteki TÜM 'bloke' kayıtlarını SİL
+    // Boşluklar temizlendi: "status", "bloke", "appointment_date"
+    const { error: deleteError } = await supabase
       .from("appointments")
       .delete()
       .eq("appointment_date", date)
       .eq("status", "bloke");
-    if (selectedTimes?.length) {
+
+    // Silme işlemi hata verdiyse dur ve hatayı bildir.
+    if (deleteError) throw deleteError;
+
+    // Sadece seçili saatler varsa bunları EKLE
+    if (selectedTimes?.length > 0) {
       const newBlocks = selectedTimes.map((time) => ({
         full_name: "--- SİSTEM BLOKESİ ---",
         email: "admin@seymainan.com",
@@ -114,13 +125,19 @@ export async function saveBatchBlocks(date, selectedTimes) {
         appointment_time: time,
         status: "bloke",
       }));
-      const { error } = await supabase.from("appointments").insert(newBlocks);
-      if (error) throw error;
+
+      const { error: insertError } = await supabase
+        .from("appointments")
+        .insert(newBlocks);
+
+      if (insertError) throw insertError;
     }
+
     revalidatePath("/yonetim-paneli");
     revalidatePath("/randevu");
     return { success: true };
   } catch (err) {
+    console.error("Blok hatası:", err);
     return { success: false, error: err.message };
   }
 }

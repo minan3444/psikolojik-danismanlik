@@ -1,24 +1,16 @@
 "use client";
 
 import { Box } from "@mui/material";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { scrollAnimation } from "@/app/shared/scrollAnimation";
-
-const MotionBox = motion.create(Box);
 
 export default function IletisimProfile() {
   return (
-    <MotionBox
-      variants={scrollAnimation}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+    <Box
       sx={{
         position: "relative",
-        height: { xs: "250px", md: "480px" }, // Esnek yükseklik.yani ekran küçüldüğünde de görselin tamamı gözükür
-        borderRadius: 3, // Görselin köşelerini yuvarlamak için borderRadius ekledik
-        overflow: "hidden", // Görselin taşmasını önlemek için overflow: hidden ekledik
+        height: { xs: "250px", md: "480px" },
+        overflow: "hidden",
+        borderRadius: 3,
       }}
     >
       <Image
@@ -29,6 +21,6 @@ export default function IletisimProfile() {
         sizes="(max-width: 768px) 100vw, 500px"
         style={{ objectFit: "cover" }}
       />
-    </MotionBox>
+    </Box>
   );
 }

@@ -89,7 +89,7 @@ export default function VizyonMisyon() {
         </Box>
 
         {/*Sol grid*/}
-        <Grid container spacing={2} sx={{ alignItems: "center" }}>
+        <Grid container spacing={4} sx={{ alignItems: "center" }}>
           <Grid size={{ xs: 12, md: 7 }}>
             <Typography
               variant="caption"

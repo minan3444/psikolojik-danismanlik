@@ -36,11 +36,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
           {goruntulenecekTestler.map((test, index) => (
             <Grid key={test.slug} size={{ xs: 12, sm: 6, md: 4 }}>
               <TestKarti test={test} index={index} />
-              <CustomButton
-                variant="outlined"
-                fullWidth
-                href={`/testler/${test.slug}`}
-              >
+              <CustomButton fullWidth href={`/testler/${test.slug}`}>
                 Testi Başlat ➜
               </CustomButton>
             </Grid>

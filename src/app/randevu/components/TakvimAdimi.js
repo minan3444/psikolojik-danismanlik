@@ -68,7 +68,6 @@ export default function TakvimAdimi({ onSelect, onBack }) {
         </CustomButton>
 
         <CustomButton
-          variant="contained"
           onClick={() => onSelect(value.toDate())}
           sx={{
             fontSize: { xs: "0.75rem", sm: "0.875rem" },

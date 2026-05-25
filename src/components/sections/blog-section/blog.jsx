@@ -17,14 +17,11 @@ export default function BlogSection({ isFullPage = false, initialData = [] }) {
       }}
     >
       <Container maxWidth="lg">
-        <AnimatedFrame sx={{ borderRadius: 3, overflow: "hidden" }}>
-          <SectionBaslik
-            altBaslik={isFullPage ? null : "BLOG"}
-            baslik={
-              isFullPage ? "Psikolojik Danışma Rehberi" : "Güncel Yazılar"
-            }
-          />
-        </AnimatedFrame>
+        <SectionBaslik
+          altBaslik={isFullPage ? null : "BLOG"}
+          baslik={isFullPage ? "Psikolojik Danışma Rehberi" : "Güncel Yazılar"}
+        />
+
         {isFullPage ? (
           <BlogFilteredContent posts={initialData} />
         ) : (

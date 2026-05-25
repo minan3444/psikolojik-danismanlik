@@ -17,7 +17,7 @@ export default function HeroSection({ maddeler }) {
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
-        <Grid container spacing={3} sx={{ alignItems: "center" }}>
+        <Grid container spacing={4} sx={{ alignItems: "center" }}>
           <HeroProfile />
           <HeroContent maddeler={maddeler} />
         </Grid>

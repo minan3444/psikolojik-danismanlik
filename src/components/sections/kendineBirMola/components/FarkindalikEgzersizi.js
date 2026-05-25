@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button, LinearProgress, Typography } from "@mui/material";
+import { Box, LinearProgress, Typography } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import CustomButton from "@/app/shared/customButton";
 
 const MotionBox = motion.create(Box);
@@ -65,16 +64,15 @@ export default function FarkindalikEgzersizi({ onBitir }) {
             flexWrap: "wrap",
           }}
         >
-          <Button
+          <CustomButton
             variant="outlined"
-            color="primary"
             onClick={sifirla}
-            sx={{ borderRadius: "50px", px: 3, fontWeight: 600 }}
+            sx={{ border: "none" }}
           >
-            Tekrar Yap
-          </Button>
+            🡨 Tekrar Yap
+          </CustomButton>
+
           <CustomButton href="/randevu">
-            {" "}
             Benimle Konuşmak İster misin?
           </CustomButton>
         </Box>
@@ -84,10 +82,10 @@ export default function FarkindalikEgzersizi({ onBitir }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography variant="h5" sx={{ mb: 2 }}>
+      <Typography variant="h3" sx={{ mb: 2 }}>
         5 • 4 • 3 • 2 • 1 Tekniği
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>
+      <Typography variant="body1">
         Duyularını kullanarak şu ana odaklan
       </Typography>
 
@@ -131,10 +129,8 @@ export default function FarkindalikEgzersizi({ onBitir }) {
               width: "100%",
               p: 2,
               borderRadius: 3,
-              border: "2px solid",
+              border: "1px solid",
               borderColor: "custom.taupe",
-              fontFamily: "inherit",
-              fontSize: "1rem",
               resize: "none",
               outline: "none",
               backgroundColor: "rgba(255,255,255,0.8)",
@@ -144,20 +140,9 @@ export default function FarkindalikEgzersizi({ onBitir }) {
             }}
           />
 
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={devamEt}
-            sx={{
-              borderRadius: "50px",
-              px: 4,
-              py: 1.5,
-              fontWeight: 600,
-              color: "white",
-            }}
-          >
+          <CustomButton onClick={devamEt}>
             {adim + 1 >= ADIMLAR.length ? "Tamamla" : "Devam Et ➜"}
-          </Button>
+          </CustomButton>
         </MotionBox>
       </AnimatePresence>
     </Box>

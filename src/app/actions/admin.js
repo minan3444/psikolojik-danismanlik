@@ -1,3 +1,4 @@
+//admin.js: Yönetim paneliyle ilgili tüm sunucu tarafı işlemler burada toplanır. Randevu yönetimi, bloklama, tarih/saat güncelleme gibi fonksiyonlar içerir.
 "use server";
 import { supabase } from "@/lib/supabase";
 import { Resend } from "resend";

@@ -3,7 +3,6 @@
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 
-// Motion ile MUI Box'ı birleştiriyoruz
 const MotionBox = motion.create(Box);
 
 // 🎯 Yön bazlı animasyon üretici

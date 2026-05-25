@@ -7,7 +7,7 @@ export default function IletisimBackground({ children }) {
     <Box
       id="iletisim"
       sx={{
-        p: 3,
+        py: 4,
         position: "relative",
         overflow: "hidden",
       }}

@@ -93,7 +93,6 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
         </CustomButton>
 
         <CustomButton
-          variant="contained"
           disabled={!seciliSaat}
           onClick={() => onSelect(seciliSaat)}
           sx={{

@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import CustomButton from "@/app/shared/customButton";
 
 const MotionBox = motion.create(Box);
@@ -11,7 +10,7 @@ const MotionBox = motion.create(Box);
 const DONGU_SAYISI = 3;
 
 const FASE_METIN = {
-  hazir: { metin: "Başlamaya hazır mısın?", renk: "text.primary" },
+  hazir: { metin: "Başlamaya hazır mısın?" },
   nefesAl: { metin: "Nefes Al...", renk: "primary.main" },
   tut: { metin: "Tut...", renk: "secondary.main" },
   birak: { metin: "Yavaşça Bırak...", renk: "text.secondary" },
@@ -70,10 +69,10 @@ export default function NefesEgzersizi({ onBitir }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Typography variant="h5" sx={{ mb: 2 }}>
+      <Typography variant="h3" sx={{ mb: 2 }}>
         4 • 7 • 8 Nefes Tekniği
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
+      <Typography variant="body1" sx={{ mb: 4 }}>
         4 saniye nefes al → 7 saniye tut → 8 saniye bırak
       </Typography>
 
@@ -84,13 +83,11 @@ export default function NefesEgzersizi({ onBitir }) {
           width: 180,
           height: 180,
           borderRadius: "50%",
-          backgroundColor: "primary.main",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           mx: "auto",
           mb: 4,
-          boxShadow: "0px 8px 30px rgba(124,158,135,0.3)",
         }}
       >
         <Typography
@@ -102,21 +99,12 @@ export default function NefesEgzersizi({ onBitir }) {
       </MotionBox>
 
       {fase !== "hazir" && fase !== "bitti" && (
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+        <Typography variant="body1" sx={{ mb: 2 }}>
           {dongu + 1}. döngü / {DONGU_SAYISI}
         </Typography>
       )}
 
-      {fase === "hazir" && (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={baslat}
-          sx={{ borderRadius: "50px", px: 4, py: 1.5, fontWeight: 600 }}
-        >
-          Başlat
-        </Button>
-      )}
+      {fase === "hazir" && <CustomButton onClick={baslat}>Başlat</CustomButton>}
 
       {fase === "bitti" && (
         <Box
@@ -127,16 +115,15 @@ export default function NefesEgzersizi({ onBitir }) {
             flexWrap: "wrap",
           }}
         >
-          <Button
+          <CustomButton
             variant="outlined"
-            color="primary"
             onClick={sifirla}
-            sx={{ borderRadius: "50px", px: 3, fontWeight: 600 }}
+            sx={{ border: "none" }}
           >
-            Tekrar Yap
-          </Button>
+            🡨 Tekrar Yap
+          </CustomButton>
+
           <CustomButton href="/randevu">
-            {" "}
             Benimle Konuşmak İster misin?
           </CustomButton>
         </Box>

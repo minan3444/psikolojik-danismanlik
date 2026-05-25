@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import CustomButton from "@/app/shared/customButton";
 
 const MotionBox = motion.create(Box);
@@ -49,7 +48,7 @@ export default function DusunceBirakma({ onBitir }) {
                 width: "100%",
                 p: 2,
                 borderRadius: 3,
-                border: "2px solid",
+                border: "1px solid",
                 borderColor: "custom.taupe",
                 fontFamily: "inherit",
                 fontSize: "1rem",
@@ -113,16 +112,16 @@ export default function DusunceBirakma({ onBitir }) {
                   flexWrap: "wrap",
                 }}
               >
-                <Button
+                <CustomButton
                   variant="outlined"
                   color="primary"
                   onClick={sifirla}
-                  sx={{ borderRadius: "50px", px: 3, fontWeight: 600 }}
+                  sx={{ border: "none" }}
                 >
-                  Tekrar Yap
-                </Button>
+                  🡨 Tekrar Yap
+                </CustomButton>
+
                 <CustomButton href="/randevu">
-                  {" "}
                   Benimle Konuşmak İster misin?
                 </CustomButton>
               </Box>

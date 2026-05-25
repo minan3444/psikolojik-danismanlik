@@ -28,9 +28,9 @@ const footerLinks = [
 // Yasal Belgeler
 const legalLinks = [
   { label: "Aydınlatma Metni", href: "/yasal/aydinlatma-metni" },
-  { label: "Kullanım Sözleşmesi", href: "/yasal/kullanim-ve-satis-sozlesmesi" },
-  { label: "Onam Formu", href: "/yasal/danisan-onam-formu" },
-  { label: "Çerez Politikası", href: "/yasal/cerez-politikasi" },
+  { label: "Kullanım Sözleşmesi", href: "/yasal/kullanim-metni" },
+  { label: "Onam Formu", href: "/yasal/onam-metni" },
+  { label: "Çerez Politikası", href: "/yasal/cerez-metni" },
 ];
 
 const ikonlar = {

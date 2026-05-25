@@ -26,20 +26,20 @@ const ONAYLAR = [
     name: "aydinlatmaVeCerez",
     slug: "aydinlatma",
     text: "Aydınlatma Metni",
-    suffix: "'ni okudum ve kabul ediyorum. *",
+    suffix: "'ni okudum ve kabul ediyorum.*",
   },
   {
     name: "onamVeSozlesme",
     slug: "onam",
     text: "Onam Formu",
-    suffix: "'nu okudum ve kabul ediyorum. *",
+    suffix: "'nu okudum ve kabul ediyorum.*",
   },
   {
     name: "acikRiza",
     slug: "acik-riza",
     text: "Açık Rıza Metni",
     prefix: "Verilerimin işlenmesine dair ",
-    suffix: "'ni onaylıyorum. *",
+    suffix: "'ni onaylıyorum.*",
   },
 ];
 
@@ -257,7 +257,6 @@ export default function BilgiAdimi({
               </CustomButton>
               <CustomButton
                 type="submit"
-                variant="contained"
                 disabled={loading}
                 endIcon={loading ? null : <CheckCircleIcon />}
                 sx={{

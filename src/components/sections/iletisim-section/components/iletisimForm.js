@@ -17,17 +17,13 @@ import {
   FormGroup,
   CircularProgress,
 } from "@mui/material";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import { MuiTelInput } from "mui-tel-input";
 import { sendContactEmail } from "@/app/actions/contact";
-import { scrollAnimation } from "@/app/shared/scrollAnimation";
-
-// Sabitler
-const MotionBox = motion.create(Box);
+import CustomButton from "@/app/shared/customButton";
 
 const INPUT_SX = {
   mb: 1,
@@ -52,7 +48,6 @@ const BILGI_KUTULARI = [
   { ikon: AccessTimeOutlinedIcon, t: "Saat", d: "09:00 - 20:00" },
 ];
 
-// Alt Bileşenler
 const BasariBilgisi = ({ onReset }) => (
   <Box sx={{ textAlign: "center", py: 5 }}>
     <Typography variant="h5" color="primary" sx={{ mb: 2 }}>
@@ -67,30 +62,34 @@ const BasariBilgisi = ({ onReset }) => (
   </Box>
 );
 
+//Alttaki 3 pembe kutu
 const BilgiKutusu = ({ ikon: I, t, d }) => (
   <Grid size={{ xs: 4 }}>
     <Box
-      sx={{ textAlign: "center", p: 0.8, borderRadius: 3, bgcolor: "#9e7c93" }}
+      sx={{
+        textAlign: "center",
+        p: 1,
+        borderRadius: 3,
+        bgcolor: "#9e7c93",
+      }}
     >
-      <I sx={{ color: "white", fontSize: 18, mb: 0.2 }} />
+      <I sx={{ color: "white", fontSize: 18 }} />
       <Typography
+        variant="caption"
         sx={{
           color: "white",
-          fontWeight: 700,
-          fontSize: "0.65rem",
           display: "block",
         }}
       >
         {t}
       </Typography>
-      <Typography sx={{ color: "white", fontSize: "0.7rem", opacity: 0.8 }}>
+      <Typography variant="caption" sx={{ color: "white" }}>
         {d}
       </Typography>
     </Box>
   </Grid>
 );
 
-// Ana Bileşen
 export default function IletisimForm({ legalDocs = [] }) {
   const [loading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -115,7 +114,6 @@ export default function IletisimForm({ legalDocs = [] }) {
     </Link>
   );
 
-  // Form
   const {
     register,
     handleSubmit,
@@ -146,15 +144,16 @@ export default function IletisimForm({ legalDocs = [] }) {
     setLoading(false);
   };
 
-  // Onay checkbox listesi
   const onayListesi = [
     {
       name: "aydinlatmaVeCerez",
       req: true,
       label: (
         <>
-          {legalLink("aydinlatma", "Aydınlatma Metni")}'ni ve{" "}
-          {legalLink("cerez", "Çerez Politikası")}'nı okudum. *
+          {legalLink("aydinlatma", "Aydınlatma Metni")}
+          {"'ni ve "}
+          {legalLink("cerez", "Çerez Politikası")}
+          {"'nı okudum. *"}
         </>
       ),
     },
@@ -164,7 +163,8 @@ export default function IletisimForm({ legalDocs = [] }) {
       label: (
         <>
           {legalLink("kullanim", "Kullanım Koşulları")} ve{" "}
-          {legalLink("onam", "Onam Formu")}'nu kabul ediyorum. *
+          {legalLink("onam", "Onam Formu")}
+          {"'nu kabul ediyorum. *"}
         </>
       ),
     },
@@ -174,7 +174,8 @@ export default function IletisimForm({ legalDocs = [] }) {
       label: (
         <>
           Verilerimin işlenmesine dair{" "}
-          {legalLink("acik-riza", "Açık Rıza Metni")}'ni onaylıyorum. *
+          {legalLink("acik-riza", "Açık Rıza Metni")}
+          {"'ni onaylıyorum. *"}
         </>
       ),
     },
@@ -183,8 +184,8 @@ export default function IletisimForm({ legalDocs = [] }) {
       req: false,
       label: (
         <>
-          Bilgilendirme içerikleri için {legalLink("ticari", "İleti Onayı")}{" "}
-          veriyorum. *
+          Bilgilendirme içerikleri için {legalLink("ticari", "İleti Onayı")}
+          {" veriyorum. *"}
         </>
       ),
     },
@@ -192,174 +193,157 @@ export default function IletisimForm({ legalDocs = [] }) {
 
   return (
     <>
-      {/* Form Kartı */}
-      <MotionBox
-        variants={scrollAnimation}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        sx={{
-          p: { xs: 2.5, md: 3 },
-          borderRadius: 3,
-          bgcolor: "rgba(255,255,255,0.5)",
-          backdropFilter: "blur(10px)",
-          border: "1px solid rgba(255,255,255,0.3)",
-          mb: 1,
-        }}
-      >
-        {isSuccess ? (
-          <BasariBilgisi onReset={() => setIsSuccess(false)} />
-        ) : (
-          <Grid
-            container
-            spacing={1.5}
-            component="form"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField
-                fullWidth
-                size="small"
-                label="Ad Soyad *"
-                sx={INPUT_SX}
-                {...register("adSoyad", { required: true, minLength: 3 })}
-                error={!!errors.adSoyad}
-              />
-            </Grid>
+      {isSuccess ? (
+        <BasariBilgisi onReset={() => setIsSuccess(false)} />
+      ) : (
+        <Grid
+          container
+          spacing={1.5}
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <TextField
+              fullWidth
+              size="small"
+              label="Ad Soyad *"
+              sx={INPUT_SX}
+              {...register("adSoyad", { required: true, minLength: 3 })}
+              error={!!errors.adSoyad}
+            />
+          </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField
-                fullWidth
-                size="small"
-                label="E-posta *"
-                sx={INPUT_SX}
-                {...register("email", {
-                  required: true,
-                  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                })}
-                error={!!errors.email}
-                helperText={errors.email ? "Hatalı e-posta" : ""}
-              />
-            </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <TextField
+              fullWidth
+              size="small"
+              label="E-posta *"
+              sx={INPUT_SX}
+              {...register("email", {
+                required: true,
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              })}
+              error={!!errors.email}
+              helperText={errors.email ? "Hatalı e-posta" : ""}
+            />
+          </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Controller
-                name="telefon"
-                control={control}
-                rules={{ required: true, minLength: 9 }}
-                render={({ field }) => (
-                  <MuiTelInput
-                    fullWidth
-                    size="small"
-                    label="Telefon *"
-                    defaultCountry="TR"
-                    forceCallingCode
-                    error={!!errors.telefon}
-                    sx={{
-                      ...INPUT_SX,
-                      "& .MuiOutlinedInput-root": {
-                        ...INPUT_SX["& .MuiOutlinedInput-root"],
-                        paddingLeft: 1,
-                      },
-                    }}
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <FormControl fullWidth size="small" sx={INPUT_SX}>
-                <InputLabel>İletişim Tercihi</InputLabel>
-                <Select
-                  label="İletişim Tercihi"
-                  defaultValue=""
-                  {...register("iletisimTercihi")}
-                  MenuProps={{
-                    disableScrollLock: true,
-                    slotProps: {
-                      paper: {
-                        sx: {
-                          borderRadius: 3,
-                          boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-                        },
-                      },
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Controller
+              name="telefon"
+              control={control}
+              rules={{ required: true, minLength: 9 }}
+              render={({ field }) => (
+                <MuiTelInput
+                  fullWidth
+                  size="small"
+                  label="Telefon *"
+                  defaultCountry="TR"
+                  forceCallingCode
+                  error={!!errors.telefon}
+                  sx={{
+                    ...INPUT_SX,
+                    "& .MuiOutlinedInput-root": {
+                      ...INPUT_SX["& .MuiOutlinedInput-root"],
+                      paddingLeft: 1,
                     },
                   }}
-                >
-                  {ILETISIM_SECENEKLERI.map(({ value, label }) => (
-                    <MenuItem key={value} value={value}>
-                      {label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              <TextField
-                fullWidth
-                label="Mesajınız *"
-                multiline
-                rows={2}
-                sx={INPUT_SX}
-                {...register("mesaj")}
-              />
-            </Grid>
-
-            {/* Onay Checkbox'ları */}
-            <Grid size={{ xs: 12 }}>
-              <FormGroup sx={{ gap: 0.5 }}>
-                {onayListesi.map(({ name, req, label }) => (
-                  <Controller
-                    key={name}
-                    name={name}
-                    control={control}
-                    rules={{ required: req }}
-                    render={({ field }) => (
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            size="small"
-                            sx={{ color: "primary.main" }}
-                            checked={field.value}
-                            onChange={field.onChange}
-                          />
-                        }
-                        label={
-                          <Typography
-                            sx={{ fontSize: "0.7rem", color: "text.secondary" }}
-                          >
-                            {label}
-                          </Typography>
-                        }
-                      />
-                    )}
-                  />
-                ))}
-              </FormGroup>
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                disabled={loading}
-                sx={{ borderRadius: "50px", fontWeight: 700 }}
-              >
-                {loading ? (
-                  <CircularProgress size={24} color="inherit" />
-                ) : (
-                  "MESAJI GÖNDER"
-                )}
-              </Button>
-            </Grid>
+                  {...field}
+                />
+              )}
+            />
           </Grid>
-        )}
-      </MotionBox>
 
-      {/* Bilgi Kutuları */}
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <FormControl fullWidth size="small" sx={INPUT_SX}>
+              <InputLabel>İletişim Tercihi</InputLabel>
+              <Select
+                label="İletişim Tercihi"
+                defaultValue=""
+                {...register("iletisimTercihi")}
+                MenuProps={{
+                  disableScrollLock: true,
+                  slotProps: {
+                    paper: {
+                      sx: {
+                        borderRadius: 3,
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+                      },
+                    },
+                  },
+                }}
+              >
+                {ILETISIM_SECENEKLERI.map(({ value, label }) => (
+                  <MenuItem key={value} value={value}>
+                    {label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            <TextField
+              fullWidth
+              label="Mesajınız *"
+              multiline
+              rows={2}
+              sx={INPUT_SX}
+              {...register("mesaj")}
+            />
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            <FormGroup>
+              {onayListesi.map(({ name, req, label }) => (
+                <Controller
+                  key={name}
+                  name={name}
+                  control={control}
+                  rules={{ required: req }}
+                  render={({ field }) => (
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          size="small"
+                          sx={{ color: "primary.main" }}
+                          checked={field.value}
+                          onChange={field.onChange}
+                        />
+                      }
+                      label={
+                        <Typography
+                          sx={{ fontSize: "0.7rem", color: "text.secondary" }}
+                        >
+                          {label}
+                        </Typography>
+                      }
+                    />
+                  )}
+                />
+              ))}
+            </FormGroup>
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            <CustomButton
+              type="submit"
+              fullWidth
+              disabled={loading}
+              sx={{
+                mb: 2,
+              }}
+            >
+              {loading ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                "MESAJI GÖNDER"
+              )}
+            </CustomButton>
+          </Grid>
+        </Grid>
+      )}
+
       <Grid container spacing={4}>
         {BILGI_KUTULARI.map((item, i) => (
           <BilgiKutusu key={i} {...item} />

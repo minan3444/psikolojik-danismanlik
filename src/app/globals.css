@@ -17,31 +17,6 @@
   --foreground: #171717;
 }
 
-/* 🌙 KOYU TEMA (Dark Mode) - Kullanıcı system dark mode'u açtığında geçerli */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Koyu tema arka plan rengi
-       #0a0a0a = Neredeyse siyah (çok koyu, gözleri yormuyor)
-       Nerde kullanılır: Tüm sayfa tamamının arka planı (dark mode açıkken)
-       Kullanılan yerler:
-         - Gece kullanıcıları için otomatik karartılmış arka plan
-         - Tüm sayfa arka planı karanlık ortamlarda
-         - Footer alanı dahil
-    */
-    --background: #0a0a0a;
-
-    /* Koyu tema yazı rengi (foreground = ön plan)
-       #ededed = Açık gri (neredeyse beyaz, koyu arka planda okunabilir)
-       Nerde kullanılır: Tüm yazı, başlıklar, paragraflar (dark mode'da)
-       Kullanılan yerler:
-         - Navbar yazıları
-         - İçerik yazıları
-         - Footer yazıları
-         - Tüm metinler dark mode'da
-    */
-    --foreground: #ededed;
-  }
-}
 
 html {
   height: 100%;
@@ -85,8 +60,3 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}

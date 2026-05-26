@@ -5,7 +5,7 @@ import SectionBaslik from "@/components/ui/SectionBaslik";
 import CustomButton from "@/app/shared/customButton";
 import maddeler from "@/data/NedenBirlikte-data";
 import AnimatedFrame from "@/app/shared/AnimatedFrame";
-import CardAlani from "../../app/shared/CardAlani";
+import UzmanlikCard from "../../app/shared/UzmanlikCard";
 
 export default function NedenBirlikte() {
   return (
@@ -27,7 +27,7 @@ export default function NedenBirlikte() {
             return (
               <Grid key={madde.id} size={{ xs: 12, md: 4 }}>
                 <AnimatedFrame>
-                  <CardAlani
+                  <UzmanlikCard
                     ikon={madde.ikon}
                     baslik={madde.baslik}
                     aciklama={madde.aciklama}

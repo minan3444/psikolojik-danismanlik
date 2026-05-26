@@ -3,7 +3,7 @@
 import { Box, Card, Typography } from "@mui/material";
 import * as Icons from "@mui/icons-material";
 
-export default function CardAlani({ ikon, baslik, aciklama }) {
+export default function UzmanlikCard({ ikon, baslik, aciklama }) {
   const Ikon = Icons[ikon];
 
   return (

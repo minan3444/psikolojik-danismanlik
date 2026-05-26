@@ -7,7 +7,7 @@ import SelfImprovementOutlinedIcon from "@mui/icons-material/SelfImprovementOutl
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import CustomButton from "@/app/shared/customButton";
-
+import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
 const ikonlar = {
   "on-gorusme": ChatOutlinedIcon,
   "bireysel-terapi": SelfImprovementOutlinedIcon,
@@ -17,15 +17,24 @@ export default function HizmetSecimi({ onSelect }) {
   return (
     <Box sx={{ textAlign: "center" }}>
       {/* Başlık */}
-      <Typography
-        variant="h5"
+      <Box
         sx={{
-          mb: 2,
+          display: "flex",
+          flexDirection: "row",
+          gap: 2,
+          justifyContent: "center",
         }}
       >
-        Lütfen Randevu Türünü Seçiniz 🌿
-      </Typography>
-
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 2,
+          }}
+        >
+          Lütfen Randevu Türünü Seçiniz
+        </Typography>
+        <SpaOutlinedIcon sx={{ color: "primary.main", fontSize: 32 }} />
+      </Box>
       {/* Hizmet kartları */}
       <Stack spacing={2}>
         {hizmetler.map((hizmet) => {

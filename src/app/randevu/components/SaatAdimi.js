@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Box, Typography, Button, Grid, CircularProgress } from "@mui/material";
-
 import { calismaSaatleri } from "@/data/randevu-ayarlari";
 import { getReservedSlots } from "@/app/actions/appointment";
 import dayjs from "dayjs";
@@ -12,6 +11,7 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
   const [loading, setLoading] = useState(true);
   const [doluSaatler, setDoluSaatler] = useState([]);
   const [seciliSaat, setSeciliSaat] = useState("");
+  const now = dayjs();
 
   const tarihKey = dayjs(seciliTarih).format("YYYY-MM-DD");
 
@@ -47,12 +47,17 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
       <Grid container spacing={1.5} sx={{ justifyContent: "center" }}>
         {temelSaatler.map((saat) => {
           const isFull = (doluSaatler || []).some((s) => s.time === saat);
+          const isPast = dayjs(`${tarihKey}T${saat}:00`).isBefore(now);
+          const isDisabled = isFull || isPast;
+
           return (
             <Grid key={saat} size={{ xs: 4, sm: 3, md: 2.4 }}>
               <Button
                 fullWidth
-                disabled={isFull}
-                variant={seciliSaat === saat ? "contained" : "outlined"}
+                disabled={isDisabled}
+                variant={
+                  seciliSaat === saat && !isDisabled ? "contained" : "outlined"
+                }
                 onClick={() => setSeciliSaat(saat)}
                 sx={{
                   borderRadius: "10px",
@@ -61,18 +66,19 @@ export default function SaatAdimi({ seciliTarih, onSelect, onBack }) {
                   textTransform: "none",
                   fontWeight: 600,
                   transition: "0.2s",
-                  color: isFull
+                  color: isDisabled
                     ? "text.disabled"
                     : seciliSaat === saat
                       ? "white"
                       : "text.primary",
-                  borderColor: isFull
+                  borderColor: isDisabled
                     ? "text.disabled"
                     : seciliSaat === saat
                       ? "primary.main"
                       : "custom.taupe",
-                  ...(isFull && {
+                  ...(isDisabled && {
                     textDecoration: "line-through",
+                    cursor: "not-allowed",
                   }),
                 }}
               >

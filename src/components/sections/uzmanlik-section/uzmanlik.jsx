@@ -4,7 +4,7 @@ import { Box, Container, Grid } from "@mui/material";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import uzmanlikAlanlari from "@/data/uzmanlik-alanlari";
 import AnimatedFrame from "@/app/shared/AnimatedFrame";
-import UzmanlikCard from "../../../app/shared/CardAlani";
+import UzmanlikCard from "../../../app/shared/UzmanlikCard";
 
 export default function UzmanlikAlanlari() {
   return (

@@ -3,6 +3,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import Link from "next/link";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
 
 /**
  * BasariEkrani — Randevu talebi iletildikten sonra gösterilen ekran.
@@ -17,9 +18,20 @@ export default function BasariEkrani({ secimler }) {
 
   return (
     <Box sx={{ textAlign: "center", py: 4 }}>
-      <Typography variant="h4" sx={{ color: "primary.main", mb: 2 }}>
-        Talebiniz Alındı 🌿
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          justifyContent: "center",
+          mb: 2,
+        }}
+      >
+        <Typography variant="h4" sx={{ color: "primary.main" }}>
+          Talebiniz Alındı
+        </Typography>
+        <SpaOutlinedIcon sx={{ color: "primary.main", fontSize: 32 }} />
+      </Box>
 
       <Typography variant="body1" sx={{ mb: 4 }}>
         {tarih?.toLocaleDateString("tr-TR")} tarihinde saat {saat} için

@@ -24,6 +24,7 @@ import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import { MuiTelInput } from "mui-tel-input";
 import { sendContactEmail } from "@/app/actions/contact";
 import CustomButton from "@/app/shared/customButton";
+import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
 
 const INPUT_SX = {
   mb: 1,
@@ -50,9 +51,19 @@ const BILGI_KUTULARI = [
 
 const BasariBilgisi = ({ onReset }) => (
   <Box sx={{ textAlign: "center", py: 5 }}>
-    <Typography variant="h5" color="primary" sx={{ mb: 2 }}>
-      Mesajınız İletildi 🌿
-    </Typography>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        justifyContent: "center",
+      }}
+    >
+      <Typography variant="h4" sx={{ color: "primary.main" }}>
+        Mesajınız İletildi
+      </Typography>
+      <SpaOutlinedIcon sx={{ color: "primary.main", fontSize: 32 }} />
+    </Box>
     <Typography color="text.secondary" sx={{ mb: 4 }}>
       En kısa sürede size dönüş yapacağım.
     </Typography>

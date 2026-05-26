@@ -36,7 +36,7 @@ export default function HeroProfile() {
             }}
           >
             <Image
-              src="/images/kopru.jpg"
+              src="/images/profile.jpg"
               fill
               sizes="(max-width: 768px) 100vw, 500px"
               priority

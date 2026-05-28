@@ -1,44 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Psikolojik Danışmanlık Projesi
 
-## Getting Started
+Bu proje, **psikolojik danışmanlık hizmetleri** için oluşturulmuş bir web uygulaması taslağıdır. Next.js ile oluşturulan bu proje, modern web teknolojileri kullanılarak yapılandırılmıştır.
 
-First, run the development server:
+## 🎯 Projenin Amacı
+
+Kullanıcıların psikolojik danışmanlık hizmetleri hakkında bilgi almasını, uygun danışmanlarla iletişim kurabilmesini ve çeşitli terapi seçeneklerini keşfetmesini kolaylaştırmak amaçlanmaktadır.
+
+---
+
+## 🚀 Özellikler
+
+- ✔️ **Danışman Profilleri:** Psikolojik danışmanların yer aldığı detaylı profiller.
+- ✔️ **Randevu Sistemi:** Kullanıcıların kolayca randevu oluşturmasını sağlayan bir arayüz.
+- ✔️ **Özelleştirilebilir Tema:** İçerilen renk ve görünüm ayarlarıyla kullanıcı dostu bir tema.
+- ✔️ **Next.js Altyapısı:** Hızlı, performanslı ve SEO uyumlu bir yapı.
+
+---
+
+## 🛠️ Teknolojiler
+
+Bu projede şu teknolojiler kullanılmıştır:
+
+- **Next.js:** React tabanlı bir framework.
+- **CSS Modules:** Global ve modüler CSS desteği.
+- **Vercel Hosting:** Kolayca dağıtım ve ölçeklenebilir hosting platformu.
+- **Statik ve Dinamik Renk Kodları:** `theme.js` ile bağlantılı.
+
+---
+
+## 🎨 Tasarımı Etkileyen Dosyalar
+
+Projenin tasarım kısmını değiştirmek isterseniz şu dosyalara göz atabilirsiniz:
+
+- **globals.css:** Genel stilleri içerir.
+- **page.module.css:** Özel sayfa stilleri için.
+- **layout.js:** Layout bileşenlerini kontrol eder.
+- **theme.js:** Renk ve tema ayarları.
+- **section JS dosyaları:** Statik renk kodlarının gömülü olduğu alanlar.
+
+---
+
+## 🔧 Başlarken
+
+Projeyi yerel ortamda çalıştırmak için şu adımları izleyin:
+
+### 1. Gerekli Bağımlılıkları Kurun
+
+```bash
+npm install
+# veya
+yarn install
+```
+
+### 2. Geliştirme Sunucusunu Çalıştırın
 
 ```bash
 npm run dev
-# or
+# veya
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Uygulamayı Açın
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açarak uygulamayı görüntüleyebilirsiniz.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌐 Daha Fazla Bilgi
 
-To learn more about Next.js, take a look at the following resources:
+Next.js teknolojisi hakkında bilgi edinmek isterseniz şu kaynaklara göz atabilirsiniz:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Dokümantasyonu](https://nextjs.org/docs)
+- [Next.js Öğrenme Kılavuzu](https://nextjs.org/learn)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ayrıca, [Next.js GitHub deposunda](https://github.com/vercel/next.js) projeyi destekleyebilir veya katkı sağlayabilirsiniz.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Dağıtım
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-Tasarımı Etkileyen Dosyalar:
-globals.css
-page.module.css
-layout.js
-theme.js
-ve section js dosyaları içerisinde yer alan statik renk kodları gömülmüştür.
+Bu uygulamanın dağıtımı için [Vercel](https://vercel.com/) platformu kullanılabilir. Detaylı rehber için [Next.js dağıtım dokümantasyonuna](https://nextjs.org/docs/app/building-your-application/deploying) göz atabilirsiniz.

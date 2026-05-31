@@ -26,7 +26,7 @@ export default function UzmanlikAlanlari() {
         <Grid container spacing={4}>
           {uzmanlikAlanlari.map((alan) => {
             return (
-              <Grid key={alan.id} size={{ xs: 12, md: 3 }}>
+              <Grid key={alan.id} size={{ xs: 12, md: 4 }}>
                 <UzmanlikCard
                   ikon={alan.ikon}
                   baslik={alan.baslik}

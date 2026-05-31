@@ -9,9 +9,9 @@ export default function UzmanlikCard({ ikon, baslik, aciklama }) {
   return (
     <Card
       sx={{
-        height: "vh", //kart yüksekliği
+        height: "40vh", //kart yüksekliği
         borderRadius: 3,
-        p: 2,
+        p: 3,
         backgroundColor: "white",
       }}
     >
@@ -25,6 +25,7 @@ export default function UzmanlikCard({ ikon, baslik, aciklama }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          mb: 2,
         }}
       >
         {Ikon && <Ikon sx={{ fontSize: 30, color: "inherit" }} />}

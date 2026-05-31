@@ -4,59 +4,66 @@
 const uzmanlikAlanlari = [
   {
     id: 1,
-    baslik: "Travma ve EMDR",
+    baslik: "Travma ve Zorlu Yaşam Olayları ",
     ikon: "Psychology",
     aciklama:
-      "Geçmiş yaşantıların bugünkü hayatınıza olan etkilerini EMDR yöntemiyle ele alarak iyileşme sürecine destek oluyorum.",
+      "Geçmişte takılı kalan anıları EMDR ile işleyerek, bugünkü yaşamınız üzerindeki etkilerini azaltmanıza destek oluyorum.",
   },
   {
     id: 2,
-    baslik: "Kaygı ve Panik Bozukluğu",
+    baslik: "Kaygı ve Panik Duygusu",
     ikon: "Air",
     aciklama:
-      "Kaygı ve panik atakların günlük yaşamınıza olan etkisini azaltmak için bilimsel temelli yöntemlerle çalışıyoruz.",
+      "Kaygıyı yalnızca yönetmeye değil, onu besleyen geçmiş deneyimleri EMDR ile işlemeye ve dönüştürmeye odaklanıyoruz.",
   },
   {
     id: 3,
-    baslik: "Depresyon",
+    baslik: "Depresif Ruh Hali ve Motivasyon Kaybı",
     ikon: "WbTwilight",
     aciklama:
-      "Depresif duygu durumunu anlamak ve günlük işlevselliği artırmak için yapılandırılmış bir süreç yürütüyoruz.",
+      "Kendinizi uzun süredir mutsuz, isteksiz veya umutsuz hissediyorsanız, bu duyguların kökenini EMDR ile çalışarak daha dengeli bir yaşam hedefliyoruz.",
   },
   {
     id: 4,
-    baslik: "Obsesif Kompulsif Bozukluk (OKB)",
+    baslik: "Tekrarlayıcı Düşünceler ve Davranış Kalıpları",
     ikon: "Loop",
     aciklama:
-      "Tekrarlayan düşünce ve davranış kalıplarını fark etmek ve yönetmek için birlikte çalışıyoruz.",
+      "Takıntılı düşünce ve davranış kalıplarının kökenine EMDR ile odaklanıyor; zihinsel yükü azaltarak daha esnek ve özgür hissetmenize destek oluyorum.",
   },
   {
     id: 5,
-    baslik: "Fobi ve Korkular",
+    baslik: "Korkular ve Kaçınma Tepkileri",
     ikon: "ShieldOutlined",
     aciklama:
-      "Günlük yaşamı kısıtlayan fobi ve korkularla başa çıkabilmek için etkili terapi yöntemleri uyguluyoruz.",
+      "Sosyal ortamlarda zorlanmanıza neden olan korku ve kaygıları EMDR ile ele alıyor, daha rahat ve özgüvenli hissetmenize destek oluyorum.",
   },
   {
     id: 6,
-    baslik: "İlişki ve Bağlanma Sorunları",
+    baslik: "İlişki Dinamikleri ve Bağlanma Süreçleri",
     ikon: "Favorite",
     aciklama:
-      "İlişki örüntülerini ve bağlanma biçimlerini anlamak, daha sağlıklı ilişkiler kurabilmek için destek sunuyorum.",
+      "İlişkilerinizde tekrar eden sorunların kökenini keşfediyor, ilişkisel yaraları EMDR ile ele alarak daha güvenli ve sağlıklı bağlar kurmanıza destek oluyorum.",
   },
   {
     id: 7,
-    baslik: "Özgüven ve Öz Saygı",
+    baslik: "Öz Değer ve Öz Saygı Gelişimi",
     ikon: "SelfImprovement",
     aciklama:
-      "Kendinizle kurduğunuz ilişkiyi güçlendirmek ve öz saygınızı yeniden inşa etmek için birlikte çalışıyoruz.",
+      "Değersizlik ve yetersizlik hislerini besleyen olumsuz inançları EMDR ile ele alıyor, daha sağlam ve sağlıklı bir öz değer duygusu geliştirmenize destek oluyorum.",
   },
   {
     id: 8,
-    baslik: "Uyku ve Stres Yönetimi",
+    baslik: "Stres Yönetimi ve Uyku Düzeni",
     ikon: "NightlightRound",
     aciklama:
-      "Uyku düzenini bozan stres ve kaygı kaynaklarını ele alarak daha dingin bir yaşam için destek oluyorum.",
+      "Yoğun stresin yarattığı uyku problemleri ve bedensel gerginlikleri çalışıyor, daha dengeli bir yaşam rutini hedefliyoruz.",
+  },
+  {
+    id: 9,
+    baslik: "Öz Şefkat ve Kendine Nezaket",
+    ikon: "Spa",
+    aciklama:
+      "'Hatalı olma' ve 'kusurluluk' algılarını EMDR ile ele alıyor, kendinize daha şefkatli ve kabul edici yaklaşmanıza destek oluyorum.",
   },
 ];
 

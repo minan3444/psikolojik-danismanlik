@@ -82,6 +82,7 @@ const BilgiKutusu = ({ ikon: I, t, d }) => (
         p: 1,
         borderRadius: 3,
         bgcolor: "#9e7c93",
+        height: "100%",
       }}
     >
       <I sx={{ color: "white", fontSize: 18 }} />
@@ -94,7 +95,10 @@ const BilgiKutusu = ({ ikon: I, t, d }) => (
       >
         {t}
       </Typography>
-      <Typography variant="caption" sx={{ color: "white" }}>
+      <Typography
+        variant="caption"
+        sx={{ color: "white", overflowWrap: "break-word", minWidth: 0 }}
+      >
         {d}
       </Typography>
     </Box>
@@ -355,7 +359,7 @@ export default function IletisimForm({ legalDocs = [] }) {
         </Grid>
       )}
 
-      <Grid container spacing={4}>
+      <Grid container spacing={1}>
         {BILGI_KUTULARI.map((item, i) => (
           <BilgiKutusu key={i} {...item} />
         ))}

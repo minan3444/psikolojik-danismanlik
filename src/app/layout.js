@@ -1,18 +1,17 @@
-import { Inter, Playfair_Display, Lora, Montserrat } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Box from "@mui/material/Box";
 import Providers from "./providers";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import StickyRandevuButonu from "@/components/ui/StickyRandevuButonu";
 
-/* 📚 FONTLAR - Google Fonts'tan import edildi */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-/* Playfair Display = Başlıklar için (serif font) */
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -49,6 +48,7 @@ export default function RootLayout({ children }) {
             {children}
           </Box>
           <Footer />
+          <StickyRandevuButonu />
         </Providers>
       </body>
     </html>

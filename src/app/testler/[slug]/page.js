@@ -50,7 +50,11 @@ export default function EvrenselTestMotoru({ params }) {
 
   return (
     <Box
-      sx={{ pt: 14, pb: 10, bgcolor: "background.default", minHeight: "100vh" }}
+      sx={{
+        pt: { xs: 8, md: 10 },
+        bgcolor: "background.default",
+        minHeight: "100vh",
+      }}
     >
       <Container maxWidth="md">
         <Button

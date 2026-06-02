@@ -23,7 +23,13 @@ export default async function VakaDetayPage({ params }) {
   const vaka = await client.fetch(VAKA_DETAY_QUERY, { slug: decodedSlug });
 
   return (
-    <Box sx={{ pt: 10, bgcolor: "background.default", minHeight: "100vh" }}>
+    <Box
+      sx={{
+        pt: { xs: 8, md: 10 },
+        bgcolor: "background.default",
+        minHeight: "100vh",
+      }}
+    >
       <Container maxWidth="md">
         <AppBreadcrumb
           items={[

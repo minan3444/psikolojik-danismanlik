@@ -37,6 +37,7 @@ export default function CustomButton({
         variant="contained"
         size="medium"
         color="primary"
+        onClick={onClick}
         sx={buttonStyles}
         {...props}
       >

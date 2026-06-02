@@ -38,7 +38,7 @@ export default function RandevuPage() {
   return (
     <Box
       sx={{
-        pt: { xs: 10, md: 10 },
+        pt: { xs: 7, md: 10 },
         pb: 10,
       }}
     >
@@ -48,7 +48,7 @@ export default function RandevuPage() {
           <CustomButton
             variant="outlined"
             href="/"
-            sx={{ mb: 1, border: "none", color: "text.secondary" }}
+            sx={{ border: "none", color: "text.secondary" }}
           >
             🡨 Anasayfaya Dön
           </CustomButton>

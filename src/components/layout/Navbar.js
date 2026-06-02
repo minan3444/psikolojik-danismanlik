@@ -151,7 +151,12 @@ export default function Navbar() {
                 </Button>
               ))}
 
-              <CustomButton href="/randevu">Online Randevu Al</CustomButton>
+              <CustomButton
+                href="/randevu"
+                onClick={() => setDrawerOpen(false)}
+              >
+                Online Randevu Al
+              </CustomButton>
             </Box>
 
             {/* Mobil menü ikonu */}
@@ -225,7 +230,9 @@ export default function Navbar() {
             </ListItem>
           ))}
           <ListItem disablePadding sx={{ mt: 3 }}>
-            <CustomButton href="/randevu">Online Randevu Al</CustomButton>
+            <CustomButton href="/randevu" onClick={() => setDrawerOpen(false)}>
+              Online Randevu Al
+            </CustomButton>
           </ListItem>
         </List>
       </Drawer>

@@ -1,4 +1,4 @@
-import { sanityClient } from "@/lib/sanity";
+import { sanityClient } from "@/sanity/lib/client";
 
 export default async function sitemap() {
   const baseUrl = "https://www.seymainan.com";

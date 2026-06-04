@@ -15,9 +15,8 @@ export default function IletisimProfile() {
     >
       <Image
         src="/images/iletisim.jpg"
-        alt="İletişim"
+        alt="Psikolojik Danışman Şeyma İnan İletişim - Online Danışmanlık Randevu"
         fill
-        priority
         sizes="(max-width: 768px) 100vw, 500px"
         style={{ objectFit: "cover" }}
       />

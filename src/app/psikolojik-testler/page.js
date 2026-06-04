@@ -33,7 +33,7 @@ export default function TestlerPage() {
           </Typography>
         </Box>
 
-        <Grid container spacing={4} sx={{ alignItems: "stretch" }}>
+        <Grid container spacing={4} sx={{ alignItems: "stretch", mb: 6 }}>
           {tumTestler.map((test, index) => (
             <Grid
               key={test.slug}
@@ -42,7 +42,7 @@ export default function TestlerPage() {
             >
               <TestKarti test={test} index={index} />
               <CustomButton
-                href={`/testler/${test.slug}`}
+                href={`/psikolojik-testler/${test.slug}`}
                 fullWidth
                 color="white"
               >

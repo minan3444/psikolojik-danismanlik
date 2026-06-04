@@ -45,7 +45,12 @@ const ILETISIM_SECENEKLERI = [
 
 const BILGI_KUTULARI = [
   { ikon: LocationOnOutlinedIcon, t: "Konum", d: "Online" },
-  { ikon: EmailOutlinedIcon, t: "E-posta", d: "pdseymainan@gmail.com" },
+  {
+    ikon: EmailOutlinedIcon,
+    t: "E-posta",
+    d: "pdseymainan@gmail.com",
+    href: "mailto:pdseymainan@gmail.com",
+  },
   { ikon: AccessTimeOutlinedIcon, t: "Saat", d: "09:00 - 20:00" },
 ];
 
@@ -73,8 +78,7 @@ const BasariBilgisi = ({ onReset }) => (
   </Box>
 );
 
-//Alttaki 3 pembe kutu
-const BilgiKutusu = ({ ikon: I, t, d }) => (
+const BilgiKutusu = ({ ikon: I, t, d, href }) => (
   <Grid size={{ xs: 4 }}>
     <Box
       sx={{
@@ -85,26 +89,44 @@ const BilgiKutusu = ({ ikon: I, t, d }) => (
         height: "100%",
       }}
     >
-      <I sx={{ color: "white", fontSize: 18 }} />
+      <I sx={{ color: "white", fontSize: 18 }} aria-hidden="true" />
+
+      {/* Başlığı h3 olarak işaretliyoruz (Başlık Hiyerarşisi için) */}
       <Typography
         variant="caption"
-        sx={{
-          color: "white",
-          display: "block",
-        }}
+        sx={{ color: "white", display: "block", fontWeight: "bold" }}
+        component="h3"
       >
         {t}
       </Typography>
-      <Typography
-        variant="caption"
-        sx={{ color: "white", overflowWrap: "break-word", minWidth: 0 }}
-      >
-        {d}
-      </Typography>
+
+      {/* Eğer href varsa link yap, yoksa düz metin bas */}
+      {href ? (
+        <Typography
+          variant="caption"
+          component="a"
+          href={href}
+          sx={{
+            color: "white",
+            overflowWrap: "break-word",
+            minWidth: 0,
+            textDecoration: "none",
+            "&:hover": { textDecoration: "underline" },
+          }}
+        >
+          {d}
+        </Typography>
+      ) : (
+        <Typography
+          variant="caption"
+          sx={{ color: "white", overflowWrap: "break-word", minWidth: 0 }}
+        >
+          {d}
+        </Typography>
+      )}
     </Box>
   </Grid>
 );
-
 export default function IletisimForm({ legalDocs = [] }) {
   const [loading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

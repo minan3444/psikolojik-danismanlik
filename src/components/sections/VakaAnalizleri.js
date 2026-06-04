@@ -37,26 +37,22 @@ export default function VakaAnalizleri({
         <SectionBaslik
           altBaslik={isFullPage ? null : "VAKA ANALİZLERİ"}
           baslik={
-            isFullPage ? (
-              "Gerçek Hikayeler, Gerçek Dönüşümler"
-            ) : (
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center", // Yatayda ortalar
-                  gap: { xs: 1, md: 2 }, // Mobilde dar, masaüstünde geniş boşluk
-                  width: "100%", // Tüm genişliği kapla ki merkezleyebilsin
-                  flexWrap: "wrap", // Mobilde sığmazsa aşağı kaysın (bozulmasın)
-                }}
-              >
-                <span>Vaka</span>
-                <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
-                <span>Süreç</span>
-                <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
-                <span>Kazanım</span>
-              </Box>
-            )
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center", // Yatayda ortalar
+                gap: { xs: 1, md: 2 }, // Mobilde dar, masaüstünde geniş boşluk
+                width: "100%", // Tüm genişliği kapla ki merkezleyebilsin
+                flexWrap: "wrap", // Mobilde sığmazsa aşağı kaysın (bozulmasın)
+              }}
+            >
+              <span>Vaka</span>
+              <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
+              <span>Süreç</span>
+              <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
+              <span>Kazanım</span>
+            </Box>
           }
         />
         {isFullPage && (

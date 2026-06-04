@@ -59,7 +59,7 @@ export default function EvrenselTestMotoru({ params }) {
       <Container maxWidth="md">
         <Button
           component={Link}
-          href="/testler"
+          href="/psikolojik-testler"
           sx={{ mb: 1, color: "text.secondary", fontWeight: 500 }}
         >
           🡨 Tüm Testler

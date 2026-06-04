@@ -7,7 +7,7 @@ import { VAKALAR_QUERY } from "@/sanity/lib/queries";
 import AppBreadcrumb from "../shared/Appbreadcrumb";
 
 export const metadata = {
-  title: "Vaka Analizleri | Psikolog Şeyma İnan",
+  title: "Vaka Analizleri | Psikolojik Danışman Şeyma İnan",
   description:
     "Gerçek danışan hikayeleri ve terapi süreçleri. Tüm vakalar gizlilik ilkesi kapsamında anonim olarak paylaşılmaktadır.",
 };

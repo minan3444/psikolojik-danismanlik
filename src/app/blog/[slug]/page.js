@@ -9,12 +9,84 @@ import VakaBlogIletisimeGecme from "@/app/shared/VakaBlogIletisimeGecme";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
+  const yazi = await client.fetch(BLOG_POST_QUERY, { slug: decodedSlug });
 
-  // SEO için metadata verisini Sanity'den çekiyoruz
-  const yazi = await client.fetch(BLOG_POST_QUERY, { slug });
+  if (!yazi) {
+    return {
+      title: "Blog Yazısı Bulunamadı",
+      robots: { index: false, follow: false },
+    };
+  }
 
-  return { title: `${yazi?.baslik} | Blog` };
+  const yaziUrl = `/blog/${decodedSlug}`;
+  const gorselUrl = yazi.gorsel ? urlFor(yazi.gorsel).url() : undefined;
+
+  return {
+    title: yazi.baslik,
+    description:
+      yazi.ozet ||
+      `${yazi.baslik} - Şeyma İnan ile psikoloji, terapi ve kişisel gelişim üzerine detaylı blog yazısı.`,
+    keywords: [
+      yazi.kategori,
+      yazi.baslik,
+      "psikoloji blog",
+      "terapi yazıları",
+      "ruhsal sağlık",
+      "kişisel gelişim",
+      "Şeyma İnan blog",
+      "online psikolojik danışmanlık",
+      "EMDR terapisi",
+      `${yazi.kategori.toLowerCase()} terapisi`,
+    ],
+    authors: [{ name: "Şeyma İnan", url: "https://www.seymainan.com" }],
+    creator: "Şeyma İnan",
+    publisher: "Şeyma İnan Psikolojik Danışmanlık",
+
+    openGraph: {
+      title: yazi.baslik,
+      description:
+        yazi.ozet ||
+        `${yazi.baslik} - Psikoloji ve ruh sağlığı üzerine uzman yazısı.`,
+      url: yaziUrl,
+      type: "article",
+      publishedTime: yazi.tarih,
+      modifiedTime: yazi._updatedAt,
+      authors: ["Şeyma İnan"],
+      section: yazi.kategori,
+      tags: [yazi.kategori, "psikoloji", "terapi", "ruh sağlığı"],
+      images: gorselUrl
+        ? [
+            {
+              url: gorselUrl,
+              width: 1200,
+              height: 630,
+              alt: yazi.baslik,
+            },
+          ]
+        : [],
+    },
+
+    alternates: {
+      canonical: yaziUrl,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+
+    category: yazi.kategori,
+  };
 }
+
+export const revalidate = 3600;
 
 export default async function BlogDetayPage({ params }) {
   const { slug } = await params;
@@ -30,14 +102,51 @@ export default async function BlogDetayPage({ params }) {
       </Typography>
     );
 
-  // SEO için Article Schema
+  // SEO için Article Schema (Zenginleştirildi)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: yazi.baslik,
+    description:
+      yazi.ozet ||
+      `${yazi.baslik} - Psikoloji ve ruh sağlığı üzerine uzman blog yazısı.`,
     image: yazi.gorsel ? urlFor(yazi.gorsel).url() : "",
     datePublished: yazi.tarih,
-    author: { "@type": "Person", name: "Şeyma İnan" },
+    dateModified: yazi._updatedAt || yazi.tarih,
+    author: {
+      "@type": "Person",
+      name: "Şeyma İnan",
+      url: "https://www.seymainan.com/hakkimda",
+      jobTitle: "Psikolojik Danışman & EMDR Terapisti",
+      sameAs: [
+        "https://www.instagram.com/pd.seymainan",
+        "https://www.linkedin.com/in/%C5%9Feyma-inan-2481651a4",
+        "https://www.doktortakvimi.com/seyma-inan/psikolojik-danisma-ve-rehberlik/maltepe",
+      ],
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Şeyma İnan Psikolojik Danışmanlık",
+      url: "https://www.seymainan.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.seymainan.com/logo.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.seymainan.com/blog/${decodedSlug}`,
+    },
+    articleSection: yazi.kategori,
+    keywords: [
+      yazi.kategori,
+      "psikoloji",
+      "terapi",
+      "ruh sağlığı",
+      "EMDR",
+    ].join(", "),
+    inLanguage: "tr-TR",
+    isAccessibleForFree: "True",
   };
 
   return (

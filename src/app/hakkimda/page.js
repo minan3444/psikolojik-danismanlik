@@ -13,11 +13,90 @@ import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined
 import { client } from "@/sanity/lib/client";
 import { HAKKIMDA_QUERY } from "@/sanity/lib/queries";
 
+// SEO Metadata
+// SEO Metadata
 export const metadata = {
-  title: "Hakkımda | Psikolojik Danışman Şeyma İnan",
+  title: "Hakkımda",
+
   description:
-    "Yıldız Teknik Üniversitesi mezunu, EMDR ve BDT uzmanı Şeyma İnan hakkında detaylı biyografi, eğitim ve iş tecrübesi.",
-  alternates: { canonical: "/hakkimda" },
+    "Yıldız Teknik Üniversitesi PDR mezunu, EMDR ve BDT sertifikalı psikolojik danışman Şeyma İnan. Çocukluk travmaları, kaygı, depresyon ve ilişki sorunlarında online terapi. Yüksek lisans uzmanlığı ile profesyonel destek.",
+
+  keywords: [
+    // Ana Meslek ve Hizmet (Yüksek Aranma Hacmi)
+    "psikolojik danışman",
+    "online psikolog",
+    "psikolojik danışmanlık",
+    "online terapi",
+    "online psikolojik danışmanlık",
+
+    // Uzmanlık Yöntemleri (Orta-Yüksek Hacim)
+    "EMDR terapisi",
+    "EMDR sertifikalı psikolog",
+    "BDT terapisi",
+    "bilişsel davranışçı terapi",
+    "travma terapisi",
+    "kaygı terapisi",
+    "depresyon terapisi",
+    "ilişki terapisi",
+    "bağlanma terapisi",
+    "öz güven terapisi",
+    "stres yönetimi",
+
+    // Eğitim ve Kurum (Güven Oluşturucu)
+    "Yıldız Teknik Üniversitesi psikoloji",
+    "YTÜ PDR mezunu",
+    "psikolojik danışmanlık yüksek lisans",
+    "akademik psikolog",
+
+    // Çalışma Alanları (Spesifik Aramalar)
+    "çocukluk travması terapisi",
+    "travma uzmanı psikolog",
+    "kaygı terapisti",
+    "depresyon tedavisi",
+    "ilişki sorunları terapisi",
+    "yetişkin terapisi",
+    "öz şefkat terapisi",
+
+    "İstanbul psikolog",
+    "Kartal psikolog",
+    "Bakırköy psikolog",
+    "online psikolog Türkiye",
+    "yurtdışı Türk psikolog",
+
+    // Kalite Göstergeleri
+    "yüksek onur derecesi psikolog",
+    "deneyimli psikolojik danışman",
+    "uzman psikolog",
+  ],
+
+  openGraph: {
+    title: "Hakkımda | Şeyma İnan",
+    description:
+      "Yıldız Teknik Üniversitesi PDR mezunu, EMDR ve BDT sertifikalı psikolojik danışman. Çocukluk travmaları ve kaygı uzmanı.",
+    url: "/hakkimda",
+    type: "profile",
+    images: [
+      {
+        url: "/images/profile.jpg",
+        width: 800,
+        height: 1000,
+        alt: "Şeyma İnan - Psikolojik Danışman ve EMDR Terapisti",
+      },
+    ],
+  },
+
+  alternates: {
+    canonical: "/hakkimda",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  authors: [{ name: "Şeyma İnan" }],
+  creator: "Şeyma İnan",
+  publisher: "Şeyma İnan Psikolojik Danışmanlık",
 };
 // Canlı veri tazeleme
 export const revalidate = 0;
@@ -25,15 +104,61 @@ export const revalidate = 0;
 export default async function HakkimdaPage() {
   const data = await client.fetch(HAKKIMDA_QUERY);
 
-  // SEO için Person Schema (Dinamik hale getirildi).seo için kalsın
+  // Zenginleştirilmiş Person Schema
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: data.isim,
-    jobTitle: data.unvan,
-    alumniOf: "Yıldız Teknik Üniversitesi",
-    description: data.ozgecmis?.[0] || "",
-    image: "/images/profile.jpg",
+    name: data.isim || "Şeyma İnan",
+    jobTitle: data.unvan || "Psikolojik Danışman",
+    description:
+      data.ozgecmis?.[0] || "Online psikolojik danışman ve EMDR terapisti",
+    image: "https://www.seymainan.com/images/profile.jpg",
+    url: "https://www.seymainan.com/hakkimda",
+
+    sameAs: [
+      "https://www.instagram.com/pd.seymainan",
+      "https://www.linkedin.com/in/%C5%9Feyma-inan-2481651a4",
+      "https://www.doktortakvimi.com/seyma-inan/psikolojik-danisma-ve-rehberlik/maltepe",
+    ],
+
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Yıldız Teknik Üniversitesi",
+    },
+
+    worksFor: {
+      "@type": "Organization",
+      name: "Şeyma İnan Psikolojik Danışmanlık",
+      url: "https://www.seymainan.com",
+    },
+
+    address: {
+      "@type": "PostalAddress",
+      postalCode: "34876",
+      addressLocality: "Maltepe",
+      addressRegion: "İstanbul",
+      addressCountry: "TR",
+    },
+
+    knowsAbout: [
+      "EMDR Terapisi",
+      "Travma Sonrası Stres Bozukluğu",
+      "Kaygı Bozuklukları",
+      "Panik Atak",
+      "Depresyon",
+      "OKB",
+      "İlişki Sorunları",
+      "Bağlanma Sorunları",
+      "Öz Güven",
+      "Stres Yönetimi",
+    ],
+
+    hasCredential:
+      data.egitimler?.map((egitim) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: egitim.baslik,
+        description: egitim.detay,
+      })) || [],
   };
 
   return (

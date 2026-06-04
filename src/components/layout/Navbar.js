@@ -26,7 +26,7 @@ const MotionAppBar = motion.create(AppBar);
 
 const navLinks = [
   // { label: 'Terapiler', href: '/terapiler' },
-  { label: "Psikolojik Testler", href: "/testler" },
+  { label: "Psikolojik Testler", href: "/psikolojik-testler" },
   { label: "Vaka Analizleri", href: "/vaka-analizleri" },
   { label: "Blog", href: "/blog" },
   { label: "İletişim", href: "/iletisim" },

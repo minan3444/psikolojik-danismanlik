@@ -7,7 +7,7 @@ const nextConfig = {
     }
     return config;
   },
-  turbopack: {}, // bunu eklemeyi unutmayın, aksi takdirde Turbopack hatası alırsınız
+  turbopack: {},
   images: {
     remotePatterns: [
       {
@@ -15,6 +15,10 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
+  },
+  // ✅ YENİ EKLENDİ: Build zamanını environment variable olarak kaydet
+  env: {
+    buildTime: new Date().toISOString(),
   },
 };
 

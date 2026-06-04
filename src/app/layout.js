@@ -5,6 +5,8 @@ import Providers from "./providers";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyRandevuButonu from "@/components/ui/StickyRandevuButonu";
+import StickyWhatsAppButonu from "@/components/ui/StickyWhatsAppButonu";
+import ChatBot from "@/components/ui/ChatBot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,36 +21,74 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://www.seymainan.com"),
+
   title: {
     default: "Şeyma İnan | Psikolojik Danışman",
-    template: "%s | Şeyma İnan",
+    template: "%s | Şeyma İnan Psikolojik Danışmanlık",
   },
+
   description:
-    "Online psikolojik danışmanlık hizmeti. EMDR yöntemi ile güvenli ve yargısız bir alan.",
-  keywords: [
-    "psikolojik danışmanlık",
-    "online psikolojik danışma",
-    "online terapi",
-    "EMDR",
-    "kaygı",
-    "stres",
-    "travma",
-  ],
+    "Online psikolojik danışmanlık ve EMDR terapisi hizmetleri. Travma, kaygı, depresyon ve ilişki sorunlarında profesyonel destek.",
+
   authors: [{ name: "Şeyma İnan" }],
   creator: "Şeyma İnan",
+  publisher: "Şeyma İnan Psikolojik Danışmanlık",
+
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+
+  openGraph: {
+    siteName: "Şeyma İnan Psikolojik Danışmanlık",
+    locale: "tr_TR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Şeyma İnan - Online Psikolojik Danışmanlık",
+      },
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  alternates: {
+    canonical: "./",
+  },
+
+  category: "Sağlık ve Wellness",
+  language: "Turkish",
+  distribution: "global",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="tr">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="tr" className={`${inter.variable} ${playfair.variable}`}>
+      <body>
         <Providers>
           <Navbar />
-          <Box component="main" sx={{ p: 1 }}>
+          <Box component="main" sx={{ minHeight: "100vh" }}>
             {children}
           </Box>
           <Footer />
           <StickyRandevuButonu />
+          <StickyWhatsAppButonu />
+          <ChatBot />
         </Providers>
       </body>
     </html>

@@ -22,7 +22,7 @@ export default function StickyRandevuButonu() {
         zIndex: 1200,
         bgcolor: "primary.main",
         color: "white",
-        px: 0.5,
+        px: 2,
         py: 0.5,
         borderRadius: "8px 8px 0 0",
         fontWeight: 700,

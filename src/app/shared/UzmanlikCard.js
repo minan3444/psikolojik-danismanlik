@@ -9,7 +9,9 @@ export default function UzmanlikCard({ ikon, baslik, aciklama }) {
   return (
     <Card
       sx={{
-        height: "40vh", //kart yüksekliği
+        // Sadece bu iki satır değişti: Sabit vh yerine esnek minHeight ve height verdik
+        minHeight: "320px",
+        height: "100%",
         borderRadius: 3,
         p: 3,
         backgroundColor: "white",
@@ -28,7 +30,7 @@ export default function UzmanlikCard({ ikon, baslik, aciklama }) {
           mb: 2,
         }}
       >
-        {Ikon && <Ikon sx={{ fontSize: 30, color: "inherit" }} />}
+        {Ikon && <Ikon sx={{ fontSize: 30, color: "primary.main" }} />}
       </Box>
 
       <Typography

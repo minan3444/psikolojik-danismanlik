@@ -4,7 +4,7 @@ import { Box, Container, Grid, Typography, Button, Chip } from "@mui/material";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import { tumTestler } from "@/data/testler-data";
 import CustomButton from "@/app/shared/customButton";
-import TestKarti from "@/app/testler/components/TestKarti";
+import TestKarti from "@/app/psikolojik-testler/components/TestKarti";
 
 export default function PsikolojikTestler({ isFullPage = false }) {
   const goruntulenecekTestler = isFullPage
@@ -36,7 +36,7 @@ export default function PsikolojikTestler({ isFullPage = false }) {
           {goruntulenecekTestler.map((test, index) => (
             <Grid key={test.slug} size={{ xs: 12, sm: 6, md: 4 }}>
               <TestKarti test={test} index={index} />
-              <CustomButton fullWidth href={`/testler/${test.slug}`}>
+              <CustomButton fullWidth href={`/psikolojik-testler/${test.slug}`}>
                 Testi Başlat ➜
               </CustomButton>
             </Grid>
@@ -44,7 +44,9 @@ export default function PsikolojikTestler({ isFullPage = false }) {
         </Grid>
         {!isFullPage && (
           <Box sx={{ mt: 10, textAlign: "center" }}>
-            <CustomButton href="/testler">Tüm Testleri Gör ➜</CustomButton>
+            <CustomButton href="/psikolojik-testler">
+              Tüm Testleri Gör ➜
+            </CustomButton>
           </Box>
         )}
       </Container>

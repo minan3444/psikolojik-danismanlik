@@ -19,7 +19,7 @@ import sosyalMedya from "@/data/sosyal-medya";
 // Footer linkleri
 const footerLinks = [
   //{ label: 'Terapiler', href: '/terapiler' },
-  { label: "Psikolojik Testler", href: "/testler" },
+  { label: "Psikolojik Testler", href: "/psikolojik-testler" },
   { label: "Vaka Analizleri", href: "/vaka-analizleri" },
   { label: "Blog", href: "/blog" },
   { label: "İletişim", href: "/iletisim" },

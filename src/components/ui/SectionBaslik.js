@@ -1,6 +1,12 @@
 import { Box, Typography } from "@mui/material";
 
-export default function SectionBaslik({ baslik, altBaslik, merkez = true }) {
+// component prop'unu ekledik, varsayılan değeri "h2"
+export default function SectionBaslik({
+  baslik,
+  altBaslik,
+  merkez = true,
+  component = "h2",
+}) {
   return (
     <Box sx={{ mb: 3, textAlign: merkez ? "center" : "left" }}>
       {altBaslik && (
@@ -13,7 +19,12 @@ export default function SectionBaslik({ baslik, altBaslik, merkez = true }) {
           {altBaslik}
         </Typography>
       )}
-      <Typography variant="h2">{baslik}</Typography>
+
+      {/* component prop'u ile HTML etiketini, variant ile görsel boyutu belirliyoruz */}
+      <Typography component={component} variant="h2">
+        {baslik}
+      </Typography>
+
       {/* Dekoratif çizgi */}
       <Box
         sx={{

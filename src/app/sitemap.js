@@ -1,4 +1,4 @@
-import { sanityClient } from "@/sanity/lib/client";
+import { client } from "@/sanity/lib/client";
 
 export default async function sitemap() {
   const baseUrl = "https://www.seymainan.com";
@@ -7,10 +7,10 @@ export default async function sitemap() {
   const statikSayfaTarihi = new Date(process.env.buildTime);
 
   // Dinamik sayfalar (Sanity'den)
-  const blogYazilari = await sanityClient.fetch(
+  const blogYazilari = await client.fetch(
     `*[_type == "blog"] { "slug": slug.current, _updatedAt }`,
   );
-  const vakalar = await sanityClient.fetch(
+  const vakalar = await client.fetch(
     `*[_type == "vaka"] { "slug": slug.current, _updatedAt }`,
   );
 

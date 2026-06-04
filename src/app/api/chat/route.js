@@ -1,6 +1,48 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
+// ─── IP BAZLI RATE LIMITER ────────────────────────────────────────────────────
+// Sunucu bellekte tutulur; serverless restart olursa sıfırlanır (ücretsiz çözüm)
+const ipRequestMap = new Map(); // { ip: { count, resetAt } }
+
+const RATE_LIMIT = {
+  MAX_REQUESTS: 15,          // Bir IP'nin sorgulayabileceği maksimum mesaj sayısı
+  WINDOW_MS: 60 * 60 * 1000, // Zaman penceresi: 1 saat (ms cinsinden)
+  MAX_MSG_LENGTH: 500,        // Kullanıcının gönderebileceği maksimum karakter
+};
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const entry = ipRequestMap.get(ip);
+
+  // Zaman penceresi geçmişse sıfırla
+  if (!entry || now > entry.resetAt) {
+    ipRequestMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT.WINDOW_MS });
+    return { allowed: true };
+  }
+
+  // Limit aşıldı mı?
+  if (entry.count >= RATE_LIMIT.MAX_REQUESTS) {
+    const remainingMs = entry.resetAt - now;
+    const remainingMin = Math.ceil(remainingMs / 60000);
+    return { allowed: false, remainingMin };
+  }
+
+  // Sayacı artır
+  entry.count += 1;
+  ipRequestMap.set(ip, entry);
+  return { allowed: true };
+}
+
+// Bellek sızıntısını önlemek için eski girişleri temizle (her 10 dakikada bir)
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of ipRequestMap.entries()) {
+    if (now > entry.resetAt) ipRequestMap.delete(ip);
+  }
+}, 10 * 60 * 1000);
+// ─────────────────────────────────────────────────────────────────────────────
+
 export async function POST(req) {
   try {
     const apiKey = process.env.GOOGLE_AI_API_KEY;
@@ -13,38 +55,63 @@ export async function POST(req) {
       );
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
+    // ── IP tespiti ──────────────────────────────────────────────────────────
+    const forwarded = req.headers.get("x-forwarded-for");
+    const ip = forwarded ? forwarded.split(",")[0].trim() : "unknown";
+
+    // ── Rate limit kontrolü ─────────────────────────────────────────────────
+    const { allowed, remainingMin } = checkRateLimit(ip);
+    if (!allowed) {
+      return NextResponse.json(
+        {
+          error: `Saatlik mesaj limitine ulaştınız. ${remainingMin} dakika sonra tekrar deneyebilir ya da doğrudan 0531 257 4578 numaralı WhatsApp hattımızdan bize ulaşabilirsiniz.`,
+        },
+        { status: 429 },
+      );
+    }
+
+    // ── Mesaj validasyonu ───────────────────────────────────────────────────
     const { message, history } = await req.json();
 
     if (!message || typeof message !== "string" || message.trim() === "") {
       return NextResponse.json({ error: "Geçersiz mesaj" }, { status: 400 });
     }
 
+    if (message.length > RATE_LIMIT.MAX_MSG_LENGTH) {
+      return NextResponse.json(
+        { error: `Mesajınız çok uzun. Lütfen ${RATE_LIMIT.MAX_MSG_LENGTH} karakterin altında yazın.` },
+        { status: 400 },
+      );
+    }
+
+    // ── AI Modeli ───────────────────────────────────────────────────────────
+    const genAI = new GoogleGenerativeAI(apiKey);
+
     const systemInstruction = `Sen Şeyma İnan'ın psikolojik danışmanlık ofisinde çalışan dijital ve profesyonel bir asistansın.
 Görevlerin şunlardır:
 1. Ziyaretçileri sıcak, empatik ve yargılamayan bir dille karşılamak.
-2. Ziyaretçileri web sitesindeki doğru hizmetlere (Bireysel Terapi, EMDR, Çift Terapisi vb.) veya randevu alma / iletişim sayfasına yönlendirmek.
-3. Seans süreleri, online/yüz yüze çalışma durumları gibi temel ofis bilgilerini vermek.
+2. Ziyaretçileri web sitesindeki doğru hizmetlere (Bireysel Terapi, EMDR, Çift Terapisi vb.) veya randevu alma sayfasına yönlendirmek.
+3. Seans süreleri gibi temel ofis bilgilerini vermek.
 
 KESİN KURALLAR (BUNLARI ASLA İHLAL ETME):
+- MAKSİMUM 1-2 CÜMLE KULLAN: Kullanıcıyı yorma, çok kısa, net ve öz cevaplar ver. Asla uzun paragraflar yazma. Jeton (token) tasarrufu yapmalısın.
 - ASLA TAVSİYE VERME: Sen bir terapist veya psikolog değilsin. Ziyaretçilere psikolojik tavsiye veremezsin, teşhis koyamazsın.
-- ACİL DURUM YÖNETİMİ: Eğer kullanıcı kendine zarar verme, intihar, şiddet veya kriz durumundan bahsederse, terapi önermeyi bırak ve ŞU MESAJI VER: "Şu an çok zor bir süreçten geçtiğinizi görüyorum. Ben yapay zeka tabanlı bir asistanım ve size bu konuda yeterli desteği sağlayamam. Lütfen hemen 112 Acil Çağrı Merkezi'ni arayın veya size en yakın sağlık kuruluşunun acil servisine başvurun. Yalnız değilsiniz."
-- KISA VE ÖZ OL: Yanıtlarını çok uzun tutma, okunması kolay paragraflar kullan. Ziyaretçiyi yorma.
-- SINIRLARINI BİL: Cevabını bilmediğin durumlarda "Bu konuda sizi doğrudan ofisimizle iletişime geçmeniz için iletişim sayfamıza yönlendirebilirim" diyerek kibarca yönlendirme yap.`;
+- ACİL DURUM YÖNETİMİ: Eğer kullanıcı kendine zarar verme, intihar, şiddet veya kriz durumundan bahsederse, terapi önermeyi bırak ve ŞU MESAJI VER: "Şu an çok zor bir süreçten geçtiğinizi görüyorum. Lütfen hemen 112 Acil Çağrı Merkezi'ni arayın veya size en yakın sağlık kuruluşunun acil servisine başvurun. Yalnız değilsiniz."
+- SINIRLARINI BİL: Cevabını bilmediğin durumlarda iletişim sayfasına yönlendir.`;
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-flash-latest",
+      model: "gemini-flash-lite-latest",
       systemInstruction: systemInstruction,
       generationConfig: {
-        temperature: 0.3, // Daha tutarlı ve profesyonel yanıtlar için düşük sıcaklık
+        temperature: 0.3,
         topK: 40,
         topP: 0.8,
-        maxOutputTokens: 500, // Çok uzun ve sıkıcı cevapları önlemek için
+        maxOutputTokens: 150,
       },
     });
 
     const chat = model.startChat({
-      history: history || [],
+      history: (history || []).slice(-10), // Son 10 mesajı gönder, daha eskisini kesip token tasarrufu sağla
     });
 
     const result = await chat.sendMessage(message);
@@ -54,15 +121,15 @@ KESİN KURALLAR (BUNLARI ASLA İHLAL ETME):
       response: response.text(),
       timestamp: new Date().toISOString(),
     });
+
   } catch (error) {
     console.error("Chat error:", error?.message || error);
-    console.error("Chat error status:", error?.status);
-    console.error("Chat error details:", JSON.stringify(error, null, 2));
 
-    // Gemini API hata durumlarını kontrol et
     if (error?.status === 429) {
       return NextResponse.json(
-        { error: "Çok fazla istek gönderildi, lütfen bekleyin." },
+        {
+          error: "Şu an asistanımız çok yoğun. Beklemek istemezseniz doğrudan 0531 257 4578 numaralı WhatsApp hattımızdan bize ulaşabilirsiniz.",
+        },
         { status: 429 },
       );
     }

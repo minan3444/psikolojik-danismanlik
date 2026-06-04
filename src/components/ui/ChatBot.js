@@ -98,12 +98,17 @@ export default function ChatBot() {
           ...prev,
           { text: data.response, sender: "bot" },
         ]);
+      } else if (data.error) {
+        setMessages((prev) => [
+          ...prev,
+          { text: `⚠️ ${data.error}`, sender: "bot" },
+        ]);
       }
     } catch (error) {
       setMessages((prev) => [
         ...prev,
         {
-          text: "Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.",
+          text: "Üzgünüm, sistemsel bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
           sender: "bot",
         },
       ]);

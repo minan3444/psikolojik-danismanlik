@@ -79,6 +79,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="canonical" href="https://www.seymainan.com/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Şeyma İnan" />
+        <link rel="alternate" hrefLang="tr" href="https://www.seymainan.com/" />
+      </head>
       <body>
         <Providers>
           <Navbar />

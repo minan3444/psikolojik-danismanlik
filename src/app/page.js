@@ -153,6 +153,32 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Online terapi ne kadar sürer?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Seanslar genellikle 45‑60 dk arasında sürer ve ihtiyaca göre haftada bir ya da iki kez yapılabilir." }
+              },
+              {
+                "@type": "Question",
+                "name": "EMDR terapi nasıl çalışır?",
+                "acceptedAnswer": { "@type": "Answer", "text": "EMDR, anımsanan travmatik anıların göz hareketleriyle işlenmesini sağlayarak duygusal yeniden işlenmesine yardımcı olur." }
+              },
+              {
+                "@type": "Question",
+                "name": "Online danışmanlık ücretleri nedir?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Ücretler seans süresi ve terapistin uzmanlık alanına göre değişir; detaylar iletişim sayfasında mevcuttur." }
+              }
+            ]
+          })
+        }}
+      />
       <HeroSection maddeler={hakkimda?.heroMaddeler} />
       <UzmanlikAlanlari />
       <VizyonMisyon />

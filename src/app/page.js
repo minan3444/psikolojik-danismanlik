@@ -43,8 +43,6 @@ export const metadata = {
     "tekrarlayan düşünceler",
     "OKB nedir",
     "takıntılı düşünceler",
-    "korku terapisi",
-    "fobi tedavisi",
     "kaçınma davranışı",
     "ilişki terapisi",
     "bağlanma terapisi",
@@ -81,7 +79,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Psychologist",
   name: "Şeyma İnan",
-  description: "Online Psikolojik Danışman ve EMDR Terapisti",
+  description:
+    "Online Psikolojik Danışman ve EMDR Terapisti | Travma, Kaygı, Depresyon, İlişki Sorunları, Stres Yönetimi, Öz Değer ve Öz Şefkat Çalışmaları Uzmanı",
   url: "https://www.seymainan.com",
   image: "https://www.seymainan.com/profile.jpg",
   sameAs: [
@@ -97,14 +96,38 @@ const jsonLd = {
     addressCountry: "TR",
   },
   availableService: [
-    { "@type": "TherapeuticProcedure", name: "EMDR Terapisi" },
-    { "@type": "TherapeuticProcedure", name: "Online Psikolojik Danışmanlık" },
-    { "@type": "TherapeuticProcedure", name: "Travma Terapisi" },
+    {
+      "@type": "TherapeuticProcedure",
+      name: "Stres Yönetimi ve Uyku Terapisi",
+    },
+    {
+      "@type": "TherapeuticProcedure",
+      name: "Depresyon ve Motivasyon Kaybı Tedavisi",
+    },
     { "@type": "TherapeuticProcedure", name: "Kaygı ve Panik Tedavisi" },
+    {
+      "@type": "TherapeuticProcedure",
+      name: "Travma ve Zorlu Yaşam Olayları Terapisi",
+    },
+    { "@type": "TherapeuticProcedure", name: "EMDR Terapisi" },
     { "@type": "TherapeuticProcedure", name: "İlişki ve Bağlanma Terapisi" },
-    { "@type": "TherapeuticProcedure", name: "OKB Tedavisi" },
-    { "@type": "TherapeuticProcedure", name: "Fobi Tedavisi" },
-    { "@type": "TherapeuticProcedure", name: "Depresyon Tedavisi" },
+    {
+      "@type": "TherapeuticProcedure",
+      name: "Öz Değer ve Öz Saygı Çalışmaları",
+    },
+    {
+      "@type": "TherapeuticProcedure",
+      name: "OKB ve Tekrarlayıcı Düşünceler Tedavisi",
+    },
+    {
+      "@type": "TherapeuticProcedure",
+      name: "Fobi ve Kaçınma Davranışları Tedavisi",
+    },
+    {
+      "@type": "TherapeuticProcedure",
+      name: "Öz Şefkat ve Farkındalık Çalışmaları",
+    },
+    { "@type": "TherapeuticProcedure", name: "Online Psikolojik Danışmanlık" },
   ],
   areaServed: {
     "@type": "Country",

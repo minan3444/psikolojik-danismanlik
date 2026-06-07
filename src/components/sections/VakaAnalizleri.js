@@ -6,6 +6,7 @@ import SectionBaslik from "@/components/ui/SectionBaslik";
 import VakaKarti from "@/components/ui/VakaKarti";
 import CustomButton from "@/app/shared/customButton";
 import EastIcon from "@mui/icons-material/East";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 export default function VakaAnalizleri({
   isFullPage = false,
@@ -48,9 +49,13 @@ export default function VakaAnalizleri({
               }}
             >
               <span>Vaka</span>
-              <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
+              <FiberManualRecordIcon
+                sx={{ fontSize: 8, color: "#9e7c93", mx: 1 }}
+              />
               <span>Süreç</span>
-              <EastIcon sx={{ color: "#9e7c93", fontSize: "1.2em" }} />
+              <FiberManualRecordIcon
+                sx={{ fontSize: 8, color: "#9e7c93", mx: 1 }}
+              />
               <span>Kazanım</span>
             </Box>
           }

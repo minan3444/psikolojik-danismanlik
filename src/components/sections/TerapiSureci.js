@@ -9,7 +9,7 @@ export default function TerapiSureci() {
   return (
     <Box sx={{ py: 3, position: "relative" }}>
       <Container maxWidth="lg">
-        <SectionBaslik altBaslik="NASIL ÇALIŞIYORUM ?" baslik="Terapi Süreci" />
+        <SectionBaslik altBaslik="NASIL ÇALIŞIYORUM ?" baslik="Yol Haritamız" />
         <Box
           sx={{
             display: "flex",

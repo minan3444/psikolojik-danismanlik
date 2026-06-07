@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import {
   Box,
   Paper,
@@ -34,8 +35,14 @@ export default function ChatBot() {
       if (dragging) {
         setHasDragged(true);
         // Sınırları kontrol et
-        const newX = Math.min(Math.max(0, e.clientX - dragOffset.x), window.innerWidth - 60);
-        const newY = Math.min(Math.max(0, e.clientY - dragOffset.y), window.innerHeight - 60);
+        const newX = Math.min(
+          Math.max(0, e.clientX - dragOffset.x),
+          window.innerWidth - 60,
+        );
+        const newY = Math.min(
+          Math.max(0, e.clientY - dragOffset.y),
+          window.innerHeight - 60,
+        );
         setPos({ x: newX, y: newY });
       }
     };
@@ -139,8 +146,13 @@ export default function ChatBot() {
             cursor: dragging ? "grabbing" : "pointer",
             boxShadow: "0 4px 12px rgba(124, 158, 135, 0.4)",
             zIndex: 1200,
-            "&:hover": { bgcolor: "primary.dark", transform: dragging ? "none" : "scale(1.05)" },
-            transition: dragging ? "none" : "transform 0.3s, background-color 0.3s",
+            "&:hover": {
+              bgcolor: "primary.dark",
+              transform: dragging ? "none" : "scale(1.05)",
+            },
+            transition: dragging
+              ? "none"
+              : "transform 0.3s, background-color 0.3s",
             color: "white",
           }}
         >
@@ -179,20 +191,27 @@ export default function ChatBot() {
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <SmartToyIcon />
-          <Box sx={{ fontWeight: 600, fontFamily: '"Playfair Display", serif' }}>
+          <Box
+            sx={{ fontWeight: 600, fontFamily: '"Playfair Display", serif' }}
+          >
             Asistan
           </Box>
         </Box>
         <IconButton
           size="small"
           onClick={() => setOpen(false)}
-          sx={{ color: "white", "&:hover": { bgcolor: "rgba(255,255,255,0.1)" } }}
+          sx={{
+            color: "white",
+            "&:hover": { bgcolor: "rgba(255,255,255,0.1)" },
+          }}
         >
           <CloseIcon />
         </IconButton>
       </Box>
 
-      <Box sx={{ flex: 1, p: 2, overflow: "auto", bgcolor: "background.default" }}>
+      <Box
+        sx={{ flex: 1, p: 2, overflow: "auto", bgcolor: "background.default" }}
+      >
         {messages.length === 0 && (
           <Box
             sx={{
@@ -229,9 +248,27 @@ export default function ChatBot() {
                 fontSize: "0.95rem",
                 fontFamily: '"Inter", sans-serif',
                 lineHeight: 1.5,
+                "& p": { margin: 0 },
+                "& a": {
+                  color: msg.sender === "user" ? "white" : "primary.main",
+                  textDecoration: "underline",
+                  fontWeight: 600,
+                },
               }}
             >
-              {msg.text}
+              {msg.sender === "bot" ? (
+                <ReactMarkdown
+                  components={{
+                    a: ({ node, ...props }) => (
+                      <a {...props} target="_blank" rel="noopener noreferrer" />
+                    ),
+                  }}
+                >
+                  {msg.text}
+                </ReactMarkdown>
+              ) : (
+                msg.text
+              )}
             </Box>
           </Box>
         ))}
@@ -254,7 +291,14 @@ export default function ChatBot() {
         <div ref={messagesEndRef} />
       </Box>
 
-      <Box sx={{ p: 2, bgcolor: "white", borderTop: "1px solid", borderColor: "rgba(0,0,0,0.05)" }}>
+      <Box
+        sx={{
+          p: 2,
+          bgcolor: "white",
+          borderTop: "1px solid",
+          borderColor: "rgba(0,0,0,0.05)",
+        }}
+      >
         <Box sx={{ display: "flex", gap: 1 }}>
           <TextField
             fullWidth
@@ -265,14 +309,14 @@ export default function ChatBot() {
             placeholder="Mesajınızı yazın..."
             variant="outlined"
             disabled={loading}
-            sx={{ 
-              "& .MuiOutlinedInput-root": { 
+            sx={{
+              "& .MuiOutlinedInput-root": {
                 borderRadius: 3,
                 bgcolor: "background.default",
                 "& fieldset": { borderColor: "transparent" },
                 "&:hover fieldset": { borderColor: "primary.light" },
                 "&.Mui-focused fieldset": { borderColor: "primary.main" },
-              } 
+              },
             }}
           />
           <IconButton
@@ -285,7 +329,10 @@ export default function ChatBot() {
               width: 40,
               height: 40,
               "&:hover": { bgcolor: "primary.dark" },
-              "&.Mui-disabled": { bgcolor: "rgba(124, 158, 135, 0.3)", color: "white" },
+              "&.Mui-disabled": {
+                bgcolor: "rgba(124, 158, 135, 0.3)",
+                color: "white",
+              },
             }}
           >
             <SendIcon sx={{ fontSize: 18 }} />

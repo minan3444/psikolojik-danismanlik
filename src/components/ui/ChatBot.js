@@ -192,7 +192,10 @@ export default function ChatBot() {
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <SmartToyIcon />
           <Box
-            sx={{ fontWeight: 600, fontFamily: '"Playfair Display", serif' }}
+            sx={{
+              fontWeight: 600,
+              fontFamily: '"Playfair Display", serif',
+            }}
           >
             Asistan
           </Box>
@@ -210,7 +213,15 @@ export default function ChatBot() {
       </Box>
 
       <Box
-        sx={{ flex: 1, p: 2, overflow: "auto", bgcolor: "background.default" }}
+        sx={{
+          flex: 1,
+          p: 2,
+          overflow: "auto",
+          borderColor: "primary.main",
+          borderWidth: 2,
+          borderStyle: "solid",
+          bgcolor: "background.default",
+        }}
       >
         {messages.length === 0 && (
           <Box
@@ -294,12 +305,20 @@ export default function ChatBot() {
       <Box
         sx={{
           p: 2,
-          bgcolor: "white",
-          borderTop: "1px solid",
+          bgcolor: "primary.main",
+          borderTop: "2px solid",
           borderColor: "rgba(0,0,0,0.05)",
         }}
       >
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <Box
+          sx={{
+            display: "flex",
+            borderColor: "primary.main",
+            borderWidth: 2,
+            borderStyle: "solid",
+            gap: 1,
+          }}
+        >
           <TextField
             fullWidth
             size="small"

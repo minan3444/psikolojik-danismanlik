@@ -141,6 +141,13 @@ export default async function sitemap() {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    // Teşekkür sayfası: Google Ads conversion tracking için – sitemap'te düşük öncelikle
+    {
+      url: `${baseUrl}/tesekkur-ederiz`,
+      lastModified: statikSayfaTarihi,
+      changeFrequency: "yearly",
+      priority: 0.1,
+    },
   ];
 
   // Dinamik blog sayfaları

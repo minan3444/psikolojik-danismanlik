@@ -146,12 +146,12 @@ Seanslar ücretlidir.
         temperature: 0.2, // Daha tutarlı cevaplar için düşürdük
         topK: 30,
         topP: 0.7,
-        maxOutputTokens: 120, // Token tasarrufu → 150'den 120'ye düşürdük
+        maxOutputTokens: 120, // Token tasarrufu
       },
     });
 
     const chat = model.startChat({
-      history: (history || []).slice(-6), // Token tasarrufu → 10'dan 6'ya düşürdük
+      history: (history || []).slice(-6), // Token tasarrufu
     });
 
     const result = await chat.sendMessage(message);

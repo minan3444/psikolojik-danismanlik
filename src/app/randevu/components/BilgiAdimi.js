@@ -85,10 +85,26 @@ export default function BilgiAdimi({
       appointment_date: dayjs(secimler.tarih).format("YYYY-MM-DD"),
       appointment_time: secimler.saat,
     });
-    result.success
-      ? onSuccess()
-      : alert(result.error || "Bir hata oluştu, lütfen tekrar deneyin.");
-    setLoading(false);
+
+    if (result.success) {
+      // GA4 dönüşüm event'i
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", "randevu_tamamlandi", {
+          event_category: "conversion",
+          event_label: secimler.hizmet?.baslik,
+        });
+      }
+      // URL değiştirerek teşekkür sayfasına yönlendir → Google Ads bunu "conversion" sayar
+      const params = new URLSearchParams({
+        hizmet: secimler.hizmet?.baslik || "",
+        tarih: dayjs(secimler.tarih).format("DD.MM.YYYY"),
+        saat: secimler.saat || "",
+      });
+      window.location.href = `/tesekkur-ederiz?${params.toString()}`;
+    } else {
+      alert(result.error || "Bir hata oluştu, lütfen tekrar deneyin.");
+      setLoading(false);
+    }
   };
 
   return (

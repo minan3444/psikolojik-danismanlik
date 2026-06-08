@@ -48,7 +48,7 @@ EMAIL: pdseymainan@gmail.com
 WHATSAPP: 0531 257 4578
 
 HİZMETLER:
-- EMDR Terapisi: Travma, PTSD, geçmiş yaşantılar
+- EMDR: Travma, PTSD, geçmiş yaşantılar
 - Bireysel Danışmanlık: Kişiye özel, güvenli alan
 - Online Seans: Güvenli video platformu, Dünya geneli
 

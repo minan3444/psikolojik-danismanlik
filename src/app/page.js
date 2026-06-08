@@ -20,9 +20,9 @@ import {
 
 // SEO Metadata
 export const metadata = {
-  title: "Online Psikolojik Danışmanlık | EMDR Terapisi",
+  title: "Online Psikolojik Danışmanlık | EMDR ",
   description:
-    "Online psikolojik danışmanlık ve EMDR terapisi hizmetleri. Travma, kaygı, depresyon, panik atak ve ilişki sorunlarında profesyonel destek. Dünyanın her yerinden Türk danışanlara online terapi.",
+    "Online psikolojik danışmanlık ve EMDR. Stres/Uyku, Depresif Ruh Hali,Tükenmişlik, Kaygı, Travma, Tekrarlayıcı Düşünceler konularında profesyonel destek",
   keywords: [
     // Ana Hizmetler
     "online psikolojik danışmanlık",
@@ -159,24 +159,33 @@ export default async function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
+            mainEntity: [
               {
                 "@type": "Question",
-                "name": "Online terapi ne kadar sürer?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Seanslar genellikle 45‑60 dk arasında sürer ve ihtiyaca göre haftada bir ya da iki kez yapılabilir." }
+                name: "Online terapi ne kadar sürer?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Seanslar genellikle 45‑60 dk arasında sürer ve ihtiyaca göre haftada bir ya da iki kez yapılabilir.",
+                },
               },
               {
                 "@type": "Question",
-                "name": "EMDR terapi nasıl çalışır?",
-                "acceptedAnswer": { "@type": "Answer", "text": "EMDR, anımsanan travmatik anıların göz hareketleriyle işlenmesini sağlayarak duygusal yeniden işlenmesine yardımcı olur." }
+                name: "EMDR terapi nasıl çalışır?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "EMDR, anımsanan travmatik anıların göz hareketleriyle işlenmesini sağlayarak duygusal yeniden işlenmesine yardımcı olur.",
+                },
               },
               {
                 "@type": "Question",
-                "name": "Online danışmanlık ücretleri nedir?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Ücretler seans süresi ve terapistin uzmanlık alanına göre değişir; detaylar iletişim sayfasında mevcuttur." }
-              }
-            ]
-          })
+                name: "Online danışmanlık ücretleri nedir?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Ücretler seans süresi ve terapistin uzmanlık alanına göre değişir; detaylar iletişim sayfasında mevcuttur.",
+                },
+              },
+            ],
+          }),
         }}
       />
       <HeroSection maddeler={hakkimda?.heroMaddeler} />

@@ -8,6 +8,7 @@ import StickyRandevuButonu from "@/components/ui/StickyRandevuButonu";
 import StickyWhatsAppButonu from "@/components/ui/StickyWhatsAppButonu";
 import ChatBot from "@/components/ui/ChatBot";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -98,6 +99,7 @@ export default function RootLayout({ children }) {
           <ChatBot />
         </Providers>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -23,6 +23,7 @@
     "@sanity/vision": "^5.22.0",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.104.1",
+    "@vercel/analytics": "^2.0.1",
     "dayjs": "^1.11.20",
     "framer-motion": "^12.38.0",
     "mui-tel-input": "^11.0.0",

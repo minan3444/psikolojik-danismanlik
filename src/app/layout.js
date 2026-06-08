@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import StickyRandevuButonu from "@/components/ui/StickyRandevuButonu";
 import StickyWhatsAppButonu from "@/components/ui/StickyWhatsAppButonu";
 import ChatBot from "@/components/ui/ChatBot";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -96,6 +97,7 @@ export default function RootLayout({ children }) {
           <StickyWhatsAppButonu />
           <ChatBot />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );

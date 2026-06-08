@@ -32,8 +32,6 @@ export const metadata = {
     // Uzmanlık Yöntemleri (Orta-Yüksek Hacim)
     "EMDR terapisi",
     "EMDR sertifikalı psikolog",
-    "BDT terapisi",
-    "bilişsel davranışçı terapi",
     "travma terapisi",
     "kaygı terapisi",
     "depresyon terapisi",

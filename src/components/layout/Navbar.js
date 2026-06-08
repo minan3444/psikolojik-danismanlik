@@ -72,6 +72,12 @@ export default function Navbar() {
             <Box
               component={Link}
               href="/"
+              onClick={(e) => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               sx={{
                 display: "flex",
                 alignItems: "center",

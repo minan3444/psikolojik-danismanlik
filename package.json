@@ -27,7 +27,6 @@
     "@vercel/speed-insights": "^2.0.0",
     "dayjs": "^1.11.20",
     "framer-motion": "^12.38.0",
-    "groq-sdk": "^1.2.1",
     "mui-tel-input": "^11.0.0",
     "next": "16.2.4",
     "next-sanity": "^12.3.1",

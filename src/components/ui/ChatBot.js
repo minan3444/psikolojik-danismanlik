@@ -16,17 +16,12 @@ import SendIcon from "@mui/icons-material/Send";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 
 export default function ChatBot() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [pos, setPos] = useState(null); // null means use default CSS positioning
   const [dragging, setDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [hasDragged, setHasDragged] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      text: "Merhaba! 👋 Ben Şeyma İnan'ın dijital asistanıyım. Size nasıl yardımcı olabilirim?",
-      sender: "bot",
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);

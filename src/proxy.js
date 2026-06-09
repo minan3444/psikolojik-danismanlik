@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
-export function middleware(request) {
+// export function middleware  →  export default function proxy
+export default function proxy(request) {
   const url = request.nextUrl.clone();
-  
+
   // Sadece /yonetim-paneli ve altındaki rotaları kontrol et
   if (url.pathname.startsWith("/yonetim-paneli")) {
     // Eğer istek login sayfasına yapılıyorsa geçişe izin ver

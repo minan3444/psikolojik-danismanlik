@@ -25,6 +25,10 @@ const playfair = Playfair_Display({
 export const metadata = {
   metadataBase: new URL("https://www.seymainan.com"),
 
+  verification: {
+    google: "-3I8KewhaJjeqjGI3jPE49rchx2WY753wCmb4ba3ulA",
+  },
+
   title: {
     default: "Şeyma İnan | Psikolojik Danışman",
     template: "%s | Şeyma İnan Psikolojik Danışmanlık",

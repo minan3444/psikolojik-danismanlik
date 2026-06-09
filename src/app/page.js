@@ -5,7 +5,9 @@ import VakaAnalizleri from "@/components/sections/VakaAnalizleri";
 import TerapiSureci from "@/components/sections/TerapiSureci";
 import NedenBirlikte from "@/components/sections/NedenBirlikte";
 import PsikolojikTestler from "@/components/sections/PsikolojikTestler";
+import { Suspense } from "react";
 import KendineBirMola from "@/components/sections/kendineBirMola/KendineBirMola";
+import Box from "@mui/material/Box";
 import BlogSection from "@/components/sections/blog-section/blog";
 import SSSSection from "@/components/sections/SSSSection";
 import Iletisim from "@/components/sections/iletisim-section/Iletisim";
@@ -195,7 +197,9 @@ export default async function Home() {
       <TerapiSureci />
       <NedenBirlikte />
       <PsikolojikTestler />
-      <KendineBirMola />
+      <Suspense fallback={<Box sx={{ minHeight: "400px" }} />}>
+        <KendineBirMola />
+      </Suspense>
       <BlogSection initialData={yazilar} />
       <SSSSection />
       <Iletisim legalDocs={legalDocs} />

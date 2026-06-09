@@ -56,9 +56,9 @@ UZMANLIK ALANLARI:
 Travma, kaygı ve panik, depresif ruh hali, tekrarlayıcı düşünce ve davranışlar, korkular ve kaçınma tepkileri, ilişki dinamikleri, öz değer ve öz saygı, stres ve uyku sorunları, öz şefkat ve kişisel gelişim
 
 PSİKOLOJİK TESTLER (Ücretsiz):
-- Algılanan Stres Testi (PSS-10): 10 soru, 5 dk → /testler/algilanan-stres-testi
-- Uyku Kalitesi Testi: 7 soru, 5 dk → /testler/uyku-kalitesi-testi
-- Benlik Saygısı Testi: 10 soru, 3 dk → /testler/benlik-saygisi-testi
+- Algılanan Stres Testi (PSS-10): 10 soru, 5 dk → /psikolojik-testler/algilanan-stres-testi
+- Uyku Kalitesi Testi: 7 soru, 5 dk → /psikolojik-testler/uyku-kalitesi-testi
+- Benlik Saygısı Testi: 10 soru, 3 dk → /psikolojik-testler/benlik-saygisi-testi
 
 SAYFALAR:
 - Hakkımda: /hakkimda

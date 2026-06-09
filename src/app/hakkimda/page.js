@@ -19,7 +19,7 @@ export const metadata = {
   title: "Hakkımda",
 
   description:
-    "Yıldız Teknik Üniversitesi PDR mezunu, EMDR ve BDT sertifikalı psikolojik danışman Şeyma İnan. Çocukluk travmaları, kaygı, depresyon ve ilişki sorunlarında online terapi. Yüksek lisans uzmanlığı ile profesyonel destek.",
+    "Yıldız Teknik Üniversitesi PDR mezunu, EMDR 1. ve 2. Düzey sertifikalı psikolojik danışman Şeyma İnan. Çocukluk travmaları, kaygı, depresyon ve ilişki sorunlarında online terapi. Yüksek lisans uzmanlığı ile profesyonel destek.",
 
   keywords: [
     // Ana Meslek ve Hizmet (Yüksek Aranma Hacmi)
@@ -39,6 +39,8 @@ export const metadata = {
     "bağlanma terapisi",
     "öz güven terapisi",
     "stres yönetimi",
+    "çocukluk çağı olumsuz yaşantıları",
+    "umut ve psikoloji",
 
     // Eğitim ve Kurum (Güven Oluşturucu)
     "Yıldız Teknik Üniversitesi psikoloji",
@@ -70,7 +72,7 @@ export const metadata = {
   openGraph: {
     title: "Hakkımda | Şeyma İnan",
     description:
-      "Yıldız Teknik Üniversitesi PDR mezunu, EMDR ve BDT sertifikalı psikolojik danışman. Çocukluk travmaları ve kaygı uzmanı.",
+      "Yıldız Teknik Üniversitesi PDR mezunu, EMDR 1. ve 2. Düzey sertifikalı psikolojik danışman. Çocukluk travmaları ve kaygı uzmanı.",
     url: "/hakkimda",
     type: "profile",
     images: [

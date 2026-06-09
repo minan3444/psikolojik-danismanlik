@@ -10,7 +10,35 @@ export const revalidate = 0;
 export const metadata = {
   title: "Blog | Psikolojik Danışman Şeyma İnan",
   description:
-    "Psikolojik sağlık, terapi yaklaşımları ve öz farkındalık üzerine uzman yazıları.",
+    "Travma, kaygı, depresyon, EMDR ve öz şefkat üzerine uzman blog yazıları. Psikolojik sağlığınızı güçlendirmek için bilimsel temelli içerikler.",
+  keywords: [
+    "psikoloji blog",
+    "terapi yazıları",
+    "EMDR nedir",
+    "travma terapisi",
+    "kaygı ile başa çıkma",
+    "depresyon belirtileri",
+    "öz şefkat nedir",
+    "psikolojik sağlık",
+    "online terapi blog",
+    "mindfulness nedir",
+    "bağlanma stilleri",
+    "ilişki sorunları",
+  ],
+  openGraph: {
+    title: "Blog | Şeyma İnan Psikolojik Danışmanlık",
+    description:
+      "Travma, kaygı, depresyon ve öz şefkat üzerine uzman blog yazıları.",
+    url: "/blog",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/blog",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default async function BlogPage() {

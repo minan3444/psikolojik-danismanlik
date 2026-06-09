@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
   const gorselUrl = yazi.gorsel ? urlFor(yazi.gorsel).url() : undefined;
 
   return {
-    title: yazi.baslik,
+    title: `${yazi.baslik} | Şeyma İnan`,
     description:
       yazi.ozet ||
       `${yazi.baslik} - Şeyma İnan ile psikoloji, terapi ve kişisel gelişim üzerine detaylı blog yazısı.`,

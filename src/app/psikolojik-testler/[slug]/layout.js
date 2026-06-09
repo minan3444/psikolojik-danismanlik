@@ -14,8 +14,8 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: test.baslik,
-    description: test.aciklama || `${test.baslik} - Online psikolojik test`,
+    title: `${test.baslik} | Ücretsiz Online Test`,
+    description: `${test.aciklama} ${test.sorular?.length} soru, ücretsiz. Şeyma İnan Psikolojik Danışmanlık.`,
     keywords: [
       test.baslik,
       "psikolojik test",

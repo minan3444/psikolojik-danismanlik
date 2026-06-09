@@ -11,9 +11,33 @@ import VakaBlogIletisimeGecme from "@/app/shared/VakaBlogIletisimeGecme";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const vaka = await client.fetch(VAKA_DETAY_QUERY, { slug });
+  const decodedSlug = decodeURIComponent(slug);
+  const vaka = await client.fetch(VAKA_DETAY_QUERY, { slug: decodedSlug });
+
+  if (!vaka)
+    return {
+      title: "Vaka Bulunamadı",
+      robots: { index: false, follow: false },
+    };
+
   return {
-    title: vaka ? `${vaka.baslik} | Vaka Analizi` : "Vaka Bulunamadı",
+    title: `${vaka.baslik} | Vaka Analizi - Şeyma İnan`,
+    description: vaka.problem
+      ? `${vaka.problem.slice(0, 155)}...`
+      : `${vaka.baslik} - Gerçek terapi süreci ve dönüşüm hikayesi. Tüm vakalar gizlilik ilkesi kapsamında anonimdir.`,
+    openGraph: {
+      title: `${vaka.baslik} | Vaka Analizi`,
+      description: vaka.problem?.slice(0, 155) || vaka.baslik,
+      url: `/vaka-analizleri/${decodedSlug}`,
+      type: "article",
+    },
+    alternates: {
+      canonical: `/vaka-analizleri/${decodedSlug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
@@ -21,7 +45,29 @@ export default async function VakaDetayPage({ params }) {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
   const vaka = await client.fetch(VAKA_DETAY_QUERY, { slug: decodedSlug });
-
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: vaka.baslik,
+    description: vaka.problem || vaka.baslik,
+    author: {
+      "@type": "Person",
+      name: "Şeyma İnan",
+      url: "https://www.seymainan.com/hakkimda",
+      jobTitle: "Psikolojik Danışman & EMDR Terapisti",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Şeyma İnan Psikolojik Danışmanlık",
+      url: "https://www.seymainan.com",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.seymainan.com/vaka-analizleri/${decodedSlug}`,
+    },
+    inLanguage: "tr-TR",
+    isAccessibleForFree: "True",
+  };
   return (
     <Box
       sx={{
@@ -30,6 +76,10 @@ export default async function VakaDetayPage({ params }) {
         minHeight: "100vh",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Container maxWidth="md">
         <AppBreadcrumb
           items={[

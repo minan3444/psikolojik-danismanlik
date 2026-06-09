@@ -4,6 +4,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/yonetim-paneli/", "/studio/", "/api/"],
       },
     ],
     sitemap: "https://www.seymainan.com/sitemap.xml",

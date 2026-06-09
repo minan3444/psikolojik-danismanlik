@@ -9,7 +9,33 @@ import AppBreadcrumb from "../shared/Appbreadcrumb";
 export const metadata = {
   title: "Vaka Analizleri | Psikolojik Danışman Şeyma İnan",
   description:
-    "Gerçek danışan hikayeleri ve terapi süreçleri. Tüm vakalar gizlilik ilkesi kapsamında anonim olarak paylaşılmaktadır.",
+    "Gerçek terapi süreçleri ve dönüşüm hikayeleri. Travma, kaygı, depresyon, OKB ve ilişki sorunlarında EMDR ile yaşanan değişimler. Tüm vakalar gizlilik ilkesi kapsamında anonimdir.",
+  keywords: [
+    "terapi vaka analizi",
+    "EMDR vaka örneği",
+    "travma terapisi hikayesi",
+    "kaygı terapisi sonuçları",
+    "depresyon iyileşme hikayesi",
+    "OKB tedavisi",
+    "psikolojik danışmanlık örnek vakalar",
+    "online terapi başarı hikayesi",
+    "ilişki terapisi vaka",
+    "bağlanma sorunları terapi",
+  ],
+  openGraph: {
+    title: "Vaka Analizleri | Şeyma İnan Psikolojik Danışmanlık",
+    description:
+      "Travma, kaygı, depresyon ve ilişki sorunlarında gerçek terapi süreçleri ve dönüşüm hikayeleri.",
+    url: "/vaka-analizleri",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/vaka-analizleri",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default async function VakaAnalizleriPage() {

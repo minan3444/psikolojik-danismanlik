@@ -35,7 +35,7 @@ export const appointmentEmailTemplate = (data, texts, isForAdmin = false) => {
 
         <div style="padding: 40px 35px;">
           <p style="font-size: 17px; line-height: 1.6; margin-bottom: 25px;">
-            Merhaba <b>${data.adSoyad}</b>,
+            Merhaba <b>Şeyma Hanım</b>,
           </p>
           <p style="font-size: 15px; line-height: 1.7; color: #7A6E68; margin-bottom: 30px;">
             ${isForAdmin ? `<b>${data.adSoyad}</b> tarafından Web siteniz üzerinden yeni bir randevu talebi oluşturuldu.` : texts.userIntro}
@@ -47,13 +47,19 @@ export const appointmentEmailTemplate = (data, texts, isForAdmin = false) => {
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.service}:</strong> ${data.service_type}</p>
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.date}:</strong> ${data.appointment_date}</p>
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.time}:</strong> ${data.appointment_time}</p>
-            ${isForAdmin ? `
+            ${
+              isForAdmin
+                ? `
               <p style="margin: 15px 0 5px 0; border-top: 1px solid #eee; padding-top: 15px;"><strong>${texts.labels.phone}:</strong> ${data.ulkeKodu}${data.telefon}</p>
-              <p style="margin: 0;"><strong>${texts.labels.notes}:</strong> <i>${data.notlar || '-'}</i></p>
-            ` : ''}
+              <p style="margin: 0;"><strong>${texts.labels.notes}:</strong> <i>${data.notlar || "-"}</i></p>
+            `
+                : ""
+            }
           </div>
 
-          ${!isForAdmin ? `
+          ${
+            !isForAdmin
+              ? `
             <!-- Küçük Hatırlatma -->
             <div style="margin-bottom: 25px;">
               <h4 style="margin: 0 0 8px 0; font-size: 15px;">🌿 ${texts.reminderTitle}</h4>
@@ -64,7 +70,9 @@ export const appointmentEmailTemplate = (data, texts, isForAdmin = false) => {
               <h4 style="margin: 0 0 8px 0; font-size: 15px;">📞 ${texts.cancelTitle}</h4>
               <p style="margin: 0; font-size: 14px; color: #7A6E68; line-height: 1.6;">${texts.cancelText}</p>
             </div>
-          ` : ''}
+          `
+              : ""
+          }
 
           <div style="margin-top: 40px; border-top: 1px solid #f0f0f0; padding-top: 20px;">
             <p style="margin: 0; font-size: 15px; font-weight: 700;">Sevgiler,</p>

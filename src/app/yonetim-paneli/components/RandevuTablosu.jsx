@@ -122,10 +122,10 @@ export default function RandevuTablosu({ data, onIslemTiklandi }) {
         border: "1px solid",
         borderColor: "custom.taupe",
         borderRadius: 3,
-        overflow: "hidden",
+        overflow: "auto",
       }}
     >
-      <Table size="small">
+      <Table size="small" sx={{ minWidth: 650 }}>
         {/* Başlık satırı */}
         <TableHead>
           <TableRow>

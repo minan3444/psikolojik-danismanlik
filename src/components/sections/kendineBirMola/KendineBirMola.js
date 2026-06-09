@@ -2,8 +2,9 @@
 
 "use client";
 
-import { useState } from "react";
-import { Box, Container, Grid, Typography, Button } from "@mui/material";
+import { useRef, useState, useEffect } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionBaslik from "@/components/ui/SectionBaslik";
 import { egzersizler } from "@/data/kendine-bir-mola";
@@ -64,14 +65,37 @@ function EgzersizKarti({ egzersiz, index, onSec }) {
 // ─── Ana sayfa ───────────────────────────────────────────────────────────────
 
 export default function KendineBirMola() {
-  const [seciliEgzersiz, setSeciliEgzersiz] = useState(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const selectedFromUrl = searchParams?.get("mola");
+  const [seciliEgzersiz, setSeciliEgzersiz] = useState(
+    selectedFromUrl && EGZERSIZ_BILESENLERI[selectedFromUrl]
+      ? selectedFromUrl
+      : null,
+  );
 
   const AktifBileseni = seciliEgzersiz
     ? EGZERSIZ_BILESENLERI[seciliEgzersiz]
     : null;
 
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (!seciliEgzersiz || !sectionRef.current) return;
+    sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [seciliEgzersiz]);
+
+  const handleSec = (id) => {
+    const params = new URLSearchParams(searchParams?.toString() || "");
+    params.set("mola", id);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    setSeciliEgzersiz(id);
+  };
+
   return (
     <Box
+      ref={sectionRef}
       sx={{
         py: 3,
         position: "relative",
@@ -94,7 +118,7 @@ export default function KendineBirMola() {
                   <EgzersizKarti
                     egzersiz={egzersiz}
                     index={index}
-                    onSec={setSeciliEgzersiz}
+                    onSec={handleSec}
                   />
                 </Grid>
               ))}
@@ -111,7 +135,10 @@ export default function KendineBirMola() {
               }}
             >
               <CustomButton
-                onClick={() => setSeciliEgzersiz(null)}
+                onClick={() => {
+                  router.replace(pathname, { scroll: false });
+                  setSeciliEgzersiz(null);
+                }}
                 variant="outlined"
                 sx={{ mb: 4, border: "none" }}
               >
@@ -119,7 +146,12 @@ export default function KendineBirMola() {
               </CustomButton>
 
               {AktifBileseni && (
-                <AktifBileseni onBitir={() => setSeciliEgzersiz(null)} />
+                <AktifBileseni
+                  onBitir={() => {
+                    router.replace(pathname, { scroll: false });
+                    setSeciliEgzersiz(null);
+                  }}
+                />
               )}
             </Box>
           )}

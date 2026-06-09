@@ -198,7 +198,7 @@ export default async function HakkimdaPage() {
                   bgcolor: "background.paper",
                 }}
               >
-                <Typography variant="h6" sx={{ mb: 1 }}>
+                <Typography variant="h2" sx={{ mb: 1 }}>
                   Çalıştığım Kurumlar
                 </Typography>
                 <Stack spacing={2}>
@@ -261,7 +261,7 @@ export default async function HakkimdaPage() {
                 bgcolor: "background.paper",
               }}
             >
-              <Typography variant="h4" sx={{ mb: 4 }}>
+              <Typography variant="h2" sx={{ mb: 4 }}>
                 Eğitim & Uzmanlıklar
               </Typography>
               <Grid container spacing={3}>

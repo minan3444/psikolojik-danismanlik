@@ -27,10 +27,10 @@ export default function HeroContent({ maddeler }) {
   return (
     <Grid size={{ xs: 12, md: 7 }}>
       <AnimatedFrame from="left">
-        <Typography variant="h6" sx={{ mb: 1, color: "custom.unvan" }}>
+        <Typography variant="h1" sx={{ mb: 1, color: "custom.unvan" }}>
           ✦ PSİKOLOJİK DANIŞMAN
         </Typography>
-        <Typography variant="h2" sx={{ mb: 2 }}>
+        <Typography variant="h1" sx={{ mb: 2 }}>
           Kıyıya Birlikte
           <Box
             component="span"

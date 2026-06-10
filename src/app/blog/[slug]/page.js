@@ -165,7 +165,7 @@ export default async function BlogDetayPage({ params }) {
         />
 
         <Typography
-          variant="h2"
+          variant="h1"
           sx={{
             mb: 3,
             fontSize: "min(8vw, 3.2rem)",

@@ -28,6 +28,8 @@ export const blogType = {
           "Kişisel Gelişim",
           "İlişkiler",
           "Bilimsel Araştırma",
+          "EMDR",
+          "Stres ve Uyku",
         ],
       },
     },

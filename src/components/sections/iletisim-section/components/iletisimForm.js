@@ -44,12 +44,17 @@ const ILETISIM_SECENEKLERI = [
 ];
 
 const BILGI_KUTULARI = [
-  { ikon: LocationOnOutlinedIcon, t: "Konum", d: "Online" },
+  {
+    ikon: LocationOnOutlinedIcon,
+    t: "Konum",
+    d: "Online",
+    href: "https://maps.app.goo.gl/TRDtAif2f2u18oAy8",
+  },
   {
     ikon: EmailOutlinedIcon,
     t: "E-posta",
-    d: "pdseymainan@gmail.com",
-    href: "mailto:pdseymainan@gmail.com",
+    d: "iletisim@seymainan.com",
+    href: "mailto:iletisim@seymainan.com",
   },
   { ikon: AccessTimeOutlinedIcon, t: "Saat", d: "09:00 - 20:00" },
 ];
@@ -81,49 +86,50 @@ const BasariBilgisi = ({ onReset }) => (
 const BilgiKutusu = ({ ikon: I, t, d, href }) => (
   <Grid size={{ xs: 4 }}>
     <Box
+      component={href ? "a" : "div"} // Eğer link varsa 'a' etiketi, yoksa 'div'
+      href={href}
       sx={{
+        display: "block", // Kutu gibi davranması için
+        textDecoration: "none", // Link alt çizgisini kaldır
         textAlign: "center",
         p: 1,
         borderRadius: 3,
         bgcolor: "#9e7c93",
         height: "100%",
+        cursor: href ? "pointer" : "default", // Tıklanabilir olduğunu göster
+        transition: "transform 0.2s, opacity 0.2s",
+        "&:hover": {
+          opacity: href ? 0.9 : 1,
+          transform: href ? "translateY(-2px)" : "none", // Hafif yükselme efekti
+        },
       }}
     >
       <I sx={{ color: "white", fontSize: 18 }} aria-hidden="true" />
 
-      {/* Başlığı h3 olarak işaretliyoruz (Başlık Hiyerarşisi için) */}
       <Typography
         variant="caption"
-        sx={{ color: "white", display: "block", fontWeight: "bold" }}
+        sx={{
+          color: "white",
+          display: "block",
+          fontWeight: "bold",
+          mt: 0.5,
+        }}
         component="h3"
       >
         {t}
       </Typography>
 
-      {/* Eğer href varsa link yap, yoksa düz metin bas */}
-      {href ? (
-        <Typography
-          variant="caption"
-          component="a"
-          href={href}
-          sx={{
-            color: "white",
-            overflowWrap: "break-word",
-            minWidth: 0,
-            textDecoration: "none",
-            "&:hover": { textDecoration: "underline" },
-          }}
-        >
-          {d}
-        </Typography>
-      ) : (
-        <Typography
-          variant="caption"
-          sx={{ color: "white", overflowWrap: "break-word", minWidth: 0 }}
-        >
-          {d}
-        </Typography>
-      )}
+      <Typography
+        variant="caption"
+        sx={{
+          color: "white",
+          overflowWrap: "break-word",
+          minWidth: 0,
+          display: "block",
+        }}
+      >
+        {d}
+      </Typography>
     </Box>
   </Grid>
 );

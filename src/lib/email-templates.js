@@ -71,7 +71,7 @@ export const appointmentEmailTemplate = (
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.date}:</strong> ${data.appointment_date}</p>
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.time}:</strong> ${data.appointment_time}</p>
 ${
-  meetLink && !isForAdmin
+  meetLink
     ? `
   <div style="margin-top: 20px; padding: 15px; background-color: #EBF5EE; border-radius: 10px; text-align: center;">
     <p style="margin: 0 0 10px 0; font-size: 14px; color: #3D3530;">
@@ -79,16 +79,22 @@ ${
     </p>
     <a href="${meetLink}" 
        style="display: inline-block; background-color: #7C9E87; color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 15px;">
-      🎥 Online Görüşmeye Katıl
+      Google Meet'e Katıl
     </a>
     
-    <p style="margin: 15px 0 10px 0; font-size: 14px; color: #3D3530;">
-      📅 Takviminize eklemek için:
-    </p>
-    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`Seans - ${data.adSoyad}`)}&dates=${encodeURIComponent(formatGoogleCalendarDate(data.appointment_date, data.appointment_time))}/${encodeURIComponent(formatGoogleCalendarDate(data.appointment_date, data.appointment_time, 60))}&details=${encodeURIComponent(`Hizmet: ${data.service_type}\nNot: ${data.notlar || "-"}\n\nOnline Görüşme: ${meetLink}`)}&location=${encodeURIComponent(meetLink)}" 
-       style="display: inline-block; background-color: #4285F4; color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">
-      📆 Google Takvim'e Ekle
-    </a>
+    ${
+      !isForAdmin
+        ? `
+        <p style="margin: 15px 0 10px 0; font-size: 14px; color: #3D3530;">
+          📅 Takviminize eklemek için:
+        </p>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`Seans - ${data.adSoyad}`)}&dates=${encodeURIComponent(formatGoogleCalendarDate(data.appointment_date, data.appointment_time))}/${encodeURIComponent(formatGoogleCalendarDate(data.appointment_date, data.appointment_time, 60))}&details=${encodeURIComponent(`Hizmet: ${data.service_type}\nNot: ${data.notlar || "-"}\n\nOnline Görüşme: ${meetLink}`)}&location=${encodeURIComponent(meetLink)}" 
+           style="display: inline-block; background-color: #4285F4; color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">
+          📆 Google Takvim'e Ekle
+        </a>
+        `
+        : ""
+    }
   </div>
 `
     : ""

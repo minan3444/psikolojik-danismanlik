@@ -1,4 +1,22 @@
 // src/lib/email-templates.js
+
+// Tarih formatlama helper fonksiyonu
+function formatGoogleCalendarDate(dateStr, timeStr, addMinutes = 0) {
+  const [yil, ay, gun] = dateStr.includes("-")
+    ? dateStr.split("-")
+    : dateStr.split(".").reverse();
+  const [saat, dakika] = timeStr.split(":");
+
+  const date = new Date(`${yil}-${ay}-${gun}T${saat}:${dakika}:00+03:00`);
+  date.setMinutes(date.getMinutes() + addMinutes);
+
+  // Google Calendar formatı: YYYYMMDDTHHMMSSZ
+  return date
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d{3}/, "");
+}
+
 export const contactEmailTemplate = (data, texts) => `
   <div style="font-family: sans-serif; background-color: #FAF8F5; padding: 40px;">
     <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; border: 1px solid #EDE8E0;">
@@ -21,7 +39,12 @@ export const contactEmailTemplate = (data, texts) => `
 `;
 
 // src/lib/email-templates.js içindeki appointmentEmailTemplate fonksiyonunu güncelleyin:
-export const appointmentEmailTemplate = (data, texts, isForAdmin = false) => {
+export const appointmentEmailTemplate = (
+  data,
+  texts,
+  isForAdmin = false,
+  meetLink = null,
+) => {
   return `
     <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #FAF8F5; padding: 40px 10px; color: #3D3530;">
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; overflow: hidden; border: 1px solid #EDE8E0; box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
@@ -35,7 +58,7 @@ export const appointmentEmailTemplate = (data, texts, isForAdmin = false) => {
 
         <div style="padding: 40px 35px;">
           <p style="font-size: 17px; line-height: 1.6; margin-bottom: 25px;">
-            Merhaba <b>Şeyma Hanım</b>,
+           Merhaba <b>${isForAdmin ? "Şeyma Hanım" : data.adSoyad}</b>,
           </p>
           <p style="font-size: 15px; line-height: 1.7; color: #7A6E68; margin-bottom: 30px;">
             ${isForAdmin ? `<b>${data.adSoyad}</b> tarafından Web siteniz üzerinden yeni bir randevu talebi oluşturuldu.` : texts.userIntro}
@@ -47,6 +70,29 @@ export const appointmentEmailTemplate = (data, texts, isForAdmin = false) => {
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.service}:</strong> ${data.service_type}</p>
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.date}:</strong> ${data.appointment_date}</p>
             <p style="margin: 8px 0; font-size: 14px;"><strong>${texts.labels.time}:</strong> ${data.appointment_time}</p>
+${
+  meetLink && !isForAdmin
+    ? `
+  <div style="margin-top: 20px; padding: 15px; background-color: #EBF5EE; border-radius: 10px; text-align: center;">
+    <p style="margin: 0 0 10px 0; font-size: 14px; color: #3D3530;">
+      🎥 Seans bağlantınız hazır:
+    </p>
+    <a href="${meetLink}" 
+       style="display: inline-block; background-color: #7C9E87; color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 15px;">
+      🎥 Online Görüşmeye Katıl
+    </a>
+    
+    <p style="margin: 15px 0 10px 0; font-size: 14px; color: #3D3530;">
+      📅 Takviminize eklemek için:
+    </p>
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`Seans - ${data.adSoyad}`)}&dates=${encodeURIComponent(formatGoogleCalendarDate(data.appointment_date, data.appointment_time))}/${encodeURIComponent(formatGoogleCalendarDate(data.appointment_date, data.appointment_time, 60))}&details=${encodeURIComponent(`Hizmet: ${data.service_type}\nNot: ${data.notlar || "-"}\n\nOnline Görüşme: ${meetLink}`)}&location=${encodeURIComponent(meetLink)}" 
+       style="display: inline-block; background-color: #4285F4; color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">
+      📆 Google Takvim'e Ekle
+    </a>
+  </div>
+`
+    : ""
+}
             ${
               isForAdmin
                 ? `
